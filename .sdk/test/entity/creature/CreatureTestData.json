@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "creature": {
+      "CREATURE00": {
+        "classification": "s46",
+        "description": "s47",
+        "habitat": "s48",
+        "id": "CREATURE00",
+        "image": "s4a",
+        "name": "s4b",
+        "url": "s4c"
+      },
+      "CREATURE01": {
+        "classification": "s8c",
+        "description": "s8d",
+        "habitat": "s8e",
+        "id": "CREATURE01",
+        "image": "s90",
+        "name": "s91",
+        "url": "s92"
+      },
+      "CREATURE02": {
+        "classification": "sd2",
+        "description": "sd3",
+        "habitat": "sd4",
+        "id": "CREATURE02",
+        "image": "sd6",
+        "name": "sd7",
+        "url": "sd8"
+      }
+    }
+  },
+  "new": {
+    "creature": {
+      "creature_ref01": {
+        "classification": "s118",
+        "description": "s119",
+        "habitat": "s11a",
+        "image": "s11c",
+        "name": "s11d",
+        "url": "s11e"
+      }
+    }
+  }
+}

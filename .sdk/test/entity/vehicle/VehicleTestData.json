@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "vehicle": {
+      "VEHICLE00": {
+        "affiliation": "s6e",
+        "armament": "s6f",
+        "class": "s70",
+        "crew": "s71",
+        "description": "s72",
+        "id": "VEHICLE00",
+        "image": "s74",
+        "length": "s75",
+        "manufacturer": "s76",
+        "name": "s77",
+        "url": "s78"
+      },
+      "VEHICLE01": {
+        "affiliation": "sdc",
+        "armament": "sdd",
+        "class": "sde",
+        "crew": "sdf",
+        "description": "se0",
+        "id": "VEHICLE01",
+        "image": "se2",
+        "length": "se3",
+        "manufacturer": "se4",
+        "name": "se5",
+        "url": "se6"
+      },
+      "VEHICLE02": {
+        "affiliation": "s14a",
+        "armament": "s14b",
+        "class": "s14c",
+        "crew": "s14d",
+        "description": "s14e",
+        "id": "VEHICLE02",
+        "image": "s150",
+        "length": "s151",
+        "manufacturer": "s152",
+        "name": "s153",
+        "url": "s154"
+      }
+    }
+  },
+  "new": {
+    "vehicle": {
+      "vehicle_ref01": {
+        "affiliation": "s1b8",
+        "armament": "s1b9",
+        "class": "s1ba",
+        "crew": "s1bb",
+        "description": "s1bc",
+        "image": "s1be",
+        "length": "s1bf",
+        "manufacturer": "s1c0",
+        "name": "s1c1",
+        "url": "s1c2"
+      }
+    }
+  }
+}

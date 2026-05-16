@@ -1,0 +1,44 @@
+# BasicDroidFlow
+
+main: kit: flow: BasicDroidFlow:
+{
+  entity: "droid",
+  kind: "basic",
+  name: "BasicDroidFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "droid_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "droid_ref01",
+        srcdatavar: "droid_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "droid01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-droid_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDroidFlow"
+}

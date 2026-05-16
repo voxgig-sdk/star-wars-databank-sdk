@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "location": {
+      "LOCATION00": {
+        "description": "s50",
+        "id": "LOCATION00",
+        "image": "s52",
+        "name": "s53",
+        "region": "s54",
+        "sector": "s55",
+        "terrain": "s56",
+        "url": "s57"
+      },
+      "LOCATION01": {
+        "description": "sa0",
+        "id": "LOCATION01",
+        "image": "sa2",
+        "name": "sa3",
+        "region": "sa4",
+        "sector": "sa5",
+        "terrain": "sa6",
+        "url": "sa7"
+      },
+      "LOCATION02": {
+        "description": "sf0",
+        "id": "LOCATION02",
+        "image": "sf2",
+        "name": "sf3",
+        "region": "sf4",
+        "sector": "sf5",
+        "terrain": "sf6",
+        "url": "sf7"
+      }
+    }
+  },
+  "new": {
+    "location": {
+      "location_ref01": {
+        "description": "s140",
+        "image": "s142",
+        "name": "s143",
+        "region": "s144",
+        "sector": "s145",
+        "terrain": "s146",
+        "url": "s147"
+      }
+    }
+  }
+}

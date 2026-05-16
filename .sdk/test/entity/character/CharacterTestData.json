@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "character": {
+      "CHARACTER00": {
+        "affiliation": "s50",
+        "description": "s51",
+        "homeworld": "s52",
+        "id": "CHARACTER00",
+        "image": "s54",
+        "name": "s55",
+        "species": "s56",
+        "url": "s57"
+      },
+      "CHARACTER01": {
+        "affiliation": "sa0",
+        "description": "sa1",
+        "homeworld": "sa2",
+        "id": "CHARACTER01",
+        "image": "sa4",
+        "name": "sa5",
+        "species": "sa6",
+        "url": "sa7"
+      },
+      "CHARACTER02": {
+        "affiliation": "sf0",
+        "description": "sf1",
+        "homeworld": "sf2",
+        "id": "CHARACTER02",
+        "image": "sf4",
+        "name": "sf5",
+        "species": "sf6",
+        "url": "sf7"
+      }
+    }
+  },
+  "new": {
+    "character": {
+      "character_ref01": {
+        "affiliation": "s140",
+        "description": "s141",
+        "homeworld": "s142",
+        "image": "s144",
+        "name": "s145",
+        "species": "s146",
+        "url": "s147"
+      }
+    }
+  }
+}

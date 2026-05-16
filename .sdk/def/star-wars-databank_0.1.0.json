@@ -1,0 +1,1021 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Star Wars Databank API",
+    "description": "The Star Wars Databank API provides access to a comprehensive collection of data related to the Star Wars universe including characters, droids, creatures, locations, organizations, species, and vehicles. It is a RESTful API that presents official information derived directly from the Star Wars Databank, allowing users to explore and interact with the vast lore of the saga.",
+    "version": "2.5.0",
+    "contact": {
+      "url": "https://starwars-databank.vercel.app/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://starwars-databank-server.vercel.app/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/characters": {
+      "get": {
+        "summary": "Get all characters",
+        "description": "Retrieve a list of all Star Wars characters from the databank. Total characters available: 964",
+        "operationId": "getAllCharacters",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of characters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Character"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/{id}": {
+      "get": {
+        "summary": "Get a single character",
+        "description": "Retrieve detailed information about a specific Star Wars character by ID",
+        "operationId": "getCharacterById",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Character ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with character details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Character not found"
+          }
+        }
+      }
+    },
+    "/creatures": {
+      "get": {
+        "summary": "Get all creatures",
+        "description": "Retrieve a list of all Star Wars creatures from the databank. Total creatures available: 75",
+        "operationId": "getAllCreatures",
+        "tags": [
+          "Creatures"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of creatures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Creature"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creatures/{id}": {
+      "get": {
+        "summary": "Get a single creature",
+        "description": "Retrieve detailed information about a specific Star Wars creature by ID",
+        "operationId": "getCreatureById",
+        "tags": [
+          "Creatures"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Creature ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with creature details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Creature"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Creature not found"
+          }
+        }
+      }
+    },
+    "/droids": {
+      "get": {
+        "summary": "Get all droids",
+        "description": "Retrieve a list of all Star Wars droids from the databank. Total droids available: 60",
+        "operationId": "getAllDroids",
+        "tags": [
+          "Droids"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of droids",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Droid"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/droids/{id}": {
+      "get": {
+        "summary": "Get a single droid",
+        "description": "Retrieve detailed information about a specific Star Wars droid by ID",
+        "operationId": "getDroidById",
+        "tags": [
+          "Droids"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Droid ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with droid details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Droid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Droid not found"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "summary": "Get all locations",
+        "description": "Retrieve a list of all Star Wars locations from the databank. Total locations available: 326",
+        "operationId": "getAllLocations",
+        "tags": [
+          "Locations"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of locations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Location"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/{id}": {
+      "get": {
+        "summary": "Get a single location",
+        "description": "Retrieve detailed information about a specific Star Wars location by ID",
+        "operationId": "getLocationById",
+        "tags": [
+          "Locations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Location ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with location details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        }
+      }
+    },
+    "/organizations": {
+      "get": {
+        "summary": "Get all organizations",
+        "description": "Retrieve a list of all Star Wars organizations from the databank. Total organizations available: 135",
+        "operationId": "getAllOrganizations",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of organizations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Organization"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{id}": {
+      "get": {
+        "summary": "Get a single organization",
+        "description": "Retrieve detailed information about a specific Star Wars organization by ID",
+        "operationId": "getOrganizationById",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Organization ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with organization details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Organization not found"
+          }
+        }
+      }
+    },
+    "/species": {
+      "get": {
+        "summary": "Get all species",
+        "description": "Retrieve a list of all Star Wars species from the databank. Total species available: 82",
+        "operationId": "getAllSpecies",
+        "tags": [
+          "Species"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of species",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Species"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/species/{id}": {
+      "get": {
+        "summary": "Get a single species",
+        "description": "Retrieve detailed information about a specific Star Wars species by ID",
+        "operationId": "getSpeciesById",
+        "tags": [
+          "Species"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Species ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with species details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Species"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Species not found"
+          }
+        }
+      }
+    },
+    "/vehicles": {
+      "get": {
+        "summary": "Get all vehicles",
+        "description": "Retrieve a list of all Star Wars vehicles from the databank. Total vehicles available: 267",
+        "operationId": "getAllVehicles",
+        "tags": [
+          "Vehicles"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of vehicles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Vehicle"
+                      }
+                    },
+                    "info": {
+                      "$ref": "#/components/schemas/PaginationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vehicles/{id}": {
+      "get": {
+        "summary": "Get a single vehicle",
+        "description": "Retrieve detailed information about a specific Star Wars vehicle by ID",
+        "operationId": "getVehicleById",
+        "tags": [
+          "Vehicles"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Vehicle ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with vehicle details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Vehicle not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Character": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the character"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the character"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the character"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the character's image"
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "Character's affiliation or allegiance"
+          },
+          "homeworld": {
+            "type": "string",
+            "description": "Character's home planet"
+          },
+          "species": {
+            "type": "string",
+            "description": "Character's species"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "Creature": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the creature"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the creature"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the creature"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the creature's image"
+          },
+          "classification": {
+            "type": "string",
+            "description": "Creature's classification"
+          },
+          "habitat": {
+            "type": "string",
+            "description": "Creature's natural habitat"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "Droid": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the droid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name or designation of the droid"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the droid"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the droid's image"
+          },
+          "manufacturer": {
+            "type": "string",
+            "description": "Droid's manufacturer"
+          },
+          "type": {
+            "type": "string",
+            "description": "Droid type or class"
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "Droid's affiliation"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the location"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the location"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the location"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the location's image"
+          },
+          "region": {
+            "type": "string",
+            "description": "Galactic region where the location is situated"
+          },
+          "sector": {
+            "type": "string",
+            "description": "Sector where the location is situated"
+          },
+          "terrain": {
+            "type": "string",
+            "description": "Terrain type of the location"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "Organization": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the organization"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the organization"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the organization"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the organization's image"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of organization"
+          },
+          "allegiance": {
+            "type": "string",
+            "description": "Organization's allegiance"
+          },
+          "leader": {
+            "type": "string",
+            "description": "Leader of the organization"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "Species": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the species"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the species"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the species"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the species' image"
+          },
+          "classification": {
+            "type": "string",
+            "description": "Biological classification"
+          },
+          "designation": {
+            "type": "string",
+            "description": "Sentience designation"
+          },
+          "homeworld": {
+            "type": "string",
+            "description": "Homeworld of the species"
+          },
+          "language": {
+            "type": "string",
+            "description": "Language spoken by the species"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "Vehicle": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the vehicle"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the vehicle"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the vehicle"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the vehicle's image"
+          },
+          "manufacturer": {
+            "type": "string",
+            "description": "Vehicle manufacturer"
+          },
+          "class": {
+            "type": "string",
+            "description": "Vehicle class or type"
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "Vehicle's affiliation"
+          },
+          "length": {
+            "type": "string",
+            "description": "Length of the vehicle"
+          },
+          "crew": {
+            "type": "string",
+            "description": "Crew capacity"
+          },
+          "armament": {
+            "type": "string",
+            "description": "Vehicle armament"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the official Star Wars Databank entry"
+          }
+        }
+      },
+      "PaginationInfo": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of items available"
+          },
+          "pages": {
+            "type": "integer",
+            "description": "Total number of pages"
+          },
+          "next": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "URL to the next page of results"
+          },
+          "prev": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "URL to the previous page of results"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Characters",
+      "description": "Operations related to Star Wars characters"
+    },
+    {
+      "name": "Creatures",
+      "description": "Operations related to Star Wars creatures"
+    },
+    {
+      "name": "Droids",
+      "description": "Operations related to Star Wars droids"
+    },
+    {
+      "name": "Locations",
+      "description": "Operations related to Star Wars locations"
+    },
+    {
+      "name": "Organizations",
+      "description": "Operations related to Star Wars organizations"
+    },
+    {
+      "name": "Species",
+      "description": "Operations related to Star Wars species"
+    },
+    {
+      "name": "Vehicles",
+      "description": "Operations related to Star Wars vehicles"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "species": {
+      "SPECIES00": {
+        "classification": "s5a",
+        "description": "s5b",
+        "designation": "s5c",
+        "homeworld": "s5d",
+        "id": "SPECIES00",
+        "image": "s5f",
+        "language": "s60",
+        "name": "s61",
+        "url": "s62"
+      },
+      "SPECIES01": {
+        "classification": "sb4",
+        "description": "sb5",
+        "designation": "sb6",
+        "homeworld": "sb7",
+        "id": "SPECIES01",
+        "image": "sb9",
+        "language": "sba",
+        "name": "sbb",
+        "url": "sbc"
+      },
+      "SPECIES02": {
+        "classification": "s10e",
+        "description": "s10f",
+        "designation": "s110",
+        "homeworld": "s111",
+        "id": "SPECIES02",
+        "image": "s113",
+        "language": "s114",
+        "name": "s115",
+        "url": "s116"
+      }
+    }
+  },
+  "new": {
+    "species": {
+      "species_ref01": {
+        "classification": "s168",
+        "description": "s169",
+        "designation": "s16a",
+        "homeworld": "s16b",
+        "image": "s16d",
+        "language": "s16e",
+        "name": "s16f",
+        "url": "s170"
+      }
+    }
+  }
+}

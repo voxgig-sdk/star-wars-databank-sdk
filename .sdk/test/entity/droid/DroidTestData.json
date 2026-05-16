@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "droid": {
+      "DROID00": {
+        "affiliation": "s50",
+        "description": "s51",
+        "id": "DROID00",
+        "image": "s53",
+        "manufacturer": "s54",
+        "name": "s55",
+        "type": "s56",
+        "url": "s57"
+      },
+      "DROID01": {
+        "affiliation": "sa0",
+        "description": "sa1",
+        "id": "DROID01",
+        "image": "sa3",
+        "manufacturer": "sa4",
+        "name": "sa5",
+        "type": "sa6",
+        "url": "sa7"
+      },
+      "DROID02": {
+        "affiliation": "sf0",
+        "description": "sf1",
+        "id": "DROID02",
+        "image": "sf3",
+        "manufacturer": "sf4",
+        "name": "sf5",
+        "type": "sf6",
+        "url": "sf7"
+      }
+    }
+  },
+  "new": {
+    "droid": {
+      "droid_ref01": {
+        "affiliation": "s140",
+        "description": "s141",
+        "image": "s143",
+        "manufacturer": "s144",
+        "name": "s145",
+        "type": "s146",
+        "url": "s147"
+      }
+    }
+  }
+}

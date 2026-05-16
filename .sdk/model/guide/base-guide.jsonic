@@ -1,0 +1,71 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 14
+  metrics: count: method: 14
+
+  entity: character: {
+    path: "/characters": {
+      op: list: method: *GET
+    }
+    path: "/characters/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: creature: {
+    path: "/creatures": {
+      op: list: method: *GET
+    }
+    path: "/creatures/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: droid: {
+    path: "/droids": {
+      op: list: method: *GET
+    }
+    path: "/droids/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: location: {
+    path: "/locations": {
+      op: list: method: *GET
+    }
+    path: "/locations/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: organization: {
+    path: "/organizations": {
+      op: list: method: *GET
+    }
+    path: "/organizations/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: species: {
+    path: "/species": {
+      op: list: method: *GET
+    }
+    path: "/species/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: vehicle: {
+    path: "/vehicles": {
+      op: list: method: *GET
+    }
+    path: "/vehicles/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

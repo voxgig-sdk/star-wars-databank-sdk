@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "organization": {
+      "ORGANIZATION00": {
+        "allegiance": "s50",
+        "description": "s51",
+        "id": "ORGANIZATION00",
+        "image": "s53",
+        "leader": "s54",
+        "name": "s55",
+        "type": "s56",
+        "url": "s57"
+      },
+      "ORGANIZATION01": {
+        "allegiance": "sa0",
+        "description": "sa1",
+        "id": "ORGANIZATION01",
+        "image": "sa3",
+        "leader": "sa4",
+        "name": "sa5",
+        "type": "sa6",
+        "url": "sa7"
+      },
+      "ORGANIZATION02": {
+        "allegiance": "sf0",
+        "description": "sf1",
+        "id": "ORGANIZATION02",
+        "image": "sf3",
+        "leader": "sf4",
+        "name": "sf5",
+        "type": "sf6",
+        "url": "sf7"
+      }
+    }
+  },
+  "new": {
+    "organization": {
+      "organization_ref01": {
+        "allegiance": "s140",
+        "description": "s141",
+        "image": "s143",
+        "leader": "s144",
+        "name": "s145",
+        "type": "s146",
+        "url": "s147"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# Entity Models
+
+@"character.jsonic"
+@"creature.jsonic"
+@"droid.jsonic"
+@"location.jsonic"
+@"organization.jsonic"
+@"species.jsonic"
+@"vehicle.jsonic"
