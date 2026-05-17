@@ -1,10 +1,10 @@
 package voxgigstarwarsdatabanksdk
 
 import (
-	"github.com/voxgig-sdk/star-wars-databank-sdk/core"
-	"github.com/voxgig-sdk/star-wars-databank-sdk/entity"
-	"github.com/voxgig-sdk/star-wars-databank-sdk/feature"
-	_ "github.com/voxgig-sdk/star-wars-databank-sdk/utility"
+	"github.com/voxgig-sdk/star-wars-databank-sdk/go/core"
+	"github.com/voxgig-sdk/star-wars-databank-sdk/go/entity"
+	"github.com/voxgig-sdk/star-wars-databank-sdk/go/feature"
+	_ "github.com/voxgig-sdk/star-wars-databank-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

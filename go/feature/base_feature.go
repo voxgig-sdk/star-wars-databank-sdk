@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/star-wars-databank-sdk/core"
+	"github.com/voxgig-sdk/star-wars-databank-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/star-wars-databank-sdk"
-	"github.com/voxgig-sdk/star-wars-databank-sdk/core"
+	sdk "github.com/voxgig-sdk/star-wars-databank-sdk/go"
+	"github.com/voxgig-sdk/star-wars-databank-sdk/go/core"
 )
 
 func TestCreatureDirect(t *testing.T) {
