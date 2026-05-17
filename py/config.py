@@ -14,7 +14,7 @@ def make_config():
       },
         },
         "options": {
-            "base": "https://starwars-databank-server.vercel.app/api/v1",
+            "base": "https://starwars-databank-server.onrender.com/api/v1",
             "auth": {
                 "prefix": "Bearer",
             },

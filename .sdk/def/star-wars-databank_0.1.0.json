@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://starwars-databank-server.vercel.app/api/v1",
+      "url": "https://starwars-databank-server.onrender.com/api/v1",
       "description": "Production server"
     }
   ],

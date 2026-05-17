@@ -13,7 +13,7 @@ func MakeConfig() map[string]any {
 			},
 		},
 		"options": map[string]any{
-			"base": "https://starwars-databank-server.vercel.app/api/v1",
+			"base": "https://starwars-databank-server.onrender.com/api/v1",
 			"auth": map[string]any{
 				"prefix": "Bearer",
 			},

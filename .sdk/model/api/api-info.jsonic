@@ -11,7 +11,7 @@ main: {
       servers: [
         {
           description: "Production server"
-          url: "https://starwars-databank-server.vercel.app/api/v1"
+          url: "https://starwars-databank-server.onrender.com/api/v1"
         }
       ]
       title: "Star Wars Databank API"
