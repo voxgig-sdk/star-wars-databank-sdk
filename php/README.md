@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'starwarsdatabank_sdk.php';
 
-$client = new StarWarsDatabankSDK([
-    "apikey" => getenv("STAR-WARS-DATABANK_APIKEY"),
-]);
+$client = new StarWarsDatabankSDK([]);
 ```
 
 ### 2. List characters
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 STAR-WARS-DATABANK_TEST_LIVE=TRUE
-STAR-WARS-DATABANK_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

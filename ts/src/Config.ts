@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://starwars-databank-server.onrender.com/api/v1',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

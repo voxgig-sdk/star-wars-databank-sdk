@@ -96,7 +96,6 @@ function organization_basic_setup($extra)
         "STARWARSDATABANK_TEST_ORGANIZATION_ENTID" => $idmap,
         "STARWARSDATABANK_TEST_LIVE" => "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-        "STARWARSDATABANK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +107,6 @@ function organization_basic_setup($extra)
     if ($env["STARWARSDATABANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARSDATABANK_APIKEY"],
             ],
             $extra ?? [],
         ]);

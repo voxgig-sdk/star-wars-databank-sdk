@@ -123,14 +123,12 @@ function species_direct_setup($mockres)
     $env = Runner::env_override([
         "STARWARSDATABANK_TEST_SPECIES_ENTID" => [],
         "STARWARSDATABANK_TEST_LIVE" => "FALSE",
-        "STARWARSDATABANK_APIKEY" => "NONE",
     ]);
 
     $live = $env["STARWARSDATABANK_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["STARWARSDATABANK_APIKEY"],
         ];
         $client = new StarWarsDatabankSDK($merged_opts);
         return [
