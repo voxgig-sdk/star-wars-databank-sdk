@@ -1,20 +1,8 @@
 # StarWarsDatabank SDK
 
-Browse Star Wars characters, droids, creatures, locations, organizations, species, and vehicles from a single unofficial Databank API
+Star Wars Databank API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Star Wars Databank API
-
-The Star Wars Databank API is a community-run REST service that mirrors the kind of catalogue found on the official Star Wars Databank, exposing the universe's people, droids, creatures, places, factions, species, and ships through a single base URL at `https://starwars-databank-server.onrender.com/api/v1`.
-
-What you get from the API:
-
-- Paginated lists of entities (e.g. `GET /api/v1/characters?page=1&limit=10`) returning `_id`, `name`, `description`, and `image` fields plus `total`, `page`, `limit`, `next`, `prev` pagination metadata.
-- Separate collections per entity type: characters, droids, creatures, locations, organizations, species, and vehicles.
-- Free, key-less access suitable for demos, tutorials, and fan projects.
-
-Operational notes: the server is hosted on Render's free tier and may cold-start on first request. CORS is not enabled by default, so browser callers should proxy through their own backend. Individual endpoints have varied uptime historically (the `characters` route in particular has been flaky), so build in retries or fall back gracefully when a collection is unavailable.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install star-wars-databank-sdk
 luarocks install star-wars-databank-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { StarWarsDatabankSDK } from 'star-wars-databank'
 
-const client = new StarWarsDatabankSDK({})
+const client = new StarWarsDatabankSDK({
+  apikey: process.env.STAR-WARS-DATABANK_APIKEY,
+})
 
 // List all characters
 const characters = await client.Character().list()
+console.log(characters.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,13 +90,13 @@ The API exposes 7 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Character** | A named Star Wars person or being — heroes, villains, and supporting cast — served from `/api/v1/characters` with `name`, `description`, and `image` fields. | `/characters` |
-| **Creature** | A non-sapient lifeform from the galaxy (banthas, rancors, dewbacks, etc.) listed under `/api/v1/creatures`. | `/creatures` |
-| **Droid** | A mechanical character such as astromechs, protocol droids, and battle droids, available at `/api/v1/droids`. | `/droids` |
-| **Location** | A planet, moon, city, or other place in the Star Wars universe, served from `/api/v1/locations`. | `/locations` |
-| **Organization** | A faction, government, military, or guild (e.g. the Empire, Rebel Alliance, Jedi Order) exposed at `/api/v1/organizations`. | `/organizations` |
-| **Species** | A sapient or notable biological species (Wookiees, Twi'leks, Hutts, etc.) listed under `/api/v1/species`. | `/species` |
-| **Vehicle** | A ship, speeder, walker, or other craft from the saga, served from `/api/v1/vehicles`. | `/vehicles` |
+| **Character** |  | `/characters` |
+| **Creature** |  | `/creatures` |
+| **Droid** |  | `/droids` |
+| **Location** |  | `/locations` |
+| **Organization** |  | `/organizations` |
+| **Species** |  | `/species` |
+| **Vehicle** |  | `/vehicles` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -116,17 +106,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from starwarsdatabank_sdk import StarWarsDatabankSDK
 
-client = StarWarsDatabankSDK({})
+client = StarWarsDatabankSDK({
+    "apikey": os.environ.get("STAR-WARS-DATABANK_APIKEY"),
+})
 
 # List all characters
-characters, err = client.Character(None).list(None, None)
+characters, err = client.Character().list()
+print(characters)
 
 # Load a specific character
-character, err = client.Character(None).load(
-    {"id": "example_id"}, None
-)
+character, err = client.Character().load({"id": "example_id"})
+print(character)
 ```
 
 ### PHP
@@ -135,15 +128,17 @@ character, err = client.Character(None).load(
 <?php
 require_once 'starwarsdatabank_sdk.php';
 
-$client = new StarWarsDatabankSDK([]);
+$client = new StarWarsDatabankSDK([
+    "apikey" => getenv("STAR-WARS-DATABANK_APIKEY"),
+]);
 
 // List all characters
-[$characters, $err] = $client->Character(null)->list(null, null);
+[$characters, $err] = $client->Character()->list();
+print_r($characters);
 
 // Load a specific character
-[$character, $err] = $client->Character(null)->load(
-    ["id" => "example_id"], null
-);
+[$character, $err] = $client->Character()->load(["id" => "example_id"]);
+print_r($character);
 ```
 
 ### Golang
@@ -151,10 +146,13 @@ $client = new StarWarsDatabankSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/star-wars-databank-sdk/go"
 
-client := sdk.NewStarWarsDatabankSDK(map[string]any{})
+client := sdk.NewStarWarsDatabankSDK(map[string]any{
+    "apikey": os.Getenv("STAR-WARS-DATABANK_APIKEY"),
+})
 
 // List all characters
 characters, err := client.Character(nil).List(nil, nil)
+fmt.Println(characters)
 ```
 
 ### Ruby
@@ -162,15 +160,17 @@ characters, err := client.Character(nil).List(nil, nil)
 ```ruby
 require_relative "StarWarsDatabank_sdk"
 
-client = StarWarsDatabankSDK.new({})
+client = StarWarsDatabankSDK.new({
+  "apikey" => ENV["STAR-WARS-DATABANK_APIKEY"],
+})
 
 # List all characters
-characters, err = client.Character(nil).list(nil, nil)
+characters, err = client.Character().list
+puts characters
 
 # Load a specific character
-character, err = client.Character(nil).load(
-  { "id" => "example_id" }, nil
-)
+character, err = client.Character().load({ "id" => "example_id" })
+puts character
 ```
 
 ### Lua
@@ -178,15 +178,17 @@ character, err = client.Character(nil).load(
 ```lua
 local sdk = require("star-wars-databank_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("STAR-WARS-DATABANK_APIKEY"),
+})
 
 -- List all characters
-local characters, err = client:Character(nil):list(nil, nil)
+local characters, err = client:Character():list()
+print(characters)
 
 -- Load a specific character
-local character, err = client:Character(nil):load(
-  { id = "example_id" }, nil
-)
+local character, err = client:Character():load({ id = "example_id" })
+print(character)
 ```
 
 ## Unit testing in offline mode
@@ -205,25 +207,21 @@ const result = await client.Character().load({ id: 'test01' })
 ### Python
 
 ```python
-client = StarWarsDatabankSDK.test(None, None)
-result, err = client.Character(None).load(
-    {"id": "test01"}, None
-)
+client = StarWarsDatabankSDK.test()
+result, err = client.Character().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = StarWarsDatabankSDK::test(null, null);
-[$result, $err] = $client->Character(null)->load(
-    ["id" => "test01"], null
-);
+$client = StarWarsDatabankSDK::test();
+[$result, $err] = $client->Character()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Character(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -232,19 +230,15 @@ result, err := client.Character(nil).Load(
 ### Ruby
 
 ```ruby
-client = StarWarsDatabankSDK.test(nil, nil)
-result, err = client.Character(nil).load(
-  { "id" => "test01" }, nil
-)
+client = StarWarsDatabankSDK.test
+result, err = client.Character().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Character(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Character():load({ id = "test01" })
 ```
 
 ## How it works
@@ -348,16 +342,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Star Wars Databank API
-
-- Upstream: [https://starwars-databank-server.onrender.com/api/v1](https://starwars-databank-server.onrender.com/api/v1)
-- API docs: [https://freepublicapis.com/star-wars-databank-api](https://freepublicapis.com/star-wars-databank-api)
-
-- The API itself publishes no explicit licence or terms of use.
-- Star Wars characters, names, and imagery are trademarks of Lucasfilm Ltd. / The Walt Disney Company; treat the data as fan-curated reference material.
-- No authentication key is documented, but the service is community-hosted on Render and offered as-is without uptime guarantees.
-- Verify any commercial or redistribution use against Lucasfilm's IP terms before shipping.
 
 ---
 

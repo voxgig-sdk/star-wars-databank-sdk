@@ -109,12 +109,14 @@ def _location_direct_setup(mockres):
     env = runner.env_override({
         "STARWARSDATABANK_TEST_LOCATION_ENTID": {},
         "STARWARSDATABANK_TEST_LIVE": "FALSE",
+        "STARWARSDATABANK_APIKEY": "NONE",
     })
 
     live = env.get("STARWARSDATABANK_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("STARWARSDATABANK_APIKEY"),
         }
         client = StarWarsDatabankSDK(merged_opts)
         return {

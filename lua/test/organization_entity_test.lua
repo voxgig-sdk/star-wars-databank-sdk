@@ -102,6 +102,7 @@ function organization_basic_setup(extra)
     ["STARWARSDATABANK_TEST_ORGANIZATION_ENTID"] = idmap,
     ["STARWARSDATABANK_TEST_LIVE"] = "FALSE",
     ["STARWARSDATABANK_TEST_EXPLAIN"] = "FALSE",
+    ["STARWARSDATABANK_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -113,6 +114,7 @@ function organization_basic_setup(extra)
   if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["STARWARSDATABANK_APIKEY"],
       },
       extra or {},
     })

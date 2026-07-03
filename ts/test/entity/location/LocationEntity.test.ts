@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'STAR_WARS_DATABANK_TEST_LOCATION_ENTID': idmap,
     'STAR_WARS_DATABANK_TEST_LIVE': 'FALSE',
     'STAR_WARS_DATABANK_TEST_EXPLAIN': 'FALSE',
+    'STAR_WARS_DATABANK_APIKEY': 'NONE',
   })
 
   idmap = env['STAR_WARS_DATABANK_TEST_LOCATION_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new StarWarsDatabankSDK(merge([
       {
+        apikey: env.STAR_WARS_DATABANK_APIKEY,
       },
       extra
     ]))

@@ -135,6 +135,7 @@ func organizationBasicSetup(extra map[string]any) *entityTestSetup {
 		"STARWARSDATABANK_TEST_ORGANIZATION_ENTID": idmap,
 		"STARWARSDATABANK_TEST_LIVE":      "FALSE",
 		"STARWARSDATABANK_TEST_EXPLAIN":   "FALSE",
+		"STARWARSDATABANK_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["STARWARSDATABANK_TEST_ORGANIZATION_ENTID"])
@@ -145,6 +146,7 @@ func organizationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["STARWARSDATABANK_APIKEY"],
 			},
 			extra,
 		})

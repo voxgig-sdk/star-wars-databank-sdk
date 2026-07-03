@@ -194,12 +194,14 @@ func speciesDirectSetup(mockres any) *speciesDirectSetupResult {
 	env := envOverride(map[string]any{
 		"STARWARSDATABANK_TEST_SPECIES_ENTID": map[string]any{},
 		"STARWARSDATABANK_TEST_LIVE":    "FALSE",
+		"STARWARSDATABANK_APIKEY":       "NONE",
 	})
 
 	live := env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["STARWARSDATABANK_APIKEY"],
 		}
 		client := sdk.NewStarWarsDatabankSDK(mergedOpts)
 

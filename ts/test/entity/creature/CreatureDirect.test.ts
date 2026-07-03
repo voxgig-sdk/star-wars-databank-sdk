@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'STARWARSDATABANK_TEST_CREATURE_ENTID': {},
     'STARWARSDATABANK_TEST_LIVE': 'FALSE',
+    'STARWARSDATABANK_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.STARWARSDATABANK_TEST_LIVE
 
   if (live) {
     const client = new StarWarsDatabankSDK({
+      apikey: env.STARWARSDATABANK_APIKEY,
     })
 
     let idmap: any = env['STARWARSDATABANK_TEST_CREATURE_ENTID']
