@@ -8,12 +8,14 @@ source = {
   dir = "star-wars-databank-sdk/lua"
 }
 description = {
-  summary = "StarWarsDatabank SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Star Wars Databank public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/star-wars-databank-sdk",
+  issues_url = "https://github.com/voxgig-sdk/star-wars-databank-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "star-wars-databank" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

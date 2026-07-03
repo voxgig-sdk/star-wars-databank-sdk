@@ -10,7 +10,7 @@ The PHP SDK for the StarWarsDatabank API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/star-wars-databank-sdk
+composer require voxgig-sdk/star-wars-databank
 ```
 
 

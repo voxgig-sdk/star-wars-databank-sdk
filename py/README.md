@@ -10,7 +10,7 @@ The Python SDK for the StarWarsDatabank API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install star-wars-databank-sdk
+pip install voxgig-sdk-star-wars-databank
 ```
 
 Or install from source:

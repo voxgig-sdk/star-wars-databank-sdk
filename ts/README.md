@@ -10,7 +10,7 @@ The TypeScript SDK for the StarWarsDatabank API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install star-wars-databank
+npm install @voxgig-sdk/star-wars-databank
 ```
 ## Tutorial: your first API call
 

@@ -10,13 +10,13 @@ The Ruby SDK for the StarWarsDatabank API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install star-wars-databank-sdk
+gem install voxgig-sdk-star-wars-databank
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "star-wars-databank-sdk"
+gem "voxgig-sdk-star-wars-databank"
 ```
 
 Then run:
