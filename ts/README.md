@@ -9,9 +9,12 @@ The TypeScript SDK for the StarWarsDatabank API — a type-safe, entity-oriented
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/star-wars-databank
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/star-wars-databank-sdk/releases](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { StarWarsDatabankSDK } from 'star-wars-databank'
+import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank'
 
-const client = new StarWarsDatabankSDK({
-  apikey: process.env.STAR-WARS-DATABANK_APIKEY,
-})
+const client = new StarWarsDatabankSDK()
 ```
 
 ### 2. List characters
 
 ```ts
-const result = await client.Character().list()
+const result = await client.character.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a character
 
 ```ts
-const result = await client.Character().load({ id: 'example_id' })
+const result = await client.character.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StarWarsDatabankSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.character.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new StarWarsDatabankSDK({ apikey: '...' })
+const client = new StarWarsDatabankSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.character
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new StarWarsDatabankSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new StarWarsDatabankSDK({
 Create a `.env.local` file at the project root:
 
 ```
-STAR-WARS-DATABANK_TEST_LIVE=TRUE
-STAR-WARS-DATABANK_APIKEY=<your-key>
+STAR_WARS_DATABANK_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new StarWarsDatabankSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new StarWarsDatabankSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -396,7 +393,7 @@ API path: `/vehicles`
 
 ### Character
 
-Create an instance: `const character = client.Character()`
+Create an instance: `const character = client.character`
 
 #### Operations
 
@@ -421,19 +418,19 @@ Create an instance: `const character = client.Character()`
 #### Example: Load
 
 ```ts
-const character = await client.Character().load({ id: 'character_id' })
+const character = await client.character.load({ id: 'character_id' })
 ```
 
 #### Example: List
 
 ```ts
-const characters = await client.Character().list()
+const characters = await client.character.list()
 ```
 
 
 ### Creature
 
-Create an instance: `const creature = client.Creature()`
+Create an instance: `const creature = client.creature`
 
 #### Operations
 
@@ -457,19 +454,19 @@ Create an instance: `const creature = client.Creature()`
 #### Example: Load
 
 ```ts
-const creature = await client.Creature().load({ id: 'creature_id' })
+const creature = await client.creature.load({ id: 'creature_id' })
 ```
 
 #### Example: List
 
 ```ts
-const creatures = await client.Creature().list()
+const creatures = await client.creature.list()
 ```
 
 
 ### Droid
 
-Create an instance: `const droid = client.Droid()`
+Create an instance: `const droid = client.droid`
 
 #### Operations
 
@@ -494,19 +491,19 @@ Create an instance: `const droid = client.Droid()`
 #### Example: Load
 
 ```ts
-const droid = await client.Droid().load({ id: 'droid_id' })
+const droid = await client.droid.load({ id: 'droid_id' })
 ```
 
 #### Example: List
 
 ```ts
-const droids = await client.Droid().list()
+const droids = await client.droid.list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -531,19 +528,19 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.Location().list()
+const locations = await client.location.list()
 ```
 
 
 ### Organization
 
-Create an instance: `const organization = client.Organization()`
+Create an instance: `const organization = client.organization`
 
 #### Operations
 
@@ -568,19 +565,19 @@ Create an instance: `const organization = client.Organization()`
 #### Example: Load
 
 ```ts
-const organization = await client.Organization().load({ id: 'organization_id' })
+const organization = await client.organization.load({ id: 'organization_id' })
 ```
 
 #### Example: List
 
 ```ts
-const organizations = await client.Organization().list()
+const organizations = await client.organization.list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.Species()`
+Create an instance: `const species = client.species`
 
 #### Operations
 
@@ -606,19 +603,19 @@ Create an instance: `const species = client.Species()`
 #### Example: Load
 
 ```ts
-const species = await client.Species().load({ id: 'species_id' })
+const species = await client.species.load({ id: 'species_id' })
 ```
 
 #### Example: List
 
 ```ts
-const speciess = await client.Species().list()
+const speciess = await client.species.list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.Vehicle()`
+Create an instance: `const vehicle = client.vehicle`
 
 #### Operations
 
@@ -646,13 +643,13 @@ Create an instance: `const vehicle = client.Vehicle()`
 #### Example: Load
 
 ```ts
-const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
+const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const vehicles = await client.Vehicle().list()
+const vehicles = await client.vehicle.list()
 ```
 
 
@@ -713,7 +710,7 @@ star-wars-databank/
 Import the SDK from the package root:
 
 ```ts
-import { StarWarsDatabankSDK } from 'star-wars-databank'
+import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank'
 ```
 
 ### Entity state
@@ -723,11 +720,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const character = client.character
+await character.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// character.data() now returns the loaded character data
+// character.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

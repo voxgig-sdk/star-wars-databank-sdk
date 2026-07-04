@@ -50,16 +50,14 @@ class SpeciesEntityTest extends TestCase
         $species_ref01_ent = $client->Species(null);
         $species_ref01_match = [];
 
-        [$species_ref01_list_result, $err] = $species_ref01_ent->list($species_ref01_match, null);
-        $this->assertNull($err);
+        $species_ref01_list_result = $species_ref01_ent->list($species_ref01_match, null);
         $this->assertIsArray($species_ref01_list_result);
 
         // LOAD
         $species_ref01_match_dt0 = [
             "id" => $species_ref01_data["id"],
         ];
-        [$species_ref01_data_dt0_loaded, $err] = $species_ref01_ent->load($species_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $species_ref01_data_dt0_loaded = $species_ref01_ent->load($species_ref01_match_dt0, null);
         $species_ref01_data_dt0_load_result = Helpers::to_map($species_ref01_data_dt0_loaded);
         $this->assertNotNull($species_ref01_data_dt0_load_result);
         $this->assertEquals($species_ref01_data_dt0_load_result["id"], $species_ref01_data["id"]);
@@ -96,7 +94,6 @@ function species_basic_setup($extra)
         "STARWARSDATABANK_TEST_SPECIES_ENTID" => $idmap,
         "STARWARSDATABANK_TEST_LIVE" => "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-        "STARWARSDATABANK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function species_basic_setup($extra)
     if ($env["STARWARSDATABANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARSDATABANK_APIKEY"],
             ],
             $extra ?? [],
         ]);

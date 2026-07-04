@@ -50,16 +50,14 @@ class VehicleEntityTest extends TestCase
         $vehicle_ref01_ent = $client->Vehicle(null);
         $vehicle_ref01_match = [];
 
-        [$vehicle_ref01_list_result, $err] = $vehicle_ref01_ent->list($vehicle_ref01_match, null);
-        $this->assertNull($err);
+        $vehicle_ref01_list_result = $vehicle_ref01_ent->list($vehicle_ref01_match, null);
         $this->assertIsArray($vehicle_ref01_list_result);
 
         // LOAD
         $vehicle_ref01_match_dt0 = [
             "id" => $vehicle_ref01_data["id"],
         ];
-        [$vehicle_ref01_data_dt0_loaded, $err] = $vehicle_ref01_ent->load($vehicle_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $vehicle_ref01_data_dt0_loaded = $vehicle_ref01_ent->load($vehicle_ref01_match_dt0, null);
         $vehicle_ref01_data_dt0_load_result = Helpers::to_map($vehicle_ref01_data_dt0_loaded);
         $this->assertNotNull($vehicle_ref01_data_dt0_load_result);
         $this->assertEquals($vehicle_ref01_data_dt0_load_result["id"], $vehicle_ref01_data["id"]);
@@ -96,7 +94,6 @@ function vehicle_basic_setup($extra)
         "STARWARSDATABANK_TEST_VEHICLE_ENTID" => $idmap,
         "STARWARSDATABANK_TEST_LIVE" => "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-        "STARWARSDATABANK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function vehicle_basic_setup($extra)
     if ($env["STARWARSDATABANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARSDATABANK_APIKEY"],
             ],
             $extra ?? [],
         ]);

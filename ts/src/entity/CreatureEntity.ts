@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Creature,
+  CreatureLoadMatch,
+  CreatureListMatch,
+} from '../StarWarsDatabankTypes'
 
 // TODO: needs Entity superclass
-class CreatureEntity extends StarWarsDatabankEntityBase {
+class CreatureEntity extends StarWarsDatabankEntityBase<Creature> {
 
   constructor(client: StarWarsDatabankSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class CreatureEntity extends StarWarsDatabankEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CreatureLoadMatch, ctrl?: Control): Promise<Creature> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class CreatureEntity extends StarWarsDatabankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Creature> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CreatureListMatch, ctrl?: Control): Promise<Creature[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class CreatureEntity extends StarWarsDatabankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Creature[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

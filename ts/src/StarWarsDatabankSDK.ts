@@ -8,6 +8,8 @@ import { OrganizationEntity } from './entity/OrganizationEntity'
 import { SpeciesEntity } from './entity/SpeciesEntity'
 import { VehicleEntity } from './entity/VehicleEntity'
 
+export type * from './StarWarsDatabankTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -208,42 +210,98 @@ class StarWarsDatabankSDK {
 
 
 
+  _character?: CharacterEntity
+
+  // Idiomatic facade: `client.character.list()` / `client.character.load({ id })`.
+  get character(): CharacterEntity {
+    return (this._character ??= new CharacterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.character` instead. */
   Character(data?: any) {
     const self = this
     return new CharacterEntity(self,data)
   }
 
 
+  _creature?: CreatureEntity
+
+  // Idiomatic facade: `client.creature.list()` / `client.creature.load({ id })`.
+  get creature(): CreatureEntity {
+    return (this._creature ??= new CreatureEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.creature` instead. */
   Creature(data?: any) {
     const self = this
     return new CreatureEntity(self,data)
   }
 
 
+  _droid?: DroidEntity
+
+  // Idiomatic facade: `client.droid.list()` / `client.droid.load({ id })`.
+  get droid(): DroidEntity {
+    return (this._droid ??= new DroidEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.droid` instead. */
   Droid(data?: any) {
     const self = this
     return new DroidEntity(self,data)
   }
 
 
+  _location?: LocationEntity
+
+  // Idiomatic facade: `client.location.list()` / `client.location.load({ id })`.
+  get location(): LocationEntity {
+    return (this._location ??= new LocationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.location` instead. */
   Location(data?: any) {
     const self = this
     return new LocationEntity(self,data)
   }
 
 
+  _organization?: OrganizationEntity
+
+  // Idiomatic facade: `client.organization.list()` / `client.organization.load({ id })`.
+  get organization(): OrganizationEntity {
+    return (this._organization ??= new OrganizationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.organization` instead. */
   Organization(data?: any) {
     const self = this
     return new OrganizationEntity(self,data)
   }
 
 
+  _species?: SpeciesEntity
+
+  // Idiomatic facade: `client.species.list()` / `client.species.load({ id })`.
+  get species(): SpeciesEntity {
+    return (this._species ??= new SpeciesEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.species` instead. */
   Species(data?: any) {
     const self = this
     return new SpeciesEntity(self,data)
   }
 
 
+  _vehicle?: VehicleEntity
+
+  // Idiomatic facade: `client.vehicle.list()` / `client.vehicle.load({ id })`.
+  get vehicle(): VehicleEntity {
+    return (this._vehicle ??= new VehicleEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.vehicle` instead. */
   Vehicle(data?: any) {
     const self = this
     return new VehicleEntity(self,data)

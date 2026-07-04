@@ -1,7 +1,14 @@
 # StarWarsDatabank SDK Creature entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from starwarsdatabank_types import (
+    Creature,
+    CreatureLoadMatch,
+    CreatureListMatch,
+)
 
 
 class CreatureEntity:
@@ -44,7 +51,7 @@ class CreatureEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Creature:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +60,12 @@ class CreatureEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Creature:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: CreatureLoadMatch, ctrl=None) -> Creature:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",
@@ -80,7 +87,7 @@ class CreatureEntity:
 
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: CreatureListMatch, ctrl=None) -> list[Creature]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",

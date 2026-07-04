@@ -85,6 +85,27 @@ func (e *VehicleEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Vehicle; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *VehicleEntity) DataTyped(data ...Vehicle) Vehicle {
+	if len(data) > 0 {
+		return typedFrom[Vehicle](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Vehicle](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Vehicle (all fields
+// optional at the wire level).
+func (e *VehicleEntity) MatchTyped(match ...Vehicle) Vehicle {
+	if len(match) > 0 {
+		return typedFrom[Vehicle](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Vehicle](e.Match())
+}
+
 
 func (e *VehicleEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *VehicleEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any,
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// VehicleLoadMatch and returns an Vehicle. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *VehicleEntity) LoadTyped(reqmatch VehicleLoadMatch, ctrl map[string]any) (Vehicle, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Vehicle{}, err
+	}
+	return typedFrom[Vehicle](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *VehicleEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// VehicleListMatch and returns []Vehicle. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *VehicleEntity) ListTyped(reqmatch VehicleListMatch, ctrl map[string]any) ([]Vehicle, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Vehicle](res), nil
 }
 
 

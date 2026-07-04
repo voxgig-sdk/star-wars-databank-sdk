@@ -50,16 +50,14 @@ class CreatureEntityTest extends TestCase
         $creature_ref01_ent = $client->Creature(null);
         $creature_ref01_match = [];
 
-        [$creature_ref01_list_result, $err] = $creature_ref01_ent->list($creature_ref01_match, null);
-        $this->assertNull($err);
+        $creature_ref01_list_result = $creature_ref01_ent->list($creature_ref01_match, null);
         $this->assertIsArray($creature_ref01_list_result);
 
         // LOAD
         $creature_ref01_match_dt0 = [
             "id" => $creature_ref01_data["id"],
         ];
-        [$creature_ref01_data_dt0_loaded, $err] = $creature_ref01_ent->load($creature_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $creature_ref01_data_dt0_loaded = $creature_ref01_ent->load($creature_ref01_match_dt0, null);
         $creature_ref01_data_dt0_load_result = Helpers::to_map($creature_ref01_data_dt0_loaded);
         $this->assertNotNull($creature_ref01_data_dt0_load_result);
         $this->assertEquals($creature_ref01_data_dt0_load_result["id"], $creature_ref01_data["id"]);
@@ -96,7 +94,6 @@ function creature_basic_setup($extra)
         "STARWARSDATABANK_TEST_CREATURE_ENTID" => $idmap,
         "STARWARSDATABANK_TEST_LIVE" => "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-        "STARWARSDATABANK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function creature_basic_setup($extra)
     if ($env["STARWARSDATABANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARSDATABANK_APIKEY"],
             ],
             $extra ?? [],
         ]);

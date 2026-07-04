@@ -144,16 +144,23 @@ class StarWarsDatabankSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class StarWarsDatabankSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,45 +212,122 @@ class StarWarsDatabankSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def character(self):
+        """Idiomatic facade: client.character.list() / client.character.load({"id": ...})."""
+        from entity.character_entity import CharacterEntity
+        cached = getattr(self, "_character", None)
+        if cached is None:
+            cached = CharacterEntity(self, None)
+            self._character = cached
+        return cached
 
     def Character(self, data=None):
+        # Deprecated: use client.character instead.
         from entity.character_entity import CharacterEntity
         return CharacterEntity(self, data)
 
 
+    @property
+    def creature(self):
+        """Idiomatic facade: client.creature.list() / client.creature.load({"id": ...})."""
+        from entity.creature_entity import CreatureEntity
+        cached = getattr(self, "_creature", None)
+        if cached is None:
+            cached = CreatureEntity(self, None)
+            self._creature = cached
+        return cached
+
     def Creature(self, data=None):
+        # Deprecated: use client.creature instead.
         from entity.creature_entity import CreatureEntity
         return CreatureEntity(self, data)
 
 
+    @property
+    def droid(self):
+        """Idiomatic facade: client.droid.list() / client.droid.load({"id": ...})."""
+        from entity.droid_entity import DroidEntity
+        cached = getattr(self, "_droid", None)
+        if cached is None:
+            cached = DroidEntity(self, None)
+            self._droid = cached
+        return cached
+
     def Droid(self, data=None):
+        # Deprecated: use client.droid instead.
         from entity.droid_entity import DroidEntity
         return DroidEntity(self, data)
 
 
+    @property
+    def location(self):
+        """Idiomatic facade: client.location.list() / client.location.load({"id": ...})."""
+        from entity.location_entity import LocationEntity
+        cached = getattr(self, "_location", None)
+        if cached is None:
+            cached = LocationEntity(self, None)
+            self._location = cached
+        return cached
+
     def Location(self, data=None):
+        # Deprecated: use client.location instead.
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
+    @property
+    def organization(self):
+        """Idiomatic facade: client.organization.list() / client.organization.load({"id": ...})."""
+        from entity.organization_entity import OrganizationEntity
+        cached = getattr(self, "_organization", None)
+        if cached is None:
+            cached = OrganizationEntity(self, None)
+            self._organization = cached
+        return cached
+
     def Organization(self, data=None):
+        # Deprecated: use client.organization instead.
         from entity.organization_entity import OrganizationEntity
         return OrganizationEntity(self, data)
 
 
+    @property
+    def species(self):
+        """Idiomatic facade: client.species.list() / client.species.load({"id": ...})."""
+        from entity.species_entity import SpeciesEntity
+        cached = getattr(self, "_species", None)
+        if cached is None:
+            cached = SpeciesEntity(self, None)
+            self._species = cached
+        return cached
+
     def Species(self, data=None):
+        # Deprecated: use client.species instead.
         from entity.species_entity import SpeciesEntity
         return SpeciesEntity(self, data)
 
 
+    @property
+    def vehicle(self):
+        """Idiomatic facade: client.vehicle.list() / client.vehicle.load({"id": ...})."""
+        from entity.vehicle_entity import VehicleEntity
+        cached = getattr(self, "_vehicle", None)
+        if cached is None:
+            cached = VehicleEntity(self, None)
+            self._vehicle = cached
+        return cached
+
     def Vehicle(self, data=None):
+        # Deprecated: use client.vehicle instead.
         from entity.vehicle_entity import VehicleEntity
         return VehicleEntity(self, data)
 

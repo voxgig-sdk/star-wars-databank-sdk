@@ -55,6 +55,9 @@ class DroidEntity
         return new DroidEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Droid|array $args Droid data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class DroidEntity
         }
     }
 
+    /**
+     * @return Droid|array The current Droid data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Droid fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class DroidEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Droid fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class DroidEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Droid.
+     *
+     * @param DroidLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed DroidLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Droid|array The loaded Droid as an assoc-array at the
+     *   SDK boundary; throws StarWarsDatabankError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class DroidEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Droid items matching the given filter.
+     *
+     * @param DroidListMatch|array|null $reqmatch Match filter (any subset
+     *   of Droid fields) as an assoc-array; DroidListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Droid[]|array A list of Droid items as assoc-arrays at
+     *   the SDK boundary; throws StarWarsDatabankError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class DroidEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

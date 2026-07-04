@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -182,7 +181,7 @@ Alias for `StarWarsDatabankSDK.test()`.
 ## CharacterEntity
 
 ```ts
-const character = client.Character()
+const character = client.character
 ```
 
 ### Fields
@@ -205,7 +204,7 @@ const character = client.Character()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Character().list()
+const results = await client.character.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -213,7 +212,7 @@ const results = await client.Character().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Character().load({ id: 'character_id' })
+const result = await client.character.load({ id: 'character_id' })
 ```
 
 ### Common Methods
@@ -247,7 +246,7 @@ Return a copy of the entity options.
 ## CreatureEntity
 
 ```ts
-const creature = client.Creature()
+const creature = client.creature
 ```
 
 ### Fields
@@ -269,7 +268,7 @@ const creature = client.Creature()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Creature().list()
+const results = await client.creature.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -277,7 +276,7 @@ const results = await client.Creature().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Creature().load({ id: 'creature_id' })
+const result = await client.creature.load({ id: 'creature_id' })
 ```
 
 ### Common Methods
@@ -311,7 +310,7 @@ Return a copy of the entity options.
 ## DroidEntity
 
 ```ts
-const droid = client.Droid()
+const droid = client.droid
 ```
 
 ### Fields
@@ -334,7 +333,7 @@ const droid = client.Droid()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Droid().list()
+const results = await client.droid.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -342,7 +341,7 @@ const results = await client.Droid().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Droid().load({ id: 'droid_id' })
+const result = await client.droid.load({ id: 'droid_id' })
 ```
 
 ### Common Methods
@@ -376,7 +375,7 @@ Return a copy of the entity options.
 ## LocationEntity
 
 ```ts
-const location = client.Location()
+const location = client.location
 ```
 
 ### Fields
@@ -399,7 +398,7 @@ const location = client.Location()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Location().list()
+const results = await client.location.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -407,7 +406,7 @@ const results = await client.Location().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Location().load({ id: 'location_id' })
+const result = await client.location.load({ id: 'location_id' })
 ```
 
 ### Common Methods
@@ -441,7 +440,7 @@ Return a copy of the entity options.
 ## OrganizationEntity
 
 ```ts
-const organization = client.Organization()
+const organization = client.organization
 ```
 
 ### Fields
@@ -464,7 +463,7 @@ const organization = client.Organization()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Organization().list()
+const results = await client.organization.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -472,7 +471,7 @@ const results = await client.Organization().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Organization().load({ id: 'organization_id' })
+const result = await client.organization.load({ id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -506,7 +505,7 @@ Return a copy of the entity options.
 ## SpeciesEntity
 
 ```ts
-const species = client.Species()
+const species = client.species
 ```
 
 ### Fields
@@ -530,7 +529,7 @@ const species = client.Species()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Species().list()
+const results = await client.species.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -538,7 +537,7 @@ const results = await client.Species().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Species().load({ id: 'species_id' })
+const result = await client.species.load({ id: 'species_id' })
 ```
 
 ### Common Methods
@@ -572,7 +571,7 @@ Return a copy of the entity options.
 ## VehicleEntity
 
 ```ts
-const vehicle = client.Vehicle()
+const vehicle = client.vehicle
 ```
 
 ### Fields
@@ -598,7 +597,7 @@ const vehicle = client.Vehicle()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Vehicle().list()
+const results = await client.vehicle.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -606,7 +605,7 @@ const results = await client.Vehicle().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Vehicle().load({ id: 'vehicle_id' })
+const result = await client.vehicle.load({ id: 'vehicle_id' })
 ```
 
 ### Common Methods

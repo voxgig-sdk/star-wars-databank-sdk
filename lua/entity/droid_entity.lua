@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DroidLoadMatch
+---@param ctrl? table
+---@return Droid
+---@return string? err
 function DroidEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch DroidListMatch
+---@param ctrl? table
+---@return Droid[]
+---@return string? err
 function DroidEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

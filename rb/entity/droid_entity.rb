@@ -45,6 +45,7 @@ class DroidEntity
     end
   end
 
+  # @return [Droid, Hash] the current Droid data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DroidEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Droid fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Droid.
+  #
+  # @param reqmatch [DroidLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Droid, Hash] the loaded Droid; raises StarWarsDatabankError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class DroidEntity
 
 
   
+  # List Droid items matching the given filter.
+  #
+  # @param reqmatch [DroidListMatch, Hash, nil] match filter (any subset of Droid fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Droid>, Array] the matching Droid items; raises StarWarsDatabankError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -55,6 +55,9 @@ class OrganizationEntity
         return new OrganizationEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Organization|array $args Organization data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class OrganizationEntity
         }
     }
 
+    /**
+     * @return Organization|array The current Organization data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Organization fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class OrganizationEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Organization fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class OrganizationEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Organization.
+     *
+     * @param OrganizationLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed OrganizationLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Organization|array The loaded Organization as an assoc-array at the
+     *   SDK boundary; throws StarWarsDatabankError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class OrganizationEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Organization items matching the given filter.
+     *
+     * @param OrganizationListMatch|array|null $reqmatch Match filter (any subset
+     *   of Organization fields) as an assoc-array; OrganizationListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Organization[]|array A list of Organization items as assoc-arrays at
+     *   the SDK boundary; throws StarWarsDatabankError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class OrganizationEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

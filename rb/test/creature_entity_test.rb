@@ -43,16 +43,14 @@ class CreatureEntityTest < Minitest::Test
     creature_ref01_ent = client.Creature(nil)
     creature_ref01_match = {}
 
-    creature_ref01_list_result, err = creature_ref01_ent.list(creature_ref01_match, nil)
-    assert_nil err
+    creature_ref01_list_result = creature_ref01_ent.list(creature_ref01_match, nil)
     assert creature_ref01_list_result.is_a?(Array)
 
     # LOAD
     creature_ref01_match_dt0 = {
       "id" => creature_ref01_data["id"],
     }
-    creature_ref01_data_dt0_loaded, err = creature_ref01_ent.load(creature_ref01_match_dt0, nil)
-    assert_nil err
+    creature_ref01_data_dt0_loaded = creature_ref01_ent.load(creature_ref01_match_dt0, nil)
     creature_ref01_data_dt0_load_result = Helpers.to_map(creature_ref01_data_dt0_loaded)
     assert !creature_ref01_data_dt0_load_result.nil?
     assert_equal creature_ref01_data_dt0_load_result["id"], creature_ref01_data["id"]
@@ -93,7 +91,6 @@ def creature_basic_setup(extra)
     "STARWARSDATABANK_TEST_CREATURE_ENTID" => idmap,
     "STARWARSDATABANK_TEST_LIVE" => "FALSE",
     "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-    "STARWARSDATABANK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def creature_basic_setup(extra)
   if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARSDATABANK_APIKEY"],
       },
       extra || {},
     ])

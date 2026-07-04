@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Vehicle,
+  VehicleLoadMatch,
+  VehicleListMatch,
+} from '../StarWarsDatabankTypes'
 
 // TODO: needs Entity superclass
-class VehicleEntity extends StarWarsDatabankEntityBase {
+class VehicleEntity extends StarWarsDatabankEntityBase<Vehicle> {
 
   constructor(client: StarWarsDatabankSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class VehicleEntity extends StarWarsDatabankEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: VehicleLoadMatch, ctrl?: Control): Promise<Vehicle> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class VehicleEntity extends StarWarsDatabankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Vehicle> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: VehicleListMatch, ctrl?: Control): Promise<Vehicle[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class VehicleEntity extends StarWarsDatabankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Vehicle[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

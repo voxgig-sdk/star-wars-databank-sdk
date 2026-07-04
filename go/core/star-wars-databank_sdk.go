@@ -245,36 +245,57 @@ func (sdk *StarWarsDatabankSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Character returns a Character entity bound to this client.
+// Idiomatic usage: client.Character(nil).List(nil, nil) or
+// client.Character(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Character(data map[string]any) StarWarsDatabankEntity {
 	return NewCharacterEntityFunc(sdk, data)
 }
 
 
+// Creature returns a Creature entity bound to this client.
+// Idiomatic usage: client.Creature(nil).List(nil, nil) or
+// client.Creature(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Creature(data map[string]any) StarWarsDatabankEntity {
 	return NewCreatureEntityFunc(sdk, data)
 }
 
 
+// Droid returns a Droid entity bound to this client.
+// Idiomatic usage: client.Droid(nil).List(nil, nil) or
+// client.Droid(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Droid(data map[string]any) StarWarsDatabankEntity {
 	return NewDroidEntityFunc(sdk, data)
 }
 
 
+// Location returns a Location entity bound to this client.
+// Idiomatic usage: client.Location(nil).List(nil, nil) or
+// client.Location(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Location(data map[string]any) StarWarsDatabankEntity {
 	return NewLocationEntityFunc(sdk, data)
 }
 
 
+// Organization returns a Organization entity bound to this client.
+// Idiomatic usage: client.Organization(nil).List(nil, nil) or
+// client.Organization(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Organization(data map[string]any) StarWarsDatabankEntity {
 	return NewOrganizationEntityFunc(sdk, data)
 }
 
 
+// Species returns a Species entity bound to this client.
+// Idiomatic usage: client.Species(nil).List(nil, nil) or
+// client.Species(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Species(data map[string]any) StarWarsDatabankEntity {
 	return NewSpeciesEntityFunc(sdk, data)
 }
 
 
+// Vehicle returns a Vehicle entity bound to this client.
+// Idiomatic usage: client.Vehicle(nil).List(nil, nil) or
+// client.Vehicle(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsDatabankSDK) Vehicle(data map[string]any) StarWarsDatabankEntity {
 	return NewVehicleEntityFunc(sdk, data)
 }

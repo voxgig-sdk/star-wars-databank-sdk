@@ -43,16 +43,14 @@ class OrganizationEntityTest < Minitest::Test
     organization_ref01_ent = client.Organization(nil)
     organization_ref01_match = {}
 
-    organization_ref01_list_result, err = organization_ref01_ent.list(organization_ref01_match, nil)
-    assert_nil err
+    organization_ref01_list_result = organization_ref01_ent.list(organization_ref01_match, nil)
     assert organization_ref01_list_result.is_a?(Array)
 
     # LOAD
     organization_ref01_match_dt0 = {
       "id" => organization_ref01_data["id"],
     }
-    organization_ref01_data_dt0_loaded, err = organization_ref01_ent.load(organization_ref01_match_dt0, nil)
-    assert_nil err
+    organization_ref01_data_dt0_loaded = organization_ref01_ent.load(organization_ref01_match_dt0, nil)
     organization_ref01_data_dt0_load_result = Helpers.to_map(organization_ref01_data_dt0_loaded)
     assert !organization_ref01_data_dt0_load_result.nil?
     assert_equal organization_ref01_data_dt0_load_result["id"], organization_ref01_data["id"]
@@ -93,7 +91,6 @@ def organization_basic_setup(extra)
     "STARWARSDATABANK_TEST_ORGANIZATION_ENTID" => idmap,
     "STARWARSDATABANK_TEST_LIVE" => "FALSE",
     "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-    "STARWARSDATABANK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def organization_basic_setup(extra)
   if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARSDATABANK_APIKEY"],
       },
       extra || {},
     ])

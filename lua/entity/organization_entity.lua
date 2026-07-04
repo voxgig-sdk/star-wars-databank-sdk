@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch OrganizationLoadMatch
+---@param ctrl? table
+---@return Organization
+---@return string? err
 function OrganizationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch OrganizationListMatch
+---@param ctrl? table
+---@return Organization[]
+---@return string? err
 function OrganizationEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

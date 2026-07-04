@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'StarWarsDatabank_types'
+
 
 class StarWarsDatabankSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class StarWarsDatabankSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class StarWarsDatabankSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue StarWarsDatabankError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = StarWarsDatabankHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class StarWarsDatabankSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,52 +198,101 @@ class StarWarsDatabankSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.character.list / client.character.load({ "id" => ... })
+  def character
+    require_relative 'entity/character_entity'
+    @character ||= CharacterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.character instead.
   def Character(data = nil)
     require_relative 'entity/character_entity'
     CharacterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.creature.list / client.creature.load({ "id" => ... })
+  def creature
+    require_relative 'entity/creature_entity'
+    @creature ||= CreatureEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.creature instead.
   def Creature(data = nil)
     require_relative 'entity/creature_entity'
     CreatureEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.droid.list / client.droid.load({ "id" => ... })
+  def droid
+    require_relative 'entity/droid_entity'
+    @droid ||= DroidEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.droid instead.
   def Droid(data = nil)
     require_relative 'entity/droid_entity'
     DroidEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.location.list / client.location.load({ "id" => ... })
+  def location
+    require_relative 'entity/location_entity'
+    @location ||= LocationEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.location instead.
   def Location(data = nil)
     require_relative 'entity/location_entity'
     LocationEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.organization.list / client.organization.load({ "id" => ... })
+  def organization
+    require_relative 'entity/organization_entity'
+    @organization ||= OrganizationEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.organization instead.
   def Organization(data = nil)
     require_relative 'entity/organization_entity'
     OrganizationEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.species.list / client.species.load({ "id" => ... })
+  def species
+    require_relative 'entity/species_entity'
+    @species ||= SpeciesEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.species instead.
   def Species(data = nil)
     require_relative 'entity/species_entity'
     SpeciesEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.vehicle.list / client.vehicle.load({ "id" => ... })
+  def vehicle
+    require_relative 'entity/vehicle_entity'
+    @vehicle ||= VehicleEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.vehicle instead.
   def Vehicle(data = nil)
     require_relative 'entity/vehicle_entity'
     VehicleEntity.new(self, data)

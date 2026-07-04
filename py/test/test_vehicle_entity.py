@@ -50,16 +50,14 @@ class TestVehicleEntity:
         vehicle_ref01_ent = client.Vehicle(None)
         vehicle_ref01_match = {}
 
-        vehicle_ref01_list_result, err = vehicle_ref01_ent.list(vehicle_ref01_match, None)
-        assert err is None
+        vehicle_ref01_list_result = vehicle_ref01_ent.list(vehicle_ref01_match, None)
         assert isinstance(vehicle_ref01_list_result, list)
 
         # LOAD
         vehicle_ref01_match_dt0 = {
             "id": vehicle_ref01_data["id"],
         }
-        vehicle_ref01_data_dt0_loaded, err = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, None)
-        assert err is None
+        vehicle_ref01_data_dt0_loaded = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, None)
         vehicle_ref01_data_dt0_load_result = helpers.to_map(vehicle_ref01_data_dt0_loaded)
         assert vehicle_ref01_data_dt0_load_result is not None
         assert vehicle_ref01_data_dt0_load_result["id"] == vehicle_ref01_data["id"]
@@ -102,7 +100,6 @@ def _vehicle_basic_setup(extra):
         "STARWARSDATABANK_TEST_VEHICLE_ENTID": idmap,
         "STARWARSDATABANK_TEST_LIVE": "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN": "FALSE",
-        "STARWARSDATABANK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _vehicle_basic_setup(extra):
     if env.get("STARWARSDATABANK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARSDATABANK_APIKEY"),
             },
             extra or {},
         ])

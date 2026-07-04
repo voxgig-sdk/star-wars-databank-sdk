@@ -50,16 +50,14 @@ class TestOrganizationEntity:
         organization_ref01_ent = client.Organization(None)
         organization_ref01_match = {}
 
-        organization_ref01_list_result, err = organization_ref01_ent.list(organization_ref01_match, None)
-        assert err is None
+        organization_ref01_list_result = organization_ref01_ent.list(organization_ref01_match, None)
         assert isinstance(organization_ref01_list_result, list)
 
         # LOAD
         organization_ref01_match_dt0 = {
             "id": organization_ref01_data["id"],
         }
-        organization_ref01_data_dt0_loaded, err = organization_ref01_ent.load(organization_ref01_match_dt0, None)
-        assert err is None
+        organization_ref01_data_dt0_loaded = organization_ref01_ent.load(organization_ref01_match_dt0, None)
         organization_ref01_data_dt0_load_result = helpers.to_map(organization_ref01_data_dt0_loaded)
         assert organization_ref01_data_dt0_load_result is not None
         assert organization_ref01_data_dt0_load_result["id"] == organization_ref01_data["id"]
@@ -102,7 +100,6 @@ def _organization_basic_setup(extra):
         "STARWARSDATABANK_TEST_ORGANIZATION_ENTID": idmap,
         "STARWARSDATABANK_TEST_LIVE": "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN": "FALSE",
-        "STARWARSDATABANK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _organization_basic_setup(extra):
     if env.get("STARWARSDATABANK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARSDATABANK_APIKEY"),
             },
             extra or {},
         ])

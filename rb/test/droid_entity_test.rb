@@ -43,16 +43,14 @@ class DroidEntityTest < Minitest::Test
     droid_ref01_ent = client.Droid(nil)
     droid_ref01_match = {}
 
-    droid_ref01_list_result, err = droid_ref01_ent.list(droid_ref01_match, nil)
-    assert_nil err
+    droid_ref01_list_result = droid_ref01_ent.list(droid_ref01_match, nil)
     assert droid_ref01_list_result.is_a?(Array)
 
     # LOAD
     droid_ref01_match_dt0 = {
       "id" => droid_ref01_data["id"],
     }
-    droid_ref01_data_dt0_loaded, err = droid_ref01_ent.load(droid_ref01_match_dt0, nil)
-    assert_nil err
+    droid_ref01_data_dt0_loaded = droid_ref01_ent.load(droid_ref01_match_dt0, nil)
     droid_ref01_data_dt0_load_result = Helpers.to_map(droid_ref01_data_dt0_loaded)
     assert !droid_ref01_data_dt0_load_result.nil?
     assert_equal droid_ref01_data_dt0_load_result["id"], droid_ref01_data["id"]
@@ -93,7 +91,6 @@ def droid_basic_setup(extra)
     "STARWARSDATABANK_TEST_DROID_ENTID" => idmap,
     "STARWARSDATABANK_TEST_LIVE" => "FALSE",
     "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
-    "STARWARSDATABANK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def droid_basic_setup(extra)
   if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARSDATABANK_APIKEY"],
       },
       extra || {},
     ])

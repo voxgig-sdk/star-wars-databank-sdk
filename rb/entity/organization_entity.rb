@@ -45,6 +45,7 @@ class OrganizationEntity
     end
   end
 
+  # @return [Organization, Hash] the current Organization data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class OrganizationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Organization fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Organization.
+  #
+  # @param reqmatch [OrganizationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Organization, Hash] the loaded Organization; raises StarWarsDatabankError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class OrganizationEntity
 
 
   
+  # List Organization items matching the given filter.
+  #
+  # @param reqmatch [OrganizationListMatch, Hash, nil] match filter (any subset of Organization fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Organization>, Array] the matching Organization items; raises StarWarsDatabankError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

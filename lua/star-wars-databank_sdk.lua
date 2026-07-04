@@ -244,42 +244,133 @@ end
 
 
 
+-- Idiomatic facade: client:character():list() / client:character():load({ id = ... })
+function StarWarsDatabankSDK:character(data)
+  local EntityMod = require("entity.character_entity")
+  if data == nil then
+    if self._character == nil then
+      self._character = EntityMod.new(self, nil)
+    end
+    return self._character
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:character() instead.
 function StarWarsDatabankSDK:Character(data)
   local EntityMod = require("entity.character_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:creature():list() / client:creature():load({ id = ... })
+function StarWarsDatabankSDK:creature(data)
+  local EntityMod = require("entity.creature_entity")
+  if data == nil then
+    if self._creature == nil then
+      self._creature = EntityMod.new(self, nil)
+    end
+    return self._creature
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:creature() instead.
 function StarWarsDatabankSDK:Creature(data)
   local EntityMod = require("entity.creature_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:droid():list() / client:droid():load({ id = ... })
+function StarWarsDatabankSDK:droid(data)
+  local EntityMod = require("entity.droid_entity")
+  if data == nil then
+    if self._droid == nil then
+      self._droid = EntityMod.new(self, nil)
+    end
+    return self._droid
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:droid() instead.
 function StarWarsDatabankSDK:Droid(data)
   local EntityMod = require("entity.droid_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
+function StarWarsDatabankSDK:location(data)
+  local EntityMod = require("entity.location_entity")
+  if data == nil then
+    if self._location == nil then
+      self._location = EntityMod.new(self, nil)
+    end
+    return self._location
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:location() instead.
 function StarWarsDatabankSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:organization():list() / client:organization():load({ id = ... })
+function StarWarsDatabankSDK:organization(data)
+  local EntityMod = require("entity.organization_entity")
+  if data == nil then
+    if self._organization == nil then
+      self._organization = EntityMod.new(self, nil)
+    end
+    return self._organization
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:organization() instead.
 function StarWarsDatabankSDK:Organization(data)
   local EntityMod = require("entity.organization_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:species():list() / client:species():load({ id = ... })
+function StarWarsDatabankSDK:species(data)
+  local EntityMod = require("entity.species_entity")
+  if data == nil then
+    if self._species == nil then
+      self._species = EntityMod.new(self, nil)
+    end
+    return self._species
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:species() instead.
 function StarWarsDatabankSDK:Species(data)
   local EntityMod = require("entity.species_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:vehicle():list() / client:vehicle():load({ id = ... })
+function StarWarsDatabankSDK:vehicle(data)
+  local EntityMod = require("entity.vehicle_entity")
+  if data == nil then
+    if self._vehicle == nil then
+      self._vehicle = EntityMod.new(self, nil)
+    end
+    return self._vehicle
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:vehicle() instead.
 function StarWarsDatabankSDK:Vehicle(data)
   local EntityMod = require("entity.vehicle_entity")
   return EntityMod.new(self, data)

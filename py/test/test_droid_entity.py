@@ -50,16 +50,14 @@ class TestDroidEntity:
         droid_ref01_ent = client.Droid(None)
         droid_ref01_match = {}
 
-        droid_ref01_list_result, err = droid_ref01_ent.list(droid_ref01_match, None)
-        assert err is None
+        droid_ref01_list_result = droid_ref01_ent.list(droid_ref01_match, None)
         assert isinstance(droid_ref01_list_result, list)
 
         # LOAD
         droid_ref01_match_dt0 = {
             "id": droid_ref01_data["id"],
         }
-        droid_ref01_data_dt0_loaded, err = droid_ref01_ent.load(droid_ref01_match_dt0, None)
-        assert err is None
+        droid_ref01_data_dt0_loaded = droid_ref01_ent.load(droid_ref01_match_dt0, None)
         droid_ref01_data_dt0_load_result = helpers.to_map(droid_ref01_data_dt0_loaded)
         assert droid_ref01_data_dt0_load_result is not None
         assert droid_ref01_data_dt0_load_result["id"] == droid_ref01_data["id"]
@@ -102,7 +100,6 @@ def _droid_basic_setup(extra):
         "STARWARSDATABANK_TEST_DROID_ENTID": idmap,
         "STARWARSDATABANK_TEST_LIVE": "FALSE",
         "STARWARSDATABANK_TEST_EXPLAIN": "FALSE",
-        "STARWARSDATABANK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _droid_basic_setup(extra):
     if env.get("STARWARSDATABANK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARSDATABANK_APIKEY"),
             },
             extra or {},
         ])

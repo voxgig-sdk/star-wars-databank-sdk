@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Droid,
+  DroidLoadMatch,
+  DroidListMatch,
+} from '../StarWarsDatabankTypes'
 
 // TODO: needs Entity superclass
-class DroidEntity extends StarWarsDatabankEntityBase {
+class DroidEntity extends StarWarsDatabankEntityBase<Droid> {
 
   constructor(client: StarWarsDatabankSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class DroidEntity extends StarWarsDatabankEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DroidLoadMatch, ctrl?: Control): Promise<Droid> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class DroidEntity extends StarWarsDatabankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Droid> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DroidListMatch, ctrl?: Control): Promise<Droid[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class DroidEntity extends StarWarsDatabankEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Droid[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

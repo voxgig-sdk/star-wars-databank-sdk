@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch VehicleLoadMatch
+---@param ctrl? table
+---@return Vehicle
+---@return string? err
 function VehicleEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch VehicleListMatch
+---@param ctrl? table
+---@return Vehicle[]
+---@return string? err
 function VehicleEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
