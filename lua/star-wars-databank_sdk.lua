@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:character():list() / client:character():load({ id = ... })
-function StarWarsDatabankSDK:character(data)
+-- Idiomatic facade: client:Character():list() / client:Character():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Character(data)
   local EntityMod = require("entity.character_entity")
   if data == nil then
     if self._character == nil then
@@ -256,15 +257,10 @@ function StarWarsDatabankSDK:character(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:character() instead.
-function StarWarsDatabankSDK:Character(data)
-  local EntityMod = require("entity.character_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:creature():list() / client:creature():load({ id = ... })
-function StarWarsDatabankSDK:creature(data)
+-- Idiomatic facade: client:Creature():list() / client:Creature():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Creature(data)
   local EntityMod = require("entity.creature_entity")
   if data == nil then
     if self._creature == nil then
@@ -275,15 +271,10 @@ function StarWarsDatabankSDK:creature(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:creature() instead.
-function StarWarsDatabankSDK:Creature(data)
-  local EntityMod = require("entity.creature_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:droid():list() / client:droid():load({ id = ... })
-function StarWarsDatabankSDK:droid(data)
+-- Idiomatic facade: client:Droid():list() / client:Droid():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Droid(data)
   local EntityMod = require("entity.droid_entity")
   if data == nil then
     if self._droid == nil then
@@ -294,15 +285,10 @@ function StarWarsDatabankSDK:droid(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:droid() instead.
-function StarWarsDatabankSDK:Droid(data)
-  local EntityMod = require("entity.droid_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
-function StarWarsDatabankSDK:location(data)
+-- Idiomatic facade: client:Location():list() / client:Location():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   if data == nil then
     if self._location == nil then
@@ -313,15 +299,10 @@ function StarWarsDatabankSDK:location(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:location() instead.
-function StarWarsDatabankSDK:Location(data)
-  local EntityMod = require("entity.location_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:organization():list() / client:organization():load({ id = ... })
-function StarWarsDatabankSDK:organization(data)
+-- Idiomatic facade: client:Organization():list() / client:Organization():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Organization(data)
   local EntityMod = require("entity.organization_entity")
   if data == nil then
     if self._organization == nil then
@@ -332,15 +313,10 @@ function StarWarsDatabankSDK:organization(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:organization() instead.
-function StarWarsDatabankSDK:Organization(data)
-  local EntityMod = require("entity.organization_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:species():list() / client:species():load({ id = ... })
-function StarWarsDatabankSDK:species(data)
+-- Idiomatic facade: client:Species():list() / client:Species():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Species(data)
   local EntityMod = require("entity.species_entity")
   if data == nil then
     if self._species == nil then
@@ -351,15 +327,10 @@ function StarWarsDatabankSDK:species(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:species() instead.
-function StarWarsDatabankSDK:Species(data)
-  local EntityMod = require("entity.species_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:vehicle():list() / client:vehicle():load({ id = ... })
-function StarWarsDatabankSDK:vehicle(data)
+-- Idiomatic facade: client:Vehicle():list() / client:Vehicle():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsDatabankSDK:Vehicle(data)
   local EntityMod = require("entity.vehicle_entity")
   if data == nil then
     if self._vehicle == nil then
@@ -367,12 +338,6 @@ function StarWarsDatabankSDK:vehicle(data)
     end
     return self._vehicle
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:vehicle() instead.
-function StarWarsDatabankSDK:Vehicle(data)
-  local EntityMod = require("entity.vehicle_entity")
   return EntityMod.new(self, data)
 end
 

@@ -29,18 +29,16 @@ require_once 'starwarsdatabank_sdk.php';
 $client = new StarWarsDatabankSDK();
 ```
 
-### 2. List characters
+### 2. List character records
 
 ```php
 try {
-    $result = $client->character()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Character records — iterate directly.
+    $characters = $client->Character()->list();
+    foreach ($characters as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->character()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Character record (throws on error).
+    $character = $client->Character()->load(["id" => "example_id"]);
+    print_r($character);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = StarWarsDatabankSDK::test();
+$client = StarWarsDatabankSDK::test([
+    "entity" => ["character" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->character()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$character = $client->Character()->load(["id" => "test01"]);
+print_r($character);
 ```
 
 ### Use a custom fetch function
@@ -186,7 +189,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Creature` | `($data): CreatureEntity` | Create a Creature entity instance. |
 | `Droid` | `($data): DroidEntity` | Create a Droid entity instance. |
 | `Location` | `($data): LocationEntity` | Create a Location entity instance. |
-| `Organization` | `($data): OrganizationEntity` | Create a Organization entity instance. |
+| `Organization` | `($data): OrganizationEntity` | Create an Organization entity instance. |
 | `Species` | `($data): SpeciesEntity` | Create a Species entity instance. |
 | `Vehicle` | `($data): VehicleEntity` | Create a Vehicle entity instance. |
 
@@ -357,7 +360,7 @@ API path: `/vehicles`
 
 ### Character
 
-Create an instance: `const character = client.character`
+Create an instance: `$character = $client->Character();`
 
 #### Operations
 
@@ -381,20 +384,22 @@ Create an instance: `const character = client.character`
 
 #### Example: Load
 
-```ts
-const character = await client.character.load({ id: 'character_id' })
+```php
+// load() returns the bare Character record (throws on error).
+$character = $client->Character()->load(["id" => "character_id"]);
 ```
 
 #### Example: List
 
-```ts
-const characters = await client.character.list()
+```php
+// list() returns an array of Character records (throws on error).
+$characters = $client->Character()->list();
 ```
 
 
 ### Creature
 
-Create an instance: `const creature = client.creature`
+Create an instance: `$creature = $client->Creature();`
 
 #### Operations
 
@@ -417,20 +422,22 @@ Create an instance: `const creature = client.creature`
 
 #### Example: Load
 
-```ts
-const creature = await client.creature.load({ id: 'creature_id' })
+```php
+// load() returns the bare Creature record (throws on error).
+$creature = $client->Creature()->load(["id" => "creature_id"]);
 ```
 
 #### Example: List
 
-```ts
-const creatures = await client.creature.list()
+```php
+// list() returns an array of Creature records (throws on error).
+$creatures = $client->Creature()->list();
 ```
 
 
 ### Droid
 
-Create an instance: `const droid = client.droid`
+Create an instance: `$droid = $client->Droid();`
 
 #### Operations
 
@@ -454,20 +461,22 @@ Create an instance: `const droid = client.droid`
 
 #### Example: Load
 
-```ts
-const droid = await client.droid.load({ id: 'droid_id' })
+```php
+// load() returns the bare Droid record (throws on error).
+$droid = $client->Droid()->load(["id" => "droid_id"]);
 ```
 
 #### Example: List
 
-```ts
-const droids = await client.droid.list()
+```php
+// list() returns an array of Droid records (throws on error).
+$droids = $client->Droid()->list();
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `$location = $client->Location();`
 
 #### Operations
 
@@ -491,20 +500,22 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```php
+// load() returns the bare Location record (throws on error).
+$location = $client->Location()->load(["id" => "location_id"]);
 ```
 
 #### Example: List
 
-```ts
-const locations = await client.location.list()
+```php
+// list() returns an array of Location records (throws on error).
+$locations = $client->Location()->list();
 ```
 
 
 ### Organization
 
-Create an instance: `const organization = client.organization`
+Create an instance: `$organization = $client->Organization();`
 
 #### Operations
 
@@ -528,20 +539,22 @@ Create an instance: `const organization = client.organization`
 
 #### Example: Load
 
-```ts
-const organization = await client.organization.load({ id: 'organization_id' })
+```php
+// load() returns the bare Organization record (throws on error).
+$organization = $client->Organization()->load(["id" => "organization_id"]);
 ```
 
 #### Example: List
 
-```ts
-const organizations = await client.organization.list()
+```php
+// list() returns an array of Organization records (throws on error).
+$organizations = $client->Organization()->list();
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `$species = $client->Species();`
 
 #### Operations
 
@@ -566,20 +579,22 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```php
+// load() returns the bare Species record (throws on error).
+$species = $client->Species()->load(["id" => "species_id"]);
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```php
+// list() returns an array of Species records (throws on error).
+$speciess = $client->Species()->list();
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `$vehicle = $client->Vehicle();`
 
 #### Operations
 
@@ -606,14 +621,16 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```php
+// load() returns the bare Vehicle record (throws on error).
+$vehicle = $client->Vehicle()->load(["id" => "vehicle_id"]);
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```php
+// list() returns an array of Vehicle records (throws on error).
+$vehicles = $client->Vehicle()->list();
 ```
 
 
@@ -688,7 +705,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$character = $client->character();
+$character = $client->Character();
 $character->load(["id" => "example_id"]);
 
 // $character->dataGet() now returns the loaded character data

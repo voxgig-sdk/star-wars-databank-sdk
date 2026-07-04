@@ -4,216 +4,199 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Character:
-    affiliation: Optional[str] = None
-    description: Optional[str] = None
-    homeworld: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    species: Optional[str] = None
-    url: Optional[str] = None
+class Character(TypedDict, total=False):
+    affiliation: str
+    description: str
+    homeworld: str
+    id: str
+    image: str
+    name: str
+    species: str
+    url: str
 
 
-@dataclass
-class CharacterLoadMatch:
+class CharacterLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class CharacterListMatch:
-    affiliation: Optional[str] = None
-    description: Optional[str] = None
-    homeworld: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    species: Optional[str] = None
-    url: Optional[str] = None
+class CharacterListMatch(TypedDict, total=False):
+    affiliation: str
+    description: str
+    homeworld: str
+    id: str
+    image: str
+    name: str
+    species: str
+    url: str
 
 
-@dataclass
-class Creature:
-    classification: Optional[str] = None
-    description: Optional[str] = None
-    habitat: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class Creature(TypedDict, total=False):
+    classification: str
+    description: str
+    habitat: str
+    id: str
+    image: str
+    name: str
+    url: str
 
 
-@dataclass
-class CreatureLoadMatch:
+class CreatureLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class CreatureListMatch:
-    classification: Optional[str] = None
-    description: Optional[str] = None
-    habitat: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class CreatureListMatch(TypedDict, total=False):
+    classification: str
+    description: str
+    habitat: str
+    id: str
+    image: str
+    name: str
+    url: str
 
 
-@dataclass
-class Droid:
-    affiliation: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    manufacturer: Optional[str] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    url: Optional[str] = None
+class Droid(TypedDict, total=False):
+    affiliation: str
+    description: str
+    id: str
+    image: str
+    manufacturer: str
+    name: str
+    type: str
+    url: str
 
 
-@dataclass
-class DroidLoadMatch:
+class DroidLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class DroidListMatch:
-    affiliation: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    manufacturer: Optional[str] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    url: Optional[str] = None
+class DroidListMatch(TypedDict, total=False):
+    affiliation: str
+    description: str
+    id: str
+    image: str
+    manufacturer: str
+    name: str
+    type: str
+    url: str
 
 
-@dataclass
-class Location:
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
-    sector: Optional[str] = None
-    terrain: Optional[str] = None
-    url: Optional[str] = None
+class Location(TypedDict, total=False):
+    description: str
+    id: str
+    image: str
+    name: str
+    region: str
+    sector: str
+    terrain: str
+    url: str
 
 
-@dataclass
-class LocationLoadMatch:
+class LocationLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class LocationListMatch:
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
-    sector: Optional[str] = None
-    terrain: Optional[str] = None
-    url: Optional[str] = None
+class LocationListMatch(TypedDict, total=False):
+    description: str
+    id: str
+    image: str
+    name: str
+    region: str
+    sector: str
+    terrain: str
+    url: str
 
 
-@dataclass
-class Organization:
-    allegiance: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    leader: Optional[str] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    url: Optional[str] = None
+class Organization(TypedDict, total=False):
+    allegiance: str
+    description: str
+    id: str
+    image: str
+    leader: str
+    name: str
+    type: str
+    url: str
 
 
-@dataclass
-class OrganizationLoadMatch:
+class OrganizationLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class OrganizationListMatch:
-    allegiance: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    leader: Optional[str] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    url: Optional[str] = None
+class OrganizationListMatch(TypedDict, total=False):
+    allegiance: str
+    description: str
+    id: str
+    image: str
+    leader: str
+    name: str
+    type: str
+    url: str
 
 
-@dataclass
-class Species:
-    classification: Optional[str] = None
-    description: Optional[str] = None
-    designation: Optional[str] = None
-    homeworld: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    language: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class Species(TypedDict, total=False):
+    classification: str
+    description: str
+    designation: str
+    homeworld: str
+    id: str
+    image: str
+    language: str
+    name: str
+    url: str
 
 
-@dataclass
-class SpeciesLoadMatch:
+class SpeciesLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class SpeciesListMatch:
-    classification: Optional[str] = None
-    description: Optional[str] = None
-    designation: Optional[str] = None
-    homeworld: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    language: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class SpeciesListMatch(TypedDict, total=False):
+    classification: str
+    description: str
+    designation: str
+    homeworld: str
+    id: str
+    image: str
+    language: str
+    name: str
+    url: str
 
 
-@dataclass
-class Vehicle:
-    affiliation: Optional[str] = None
-    armament: Optional[str] = None
-    crew: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    length: Optional[str] = None
-    manufacturer: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class Vehicle(TypedDict, total=False):
+    affiliation: str
+    armament: str
+    crew: str
+    description: str
+    id: str
+    image: str
+    length: str
+    manufacturer: str
+    name: str
+    url: str
 
 
-@dataclass
-class VehicleLoadMatch:
+class VehicleLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class VehicleListMatch:
-    affiliation: Optional[str] = None
-    armament: Optional[str] = None
-    crew: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[str] = None
-    length: Optional[str] = None
-    manufacturer: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
-
+class VehicleListMatch(TypedDict, total=False):
+    affiliation: str
+    armament: str
+    crew: str
+    description: str
+    id: str
+    image: str
+    length: str
+    manufacturer: str
+    name: str
+    url: str

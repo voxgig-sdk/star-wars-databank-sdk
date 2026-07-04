@@ -31,24 +31,28 @@ from starwarsdatabank_sdk import StarWarsDatabankSDK
 client = StarWarsDatabankSDK()
 ```
 
-### 2. List characters
+### 2. List character records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.character.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    characters = client.Character().list({})
+    for character in characters:
+        print(character)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a character
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.character.load({"id": "example_id"})
-    print(result)
+    character = client.Character().load({"id": "example_id"})
+    print(character)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StarWarsDatabankSDK.test()
 
-result = client.character.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+character = client.Character().load({"id": "test01"})
+# character contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -177,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Creature` | `(data) -> CreatureEntity` | Create a Creature entity instance. |
 | `Droid` | `(data) -> DroidEntity` | Create a Droid entity instance. |
 | `Location` | `(data) -> LocationEntity` | Create a Location entity instance. |
-| `Organization` | `(data) -> OrganizationEntity` | Create a Organization entity instance. |
+| `Organization` | `(data) -> OrganizationEntity` | Create an Organization entity instance. |
 | `Species` | `(data) -> SpeciesEntity` | Create a Species entity instance. |
 | `Vehicle` | `(data) -> VehicleEntity` | Create a Vehicle entity instance. |
 
@@ -348,7 +353,7 @@ API path: `/vehicles`
 
 ### Character
 
-Create an instance: `const character = client.character`
+Create an instance: `character = client.Character()`
 
 #### Operations
 
@@ -372,20 +377,20 @@ Create an instance: `const character = client.character`
 
 #### Example: Load
 
-```ts
-const character = await client.character.load({ id: 'character_id' })
+```python
+character = client.Character().load({"id": "character_id"})
 ```
 
 #### Example: List
 
-```ts
-const characters = await client.character.list()
+```python
+characters = client.Character().list({})
 ```
 
 
 ### Creature
 
-Create an instance: `const creature = client.creature`
+Create an instance: `creature = client.Creature()`
 
 #### Operations
 
@@ -408,20 +413,20 @@ Create an instance: `const creature = client.creature`
 
 #### Example: Load
 
-```ts
-const creature = await client.creature.load({ id: 'creature_id' })
+```python
+creature = client.Creature().load({"id": "creature_id"})
 ```
 
 #### Example: List
 
-```ts
-const creatures = await client.creature.list()
+```python
+creatures = client.Creature().list({})
 ```
 
 
 ### Droid
 
-Create an instance: `const droid = client.droid`
+Create an instance: `droid = client.Droid()`
 
 #### Operations
 
@@ -445,20 +450,20 @@ Create an instance: `const droid = client.droid`
 
 #### Example: Load
 
-```ts
-const droid = await client.droid.load({ id: 'droid_id' })
+```python
+droid = client.Droid().load({"id": "droid_id"})
 ```
 
 #### Example: List
 
-```ts
-const droids = await client.droid.list()
+```python
+droids = client.Droid().list({})
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `location = client.Location()`
 
 #### Operations
 
@@ -482,20 +487,20 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```python
+location = client.Location().load({"id": "location_id"})
 ```
 
 #### Example: List
 
-```ts
-const locations = await client.location.list()
+```python
+locations = client.Location().list({})
 ```
 
 
 ### Organization
 
-Create an instance: `const organization = client.organization`
+Create an instance: `organization = client.Organization()`
 
 #### Operations
 
@@ -519,20 +524,20 @@ Create an instance: `const organization = client.organization`
 
 #### Example: Load
 
-```ts
-const organization = await client.organization.load({ id: 'organization_id' })
+```python
+organization = client.Organization().load({"id": "organization_id"})
 ```
 
 #### Example: List
 
-```ts
-const organizations = await client.organization.list()
+```python
+organizations = client.Organization().list({})
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `species = client.Species()`
 
 #### Operations
 
@@ -557,20 +562,20 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```python
+species = client.Species().load({"id": "species_id"})
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```python
+speciess = client.Species().list({})
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `vehicle = client.Vehicle()`
 
 #### Operations
 
@@ -597,14 +602,14 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```python
+vehicle = client.Vehicle().load({"id": "vehicle_id"})
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```python
+vehicles = client.Vehicle().list({})
 ```
 
 
@@ -678,7 +683,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-character = client.character
+character = client.Character()
 character.load({"id": "example_id"})
 
 # character.data_get() now returns the loaded character data

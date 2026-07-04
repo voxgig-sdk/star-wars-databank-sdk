@@ -110,7 +110,7 @@ same parameters as `direct()`. Raises on error.
 ## CharacterEntity
 
 ```ruby
-character = client.character
+character = client.Character
 ```
 
 ### Fields
@@ -133,7 +133,7 @@ character = client.character
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.character.list(nil)
+results = client.Character.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -141,7 +141,7 @@ results = client.character.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.character.load({ "id" => "character_id" })
+result = client.Character.load({ "id" => "character_id" })
 ```
 
 ### Common Methods
@@ -177,7 +177,7 @@ Return the entity name.
 ## CreatureEntity
 
 ```ruby
-creature = client.creature
+creature = client.Creature
 ```
 
 ### Fields
@@ -199,7 +199,7 @@ creature = client.creature
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.creature.list(nil)
+results = client.Creature.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -207,7 +207,7 @@ results = client.creature.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.creature.load({ "id" => "creature_id" })
+result = client.Creature.load({ "id" => "creature_id" })
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ Return the entity name.
 ## DroidEntity
 
 ```ruby
-droid = client.droid
+droid = client.Droid
 ```
 
 ### Fields
@@ -266,7 +266,7 @@ droid = client.droid
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.droid.list(nil)
+results = client.Droid.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -274,7 +274,7 @@ results = client.droid.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.droid.load({ "id" => "droid_id" })
+result = client.Droid.load({ "id" => "droid_id" })
 ```
 
 ### Common Methods
@@ -310,7 +310,7 @@ Return the entity name.
 ## LocationEntity
 
 ```ruby
-location = client.location
+location = client.Location
 ```
 
 ### Fields
@@ -333,7 +333,7 @@ location = client.location
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.location.list(nil)
+results = client.Location.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -341,7 +341,7 @@ results = client.location.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.location.load({ "id" => "location_id" })
+result = client.Location.load({ "id" => "location_id" })
 ```
 
 ### Common Methods
@@ -377,7 +377,7 @@ Return the entity name.
 ## OrganizationEntity
 
 ```ruby
-organization = client.organization
+organization = client.Organization
 ```
 
 ### Fields
@@ -400,7 +400,7 @@ organization = client.organization
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.organization.list(nil)
+results = client.Organization.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -408,7 +408,7 @@ results = client.organization.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.organization.load({ "id" => "organization_id" })
+result = client.Organization.load({ "id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -444,7 +444,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```ruby
-species = client.species
+species = client.Species
 ```
 
 ### Fields
@@ -468,7 +468,7 @@ species = client.species
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.species.list(nil)
+results = client.Species.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -476,7 +476,7 @@ results = client.species.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.species.load({ "id" => "species_id" })
+result = client.Species.load({ "id" => "species_id" })
 ```
 
 ### Common Methods
@@ -512,7 +512,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```ruby
-vehicle = client.vehicle
+vehicle = client.Vehicle
 ```
 
 ### Fields
@@ -538,7 +538,7 @@ vehicle = client.vehicle
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.vehicle.list(nil)
+results = client.Vehicle.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -546,7 +546,7 @@ results = client.vehicle.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.vehicle.load({ "id" => "vehicle_id" })
+result = client.Vehicle.load({ "id" => "vehicle_id" })
 ```
 
 ### Common Methods

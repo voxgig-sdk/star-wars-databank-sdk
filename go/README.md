@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/star-wars-databank-sdk/go=../star-war
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/star-wars-databank-sdk/go"
-    "github.com/voxgig-sdk/star-wars-databank-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List characters
-
-```go
-    result, err := client.Character(nil).List(nil, nil)
+    // List character records — the value is the array of records itself.
+    characters, err := client.Character(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range characters.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load a character
-
-```go
-    result, err = client.Character(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single character — the value is the loaded record.
+    character, err := client.Character(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(character)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Character(nil).Load(
+character, err := client.Character(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(character) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -211,7 +200,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Creature` | `(data map[string]any) StarWarsDatabankEntity` | Create a Creature entity instance. |
 | `Droid` | `(data map[string]any) StarWarsDatabankEntity` | Create a Droid entity instance. |
 | `Location` | `(data map[string]any) StarWarsDatabankEntity` | Create a Location entity instance. |
-| `Organization` | `(data map[string]any) StarWarsDatabankEntity` | Create a Organization entity instance. |
+| `Organization` | `(data map[string]any) StarWarsDatabankEntity` | Create an Organization entity instance. |
 | `Species` | `(data map[string]any) StarWarsDatabankEntity` | Create a Species entity instance. |
 | `Vehicle` | `(data map[string]any) StarWarsDatabankEntity` | Create a Vehicle entity instance. |
 
@@ -233,17 +222,24 @@ All entities implement the `StarWarsDatabankEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    character, err := client.Character(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // character is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -401,13 +397,21 @@ Create an instance: `character := client.Character(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Character(nil).Load(map[string]any{"id": "character_id"}, nil)
+character, err := client.Character(nil).Load(map[string]any{"id": "character_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(character) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Character(nil).List(nil, nil)
+characters, err := client.Character(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(characters) // the array of records
 ```
 
 
@@ -437,13 +441,21 @@ Create an instance: `creature := client.Creature(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Creature(nil).Load(map[string]any{"id": "creature_id"}, nil)
+creature, err := client.Creature(nil).Load(map[string]any{"id": "creature_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(creature) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Creature(nil).List(nil, nil)
+creatures, err := client.Creature(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(creatures) // the array of records
 ```
 
 
@@ -474,13 +486,21 @@ Create an instance: `droid := client.Droid(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Droid(nil).Load(map[string]any{"id": "droid_id"}, nil)
+droid, err := client.Droid(nil).Load(map[string]any{"id": "droid_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(droid) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Droid(nil).List(nil, nil)
+droids, err := client.Droid(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(droids) // the array of records
 ```
 
 
@@ -511,13 +531,21 @@ Create an instance: `location := client.Location(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+location, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(location) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Location(nil).List(nil, nil)
+locations, err := client.Location(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(locations) // the array of records
 ```
 
 
@@ -548,13 +576,21 @@ Create an instance: `organization := client.Organization(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Organization(nil).Load(map[string]any{"id": "organization_id"}, nil)
+organization, err := client.Organization(nil).Load(map[string]any{"id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organization) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Organization(nil).List(nil, nil)
+organizations, err := client.Organization(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organizations) // the array of records
 ```
 
 
@@ -586,13 +622,21 @@ Create an instance: `species := client.Species(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Species(nil).Load(map[string]any{"id": "species_id"}, nil)
+species, err := client.Species(nil).Load(map[string]any{"id": "species_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(species) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Species(nil).List(nil, nil)
+speciess, err := client.Species(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(speciess) // the array of records
 ```
 
 
@@ -626,13 +670,21 @@ Create an instance: `vehicle := client.Vehicle(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Vehicle(nil).Load(map[string]any{"id": "vehicle_id"}, nil)
+vehicle, err := client.Vehicle(nil).Load(map[string]any{"id": "vehicle_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(vehicle) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Vehicle(nil).List(nil, nil)
+vehicles, err := client.Vehicle(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(vehicles) // the array of records
 ```
 
 

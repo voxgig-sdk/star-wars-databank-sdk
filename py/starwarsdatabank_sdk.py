@@ -220,121 +220,51 @@ class StarWarsDatabankSDK:
         }
 
 
-    @property
-    def character(self):
-        """Idiomatic facade: client.character.list() / client.character.load({"id": ...})."""
-        from entity.character_entity import CharacterEntity
-        cached = getattr(self, "_character", None)
-        if cached is None:
-            cached = CharacterEntity(self, None)
-            self._character = cached
-        return cached
-
-    def Character(self, data=None):
-        # Deprecated: use client.character instead.
+    def Character(self, data=None) -> "CharacterEntity":
+        """Entity factory: client.Character().list({}) / client.Character().load({"id": ...})."""
         from entity.character_entity import CharacterEntity
         return CharacterEntity(self, data)
 
 
-    @property
-    def creature(self):
-        """Idiomatic facade: client.creature.list() / client.creature.load({"id": ...})."""
-        from entity.creature_entity import CreatureEntity
-        cached = getattr(self, "_creature", None)
-        if cached is None:
-            cached = CreatureEntity(self, None)
-            self._creature = cached
-        return cached
-
-    def Creature(self, data=None):
-        # Deprecated: use client.creature instead.
+    def Creature(self, data=None) -> "CreatureEntity":
+        """Entity factory: client.Creature().list({}) / client.Creature().load({"id": ...})."""
         from entity.creature_entity import CreatureEntity
         return CreatureEntity(self, data)
 
 
-    @property
-    def droid(self):
-        """Idiomatic facade: client.droid.list() / client.droid.load({"id": ...})."""
-        from entity.droid_entity import DroidEntity
-        cached = getattr(self, "_droid", None)
-        if cached is None:
-            cached = DroidEntity(self, None)
-            self._droid = cached
-        return cached
-
-    def Droid(self, data=None):
-        # Deprecated: use client.droid instead.
+    def Droid(self, data=None) -> "DroidEntity":
+        """Entity factory: client.Droid().list({}) / client.Droid().load({"id": ...})."""
         from entity.droid_entity import DroidEntity
         return DroidEntity(self, data)
 
 
-    @property
-    def location(self):
-        """Idiomatic facade: client.location.list() / client.location.load({"id": ...})."""
-        from entity.location_entity import LocationEntity
-        cached = getattr(self, "_location", None)
-        if cached is None:
-            cached = LocationEntity(self, None)
-            self._location = cached
-        return cached
-
-    def Location(self, data=None):
-        # Deprecated: use client.location instead.
+    def Location(self, data=None) -> "LocationEntity":
+        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
-    @property
-    def organization(self):
-        """Idiomatic facade: client.organization.list() / client.organization.load({"id": ...})."""
-        from entity.organization_entity import OrganizationEntity
-        cached = getattr(self, "_organization", None)
-        if cached is None:
-            cached = OrganizationEntity(self, None)
-            self._organization = cached
-        return cached
-
-    def Organization(self, data=None):
-        # Deprecated: use client.organization instead.
+    def Organization(self, data=None) -> "OrganizationEntity":
+        """Entity factory: client.Organization().list({}) / client.Organization().load({"id": ...})."""
         from entity.organization_entity import OrganizationEntity
         return OrganizationEntity(self, data)
 
 
-    @property
-    def species(self):
-        """Idiomatic facade: client.species.list() / client.species.load({"id": ...})."""
-        from entity.species_entity import SpeciesEntity
-        cached = getattr(self, "_species", None)
-        if cached is None:
-            cached = SpeciesEntity(self, None)
-            self._species = cached
-        return cached
-
-    def Species(self, data=None):
-        # Deprecated: use client.species instead.
+    def Species(self, data=None) -> "SpeciesEntity":
+        """Entity factory: client.Species().list({}) / client.Species().load({"id": ...})."""
         from entity.species_entity import SpeciesEntity
         return SpeciesEntity(self, data)
 
 
-    @property
-    def vehicle(self):
-        """Idiomatic facade: client.vehicle.list() / client.vehicle.load({"id": ...})."""
-        from entity.vehicle_entity import VehicleEntity
-        cached = getattr(self, "_vehicle", None)
-        if cached is None:
-            cached = VehicleEntity(self, None)
-            self._vehicle = cached
-        return cached
-
-    def Vehicle(self, data=None):
-        # Deprecated: use client.vehicle instead.
+    def Vehicle(self, data=None) -> "VehicleEntity":
+        """Entity factory: client.Vehicle().list({}) / client.Vehicle().load({"id": ...})."""
         from entity.vehicle_entity import VehicleEntity
         return VehicleEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "StarWarsDatabankSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -354,3 +284,15 @@ class StarWarsDatabankSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.character_entity import CharacterEntity
+    from entity.creature_entity import CreatureEntity
+    from entity.droid_entity import DroidEntity
+    from entity.location_entity import LocationEntity
+    from entity.organization_entity import OrganizationEntity
+    from entity.species_entity import SpeciesEntity
+    from entity.vehicle_entity import VehicleEntity

@@ -233,10 +233,10 @@ class StarWarsDatabankSDK
 
     private $_character = null;
 
-    // Idiomatic facade: $client->character()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Character() (PHP method
-    // names are case-insensitive).
-    public function character($data = null)
+    // Canonical facade: $client->Character()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->character()
+    // resolves here too.
+    public function Character($data = null)
     {
         require_once __DIR__ . '/entity/character_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class StarWarsDatabankSDK
 
     private $_creature = null;
 
-    // Idiomatic facade: $client->creature()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Creature() (PHP method
-    // names are case-insensitive).
-    public function creature($data = null)
+    // Canonical facade: $client->Creature()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->creature()
+    // resolves here too.
+    public function Creature($data = null)
     {
         require_once __DIR__ . '/entity/creature_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class StarWarsDatabankSDK
 
     private $_droid = null;
 
-    // Idiomatic facade: $client->droid()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Droid() (PHP method
-    // names are case-insensitive).
-    public function droid($data = null)
+    // Canonical facade: $client->Droid()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->droid()
+    // resolves here too.
+    public function Droid($data = null)
     {
         require_once __DIR__ . '/entity/droid_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class StarWarsDatabankSDK
 
     private $_location = null;
 
-    // Idiomatic facade: $client->location()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Location() (PHP method
-    // names are case-insensitive).
-    public function location($data = null)
+    // Canonical facade: $client->Location()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->location()
+    // resolves here too.
+    public function Location($data = null)
     {
         require_once __DIR__ . '/entity/location_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class StarWarsDatabankSDK
 
     private $_organization = null;
 
-    // Idiomatic facade: $client->organization()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Organization() (PHP method
-    // names are case-insensitive).
-    public function organization($data = null)
+    // Canonical facade: $client->Organization()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->organization()
+    // resolves here too.
+    public function Organization($data = null)
     {
         require_once __DIR__ . '/entity/organization_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class StarWarsDatabankSDK
 
     private $_species = null;
 
-    // Idiomatic facade: $client->species()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Species() (PHP method
-    // names are case-insensitive).
-    public function species($data = null)
+    // Canonical facade: $client->Species()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->species()
+    // resolves here too.
+    public function Species($data = null)
     {
         require_once __DIR__ . '/entity/species_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class StarWarsDatabankSDK
 
     private $_vehicle = null;
 
-    // Idiomatic facade: $client->vehicle()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Vehicle() (PHP method
-    // names are case-insensitive).
-    public function vehicle($data = null)
+    // Canonical facade: $client->Vehicle()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->vehicle()
+    // resolves here too.
+    public function Vehicle($data = null)
     {
         require_once __DIR__ . '/entity/vehicle_entity.php';
         if ($data === null) {

@@ -208,91 +208,49 @@ class StarWarsDatabankSDK
   end
 
 
-  # Idiomatic facade: client.character.list / client.character.load({ "id" => ... })
-  def character
-    require_relative 'entity/character_entity'
-    @character ||= CharacterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.character instead.
+  # Canonical facade: client.Character.list / client.Character.load({ "id" => ... })
   def Character(data = nil)
     require_relative 'entity/character_entity'
     CharacterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.creature.list / client.creature.load({ "id" => ... })
-  def creature
-    require_relative 'entity/creature_entity'
-    @creature ||= CreatureEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.creature instead.
+  # Canonical facade: client.Creature.list / client.Creature.load({ "id" => ... })
   def Creature(data = nil)
     require_relative 'entity/creature_entity'
     CreatureEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.droid.list / client.droid.load({ "id" => ... })
-  def droid
-    require_relative 'entity/droid_entity'
-    @droid ||= DroidEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.droid instead.
+  # Canonical facade: client.Droid.list / client.Droid.load({ "id" => ... })
   def Droid(data = nil)
     require_relative 'entity/droid_entity'
     DroidEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.location.list / client.location.load({ "id" => ... })
-  def location
-    require_relative 'entity/location_entity'
-    @location ||= LocationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.location instead.
+  # Canonical facade: client.Location.list / client.Location.load({ "id" => ... })
   def Location(data = nil)
     require_relative 'entity/location_entity'
     LocationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.organization.list / client.organization.load({ "id" => ... })
-  def organization
-    require_relative 'entity/organization_entity'
-    @organization ||= OrganizationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.organization instead.
+  # Canonical facade: client.Organization.list / client.Organization.load({ "id" => ... })
   def Organization(data = nil)
     require_relative 'entity/organization_entity'
     OrganizationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.species.list / client.species.load({ "id" => ... })
-  def species
-    require_relative 'entity/species_entity'
-    @species ||= SpeciesEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.species instead.
+  # Canonical facade: client.Species.list / client.Species.load({ "id" => ... })
   def Species(data = nil)
     require_relative 'entity/species_entity'
     SpeciesEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.vehicle.list / client.vehicle.load({ "id" => ... })
-  def vehicle
-    require_relative 'entity/vehicle_entity'
-    @vehicle ||= VehicleEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.vehicle instead.
+  # Canonical facade: client.Vehicle.list / client.Vehicle.load({ "id" => ... })
   def Vehicle(data = nil)
     require_relative 'entity/vehicle_entity'
     VehicleEntity.new(self, data)

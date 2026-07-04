@@ -31,26 +31,26 @@ local sdk = require("star-wars-databank_sdk")
 local client = sdk.new()
 ```
 
-### 2. List characters
+### 2. List character records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:character():list()
+local characters, err = client:Character():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(characters) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a character
 
 ```lua
-local result, err = client:character():load({ id = "example_id" })
+local character, err = client:Character():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(character)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:character():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Character():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -179,7 +179,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Creature` | `(data) -> CreatureEntity` | Create a Creature entity instance. |
 | `Droid` | `(data) -> DroidEntity` | Create a Droid entity instance. |
 | `Location` | `(data) -> LocationEntity` | Create a Location entity instance. |
-| `Organization` | `(data) -> OrganizationEntity` | Create a Organization entity instance. |
+| `Organization` | `(data) -> OrganizationEntity` | Create an Organization entity instance. |
 | `Species` | `(data) -> SpeciesEntity` | Create a Species entity instance. |
 | `Vehicle` | `(data) -> VehicleEntity` | Create a Vehicle entity instance. |
 
@@ -203,17 +203,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local character, err = client:Character():load({ id = "example_id" })
+    if err then error(err) end
+    -- character is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -346,7 +351,7 @@ API path: `/vehicles`
 
 ### Character
 
-Create an instance: `const character = client.character`
+Create an instance: `local character = client:Character(nil)`
 
 #### Operations
 
@@ -370,20 +375,20 @@ Create an instance: `const character = client.character`
 
 #### Example: Load
 
-```ts
-const character = await client.character.load({ id: 'character_id' })
+```lua
+local character, err = client:Character():load({ id = "character_id" })
 ```
 
 #### Example: List
 
-```ts
-const characters = await client.character.list()
+```lua
+local characters, err = client:Character():list()
 ```
 
 
 ### Creature
 
-Create an instance: `const creature = client.creature`
+Create an instance: `local creature = client:Creature(nil)`
 
 #### Operations
 
@@ -406,20 +411,20 @@ Create an instance: `const creature = client.creature`
 
 #### Example: Load
 
-```ts
-const creature = await client.creature.load({ id: 'creature_id' })
+```lua
+local creature, err = client:Creature():load({ id = "creature_id" })
 ```
 
 #### Example: List
 
-```ts
-const creatures = await client.creature.list()
+```lua
+local creatures, err = client:Creature():list()
 ```
 
 
 ### Droid
 
-Create an instance: `const droid = client.droid`
+Create an instance: `local droid = client:Droid(nil)`
 
 #### Operations
 
@@ -443,20 +448,20 @@ Create an instance: `const droid = client.droid`
 
 #### Example: Load
 
-```ts
-const droid = await client.droid.load({ id: 'droid_id' })
+```lua
+local droid, err = client:Droid():load({ id = "droid_id" })
 ```
 
 #### Example: List
 
-```ts
-const droids = await client.droid.list()
+```lua
+local droids, err = client:Droid():list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `local location = client:Location(nil)`
 
 #### Operations
 
@@ -480,20 +485,20 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```lua
+local location, err = client:Location():load({ id = "location_id" })
 ```
 
 #### Example: List
 
-```ts
-const locations = await client.location.list()
+```lua
+local locations, err = client:Location():list()
 ```
 
 
 ### Organization
 
-Create an instance: `const organization = client.organization`
+Create an instance: `local organization = client:Organization(nil)`
 
 #### Operations
 
@@ -517,20 +522,20 @@ Create an instance: `const organization = client.organization`
 
 #### Example: Load
 
-```ts
-const organization = await client.organization.load({ id: 'organization_id' })
+```lua
+local organization, err = client:Organization():load({ id = "organization_id" })
 ```
 
 #### Example: List
 
-```ts
-const organizations = await client.organization.list()
+```lua
+local organizations, err = client:Organization():list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `local species = client:Species(nil)`
 
 #### Operations
 
@@ -555,20 +560,20 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```lua
+local species, err = client:Species():load({ id = "species_id" })
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```lua
+local speciess, err = client:Species():list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `local vehicle = client:Vehicle(nil)`
 
 #### Operations
 
@@ -595,14 +600,14 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```lua
+local vehicle, err = client:Vehicle():load({ id = "vehicle_id" })
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```lua
+local vehicles, err = client:Vehicle():list()
 ```
 
 
@@ -677,7 +682,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local character = client:character()
+local character = client:Character()
 character:load({ id = "example_id" })
 
 -- character:data_get() now returns the loaded character data
