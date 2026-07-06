@@ -54,7 +54,7 @@ CharacterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Character#list (any subset of Character fields).
+# Request payload for Character#list.
 #
 # @!attribute [rw] affiliation
 #   @return [String, nil]
@@ -133,7 +133,7 @@ CreatureLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Creature#list (any subset of Creature fields).
+# Request payload for Creature#list.
 #
 # @!attribute [rw] classification
 #   @return [String, nil]
@@ -212,7 +212,7 @@ DroidLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Droid#list (any subset of Droid fields).
+# Request payload for Droid#list.
 #
 # @!attribute [rw] affiliation
 #   @return [String, nil]
@@ -295,7 +295,7 @@ LocationLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Location#list (any subset of Location fields).
+# Request payload for Location#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -378,7 +378,7 @@ OrganizationLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Organization#list (any subset of Organization fields).
+# Request payload for Organization#list.
 #
 # @!attribute [rw] allegiance
 #   @return [String, nil]
@@ -465,7 +465,7 @@ SpeciesLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Species#list (any subset of Species fields).
+# Request payload for Species#list.
 #
 # @!attribute [rw] classification
 #   @return [String, nil]
@@ -564,7 +564,7 @@ VehicleLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Vehicle#list (any subset of Vehicle fields).
+# Request payload for Vehicle#list.
 #
 # @!attribute [rw] affiliation
 #   @return [String, nil]

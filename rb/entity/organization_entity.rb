@@ -67,10 +67,12 @@ class OrganizationEntity
   
   # Load a single Organization.
   #
-  # @param reqmatch [OrganizationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [OrganizationLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Organization.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Organization, Hash] the loaded Organization; raises StarWarsDatabankError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",
@@ -95,10 +97,11 @@ class OrganizationEntity
   
   # List Organization items matching the given filter.
   #
-  # @param reqmatch [OrganizationListMatch, Hash, nil] match filter (any subset of Organization fields)
+  # @param reqmatch [OrganizationListMatch, Hash, nil] match filter (any subset of
+  #   Organization fields); defaults to nil, treated as an empty match that lists all.
   # @param ctrl [Object, nil] optional per-call control
   # @return [Array<Organization>, Array] the matching Organization items; raises StarWarsDatabankError on failure
-  def list(reqmatch, ctrl = nil)
+  def list(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "list",
@@ -108,11 +111,23 @@ class OrganizationEntity
       "reqmatch" => reqmatch,
     }, @_entctx)
 
-    _run_op(ctx) do
+    records = _run_op(ctx) do
       if ctx.result
         @_match = ctx.result.resmatch if ctx.result.resmatch
       end
     end
+
+    # list yields the BARE Array of records — each an accessible Hash — so
+    # callers can index item["id"] directly, matching py/lua/go. make_result
+    # wraps each entry as an Entity instance for internal use; unwrap those
+    # back to their bare record Hashes here (load/create/etc. are unaffected).
+    if records.is_a?(Array)
+      records = records.map do |item|
+        item.respond_to?(:data_get) ? item.data_get : item
+      end
+    end
+
+    records
   end
 
 

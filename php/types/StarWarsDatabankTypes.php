@@ -31,7 +31,7 @@ class CharacterLoadMatch
     public string $id;
 }
 
-/** Match filter for Character#list (any subset of Character fields). */
+/** Request payload for Character#list. */
 class CharacterListMatch
 {
     public ?string $affiliation = null;
@@ -62,7 +62,7 @@ class CreatureLoadMatch
     public string $id;
 }
 
-/** Match filter for Creature#list (any subset of Creature fields). */
+/** Request payload for Creature#list. */
 class CreatureListMatch
 {
     public ?string $classification = null;
@@ -93,7 +93,7 @@ class DroidLoadMatch
     public string $id;
 }
 
-/** Match filter for Droid#list (any subset of Droid fields). */
+/** Request payload for Droid#list. */
 class DroidListMatch
 {
     public ?string $affiliation = null;
@@ -125,7 +125,7 @@ class LocationLoadMatch
     public string $id;
 }
 
-/** Match filter for Location#list (any subset of Location fields). */
+/** Request payload for Location#list. */
 class LocationListMatch
 {
     public ?string $description = null;
@@ -157,7 +157,7 @@ class OrganizationLoadMatch
     public string $id;
 }
 
-/** Match filter for Organization#list (any subset of Organization fields). */
+/** Request payload for Organization#list. */
 class OrganizationListMatch
 {
     public ?string $allegiance = null;
@@ -190,7 +190,7 @@ class SpeciesLoadMatch
     public string $id;
 }
 
-/** Match filter for Species#list (any subset of Species fields). */
+/** Request payload for Species#list. */
 class SpeciesListMatch
 {
     public ?string $classification = null;
@@ -226,7 +226,7 @@ class VehicleLoadMatch
     public string $id;
 }
 
-/** Match filter for Vehicle#list (any subset of Vehicle fields). */
+/** Request payload for Vehicle#list. */
 class VehicleListMatch
 {
     public ?string $affiliation = null;

@@ -221,43 +221,43 @@ class StarWarsDatabankSDK:
 
 
     def Character(self, data=None) -> "CharacterEntity":
-        """Entity factory: client.Character().list({}) / client.Character().load({"id": ...})."""
+        """Entity factory: client.Character().list() / client.Character().load({"id": ...})."""
         from entity.character_entity import CharacterEntity
         return CharacterEntity(self, data)
 
 
     def Creature(self, data=None) -> "CreatureEntity":
-        """Entity factory: client.Creature().list({}) / client.Creature().load({"id": ...})."""
+        """Entity factory: client.Creature().list() / client.Creature().load({"id": ...})."""
         from entity.creature_entity import CreatureEntity
         return CreatureEntity(self, data)
 
 
     def Droid(self, data=None) -> "DroidEntity":
-        """Entity factory: client.Droid().list({}) / client.Droid().load({"id": ...})."""
+        """Entity factory: client.Droid().list() / client.Droid().load({"id": ...})."""
         from entity.droid_entity import DroidEntity
         return DroidEntity(self, data)
 
 
     def Location(self, data=None) -> "LocationEntity":
-        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
+        """Entity factory: client.Location().list() / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
     def Organization(self, data=None) -> "OrganizationEntity":
-        """Entity factory: client.Organization().list({}) / client.Organization().load({"id": ...})."""
+        """Entity factory: client.Organization().list() / client.Organization().load({"id": ...})."""
         from entity.organization_entity import OrganizationEntity
         return OrganizationEntity(self, data)
 
 
     def Species(self, data=None) -> "SpeciesEntity":
-        """Entity factory: client.Species().list({}) / client.Species().load({"id": ...})."""
+        """Entity factory: client.Species().list() / client.Species().load({"id": ...})."""
         from entity.species_entity import SpeciesEntity
         return SpeciesEntity(self, data)
 
 
     def Vehicle(self, data=None) -> "VehicleEntity":
-        """Entity factory: client.Vehicle().list({}) / client.Vehicle().load({"id": ...})."""
+        """Entity factory: client.Vehicle().list() / client.Vehicle().load({"id": ...})."""
         from entity.vehicle_entity import VehicleEntity
         return VehicleEntity(self, data)
 

@@ -4,6 +4,11 @@
 
 The Python SDK for the StarWarsDatabank API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Character()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    characters = client.Character().list({})
+    characters = client.Character().list()
     for character in characters:
         print(character)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(character)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    characters = client.Character().list()
+    print(characters)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = StarWarsDatabankSDK.test()
 
 # Entity ops return the bare record and raise on error.
-character = client.Character().load({"id": "test01"})
+character = client.Character().list()
 # character contains the mock response record
 ```
 
@@ -194,9 +230,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -359,21 +392,21 @@ Create an instance: `character = client.Character()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `species` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `affiliation` | `str` |  |
+| `description` | `str` |  |
+| `homeworld` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `name` | `str` |  |
+| `species` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -384,7 +417,7 @@ character = client.Character().load({"id": "character_id"})
 #### Example: List
 
 ```python
-characters = client.Character().list({})
+characters = client.Character().list()
 ```
 
 
@@ -396,20 +429,20 @@ Create an instance: `creature = client.Creature()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `classification` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `habitat` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `classification` | `str` |  |
+| `description` | `str` |  |
+| `habitat` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `name` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -420,7 +453,7 @@ creature = client.Creature().load({"id": "creature_id"})
 #### Example: List
 
 ```python
-creatures = client.Creature().list({})
+creatures = client.Creature().list()
 ```
 
 
@@ -432,21 +465,21 @@ Create an instance: `droid = client.Droid()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `affiliation` | `str` |  |
+| `description` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `manufacturer` | `str` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -457,7 +490,7 @@ droid = client.Droid().load({"id": "droid_id"})
 #### Example: List
 
 ```python
-droids = client.Droid().list({})
+droids = client.Droid().list()
 ```
 
 
@@ -469,21 +502,21 @@ Create an instance: `location = client.Location()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
-| `sector` | ``$STRING`` |  |
-| `terrain` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `name` | `str` |  |
+| `region` | `str` |  |
+| `sector` | `str` |  |
+| `terrain` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -494,7 +527,7 @@ location = client.Location().load({"id": "location_id"})
 #### Example: List
 
 ```python
-locations = client.Location().list({})
+locations = client.Location().list()
 ```
 
 
@@ -506,21 +539,21 @@ Create an instance: `organization = client.Organization()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `allegiance` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `leader` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `allegiance` | `str` |  |
+| `description` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `leader` | `str` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -531,7 +564,7 @@ organization = client.Organization().load({"id": "organization_id"})
 #### Example: List
 
 ```python
-organizations = client.Organization().list({})
+organizations = client.Organization().list()
 ```
 
 
@@ -543,22 +576,22 @@ Create an instance: `species = client.Species()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `classification` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `designation` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `classification` | `str` |  |
+| `description` | `str` |  |
+| `designation` | `str` |  |
+| `homeworld` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `language` | `str` |  |
+| `name` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -569,7 +602,7 @@ species = client.Species().load({"id": "species_id"})
 #### Example: List
 
 ```python
-speciess = client.Species().list({})
+speciess = client.Species().list()
 ```
 
 
@@ -581,24 +614,24 @@ Create an instance: `vehicle = client.Vehicle()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | ``$STRING`` |  |
-| `armament` | ``$STRING`` |  |
-| `class` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$STRING`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `affiliation` | `str` |  |
+| `armament` | `str` |  |
+| `class` | `str` |  |
+| `crew` | `str` |  |
+| `description` | `str` |  |
+| `id` | `str` |  |
+| `image` | `str` |  |
+| `length` | `str` |  |
+| `manufacturer` | `str` |  |
+| `name` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -609,16 +642,20 @@ vehicle = client.Vehicle().load({"id": "vehicle_id"})
 #### Example: List
 
 ```python
-vehicles = client.Vehicle().list({})
+vehicles = client.Vehicle().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -635,8 +672,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -679,14 +717,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 character = client.Character()
-character.load({"id": "example_id"})
+character.list()
 
-# character.data_get() now returns the loaded character data
+# character.data_get() now returns the character data from the last list
 # character.match_get() returns the last match criteria
 ```
 

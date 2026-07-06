@@ -65,8 +65,13 @@ class OrganizationEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: OrganizationLoadMatch, ctrl=None) -> Organization:
+    def load(self, reqmatch=None, ctrl=None) -> Organization:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Organization().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class OrganizationEntity:
 
 
     
-    def list(self, reqmatch: OrganizationListMatch, ctrl=None) -> list[Organization]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Organization]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Organization().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

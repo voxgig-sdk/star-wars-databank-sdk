@@ -65,8 +65,13 @@ class VehicleEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: VehicleLoadMatch, ctrl=None) -> Vehicle:
+    def load(self, reqmatch=None, ctrl=None) -> Vehicle:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Vehicle().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class VehicleEntity:
 
 
     
-    def list(self, reqmatch: VehicleListMatch, ctrl=None) -> list[Vehicle]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Vehicle]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Vehicle().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

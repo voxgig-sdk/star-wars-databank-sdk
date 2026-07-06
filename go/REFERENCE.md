@@ -121,14 +121,14 @@ character := client.Character(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `description` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `species` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -182,13 +182,13 @@ creature := client.Creature(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `string` | No |  |
+| `description` | `string` | No |  |
+| `habitat` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -242,14 +242,14 @@ droid := client.Droid(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -303,14 +303,14 @@ location := client.Location(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `sector` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
+| `sector` | `string` | No |  |
+| `terrain` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -364,14 +364,14 @@ organization := client.Organization(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allegiance` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `leader` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `allegiance` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `leader` | `string` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -425,15 +425,15 @@ species := client.Species(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `string` | No |  |
+| `description` | `string` | No |  |
+| `designation` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `language` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -487,17 +487,17 @@ vehicle := client.Vehicle(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `armament` | ``$STRING`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `armament` | `string` | No |  |
+| `class` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

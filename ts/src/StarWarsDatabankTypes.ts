@@ -20,7 +20,16 @@ export interface CharacterLoadMatch {
   id: string
 }
 
-export type CharacterListMatch = Partial<Character>
+export interface CharacterListMatch {
+  affiliation?: string
+  description?: string
+  homeworld?: string
+  id?: string
+  image?: string
+  name?: string
+  species?: string
+  url?: string
+}
 
 export interface Creature {
   classification?: string
@@ -36,7 +45,15 @@ export interface CreatureLoadMatch {
   id: string
 }
 
-export type CreatureListMatch = Partial<Creature>
+export interface CreatureListMatch {
+  classification?: string
+  description?: string
+  habitat?: string
+  id?: string
+  image?: string
+  name?: string
+  url?: string
+}
 
 export interface Droid {
   affiliation?: string
@@ -53,7 +70,16 @@ export interface DroidLoadMatch {
   id: string
 }
 
-export type DroidListMatch = Partial<Droid>
+export interface DroidListMatch {
+  affiliation?: string
+  description?: string
+  id?: string
+  image?: string
+  manufacturer?: string
+  name?: string
+  type?: string
+  url?: string
+}
 
 export interface Location {
   description?: string
@@ -70,7 +96,16 @@ export interface LocationLoadMatch {
   id: string
 }
 
-export type LocationListMatch = Partial<Location>
+export interface LocationListMatch {
+  description?: string
+  id?: string
+  image?: string
+  name?: string
+  region?: string
+  sector?: string
+  terrain?: string
+  url?: string
+}
 
 export interface Organization {
   allegiance?: string
@@ -87,7 +122,16 @@ export interface OrganizationLoadMatch {
   id: string
 }
 
-export type OrganizationListMatch = Partial<Organization>
+export interface OrganizationListMatch {
+  allegiance?: string
+  description?: string
+  id?: string
+  image?: string
+  leader?: string
+  name?: string
+  type?: string
+  url?: string
+}
 
 export interface Species {
   classification?: string
@@ -105,7 +149,17 @@ export interface SpeciesLoadMatch {
   id: string
 }
 
-export type SpeciesListMatch = Partial<Species>
+export interface SpeciesListMatch {
+  classification?: string
+  description?: string
+  designation?: string
+  homeworld?: string
+  id?: string
+  image?: string
+  language?: string
+  name?: string
+  url?: string
+}
 
 export interface Vehicle {
   affiliation?: string
@@ -125,5 +179,17 @@ export interface VehicleLoadMatch {
   id: string
 }
 
-export type VehicleListMatch = Partial<Vehicle>
+export interface VehicleListMatch {
+  affiliation?: string
+  armament?: string
+  class?: string
+  crew?: string
+  description?: string
+  id?: string
+  image?: string
+  length?: string
+  manufacturer?: string
+  name?: string
+  url?: string
+}
 

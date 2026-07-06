@@ -188,14 +188,14 @@ const character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `description` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `species` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -253,13 +253,13 @@ const creature = client.Creature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `string` | No |  |
+| `description` | `string` | No |  |
+| `habitat` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -317,14 +317,14 @@ const droid = client.Droid()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -382,14 +382,14 @@ const location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `sector` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
+| `sector` | `string` | No |  |
+| `terrain` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -447,14 +447,14 @@ const organization = client.Organization()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allegiance` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `leader` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `allegiance` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `leader` | `string` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -512,15 +512,15 @@ const species = client.Species()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `string` | No |  |
+| `description` | `string` | No |  |
+| `designation` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `language` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -578,17 +578,17 @@ const vehicle = client.Vehicle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `armament` | ``$STRING`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `armament` | `string` | No |  |
+| `class` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `string` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

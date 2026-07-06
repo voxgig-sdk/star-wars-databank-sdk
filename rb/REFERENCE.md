@@ -8,7 +8,7 @@ Complete API reference for the StarWarsDatabank Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'star-wars-databank_sdk'
+require_relative 'StarWarsDatabank_sdk'
 
 client = StarWarsDatabankSDK.new(options)
 ```
@@ -117,23 +117,23 @@ character = client.Character
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `String` | No |  |
+| `description` | `String` | No |  |
+| `homeworld` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `name` | `String` | No |  |
+| `species` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Character.list(nil)
+results = client.Character.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -184,22 +184,22 @@ creature = client.Creature
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `String` | No |  |
+| `description` | `String` | No |  |
+| `habitat` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Creature.list(nil)
+results = client.Creature.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -250,23 +250,23 @@ droid = client.Droid
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `manufacturer` | `String` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Droid.list(nil)
+results = client.Droid.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -317,23 +317,23 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `sector` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `name` | `String` | No |  |
+| `region` | `String` | No |  |
+| `sector` | `String` | No |  |
+| `terrain` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Location.list(nil)
+results = client.Location.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -384,23 +384,23 @@ organization = client.Organization
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allegiance` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `leader` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `allegiance` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `leader` | `String` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Organization.list(nil)
+results = client.Organization.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -451,24 +451,24 @@ species = client.Species
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `String` | No |  |
+| `description` | `String` | No |  |
+| `designation` | `String` | No |  |
+| `homeworld` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `language` | `String` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Species.list(nil)
+results = client.Species.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -519,26 +519,26 @@ vehicle = client.Vehicle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `armament` | ``$STRING`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `String` | No |  |
+| `armament` | `String` | No |  |
+| `class` | `String` | No |  |
+| `crew` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `String` | No |  |
+| `length` | `String` | No |  |
+| `manufacturer` | `String` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Vehicle.list(nil)
+results = client.Vehicle.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

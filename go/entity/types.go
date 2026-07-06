@@ -25,8 +25,7 @@ type CharacterLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// CharacterListMatch mirrors the character fields as an all-optional match
-// filter (Go analog of Partial<Character>).
+// CharacterListMatch is the typed request payload for Character.ListTyped.
 type CharacterListMatch struct {
 	Affiliation *string `json:"affiliation,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -54,8 +53,7 @@ type CreatureLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// CreatureListMatch mirrors the creature fields as an all-optional match
-// filter (Go analog of Partial<Creature>).
+// CreatureListMatch is the typed request payload for Creature.ListTyped.
 type CreatureListMatch struct {
 	Classification *string `json:"classification,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -83,8 +81,7 @@ type DroidLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// DroidListMatch mirrors the droid fields as an all-optional match
-// filter (Go analog of Partial<Droid>).
+// DroidListMatch is the typed request payload for Droid.ListTyped.
 type DroidListMatch struct {
 	Affiliation *string `json:"affiliation,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -113,8 +110,7 @@ type LocationLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// LocationListMatch mirrors the location fields as an all-optional match
-// filter (Go analog of Partial<Location>).
+// LocationListMatch is the typed request payload for Location.ListTyped.
 type LocationListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -143,8 +139,7 @@ type OrganizationLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// OrganizationListMatch mirrors the organization fields as an all-optional match
-// filter (Go analog of Partial<Organization>).
+// OrganizationListMatch is the typed request payload for Organization.ListTyped.
 type OrganizationListMatch struct {
 	Allegiance *string `json:"allegiance,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -174,8 +169,7 @@ type SpeciesLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// SpeciesListMatch mirrors the species fields as an all-optional match
-// filter (Go analog of Partial<Species>).
+// SpeciesListMatch is the typed request payload for Species.ListTyped.
 type SpeciesListMatch struct {
 	Classification *string `json:"classification,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -208,8 +202,7 @@ type VehicleLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// VehicleListMatch mirrors the vehicle fields as an all-optional match
-// filter (Go analog of Partial<Vehicle>).
+// VehicleListMatch is the typed request payload for Vehicle.ListTyped.
 type VehicleListMatch struct {
 	Affiliation *string `json:"affiliation,omitempty"`
 	Armament *string `json:"armament,omitempty"`

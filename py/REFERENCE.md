@@ -8,7 +8,7 @@ Complete API reference for the StarWarsDatabank Python SDK.
 ### Constructor
 
 ```python
-from star-wars-databank_sdk import StarWarsDatabankSDK
+from starwarsdatabank_sdk import StarWarsDatabankSDK
 
 client = StarWarsDatabankSDK(options)
 ```
@@ -111,23 +111,23 @@ character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `str` | No |  |
+| `description` | `str` | No |  |
+| `homeworld` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `name` | `str` | No |  |
+| `species` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Character().list({})
+results = client.Character().list()
 for character in results:
     print(character)
 ```
@@ -179,22 +179,22 @@ creature = client.Creature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `str` | No |  |
+| `description` | `str` | No |  |
+| `habitat` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Creature().list({})
+results = client.Creature().list()
 for creature in results:
     print(creature)
 ```
@@ -246,23 +246,23 @@ droid = client.Droid()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `manufacturer` | `str` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Droid().list({})
+results = client.Droid().list()
 for droid in results:
     print(droid)
 ```
@@ -314,23 +314,23 @@ location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `sector` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `name` | `str` | No |  |
+| `region` | `str` | No |  |
+| `sector` | `str` | No |  |
+| `terrain` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Location().list({})
+results = client.Location().list()
 for location in results:
     print(location)
 ```
@@ -382,23 +382,23 @@ organization = client.Organization()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allegiance` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `leader` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `allegiance` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `leader` | `str` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Organization().list({})
+results = client.Organization().list()
 for organization in results:
     print(organization)
 ```
@@ -450,24 +450,24 @@ species = client.Species()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `classification` | `str` | No |  |
+| `description` | `str` | No |  |
+| `designation` | `str` | No |  |
+| `homeworld` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `language` | `str` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Species().list({})
+results = client.Species().list()
 for species in results:
     print(species)
 ```
@@ -519,26 +519,26 @@ vehicle = client.Vehicle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `armament` | ``$STRING`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `affiliation` | `str` | No |  |
+| `armament` | `str` | No |  |
+| `class` | `str` | No |  |
+| `crew` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `str` | No |  |
+| `length` | `str` | No |  |
+| `manufacturer` | `str` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Vehicle().list({})
+results = client.Vehicle().list()
 for vehicle in results:
     print(vehicle)
 ```
