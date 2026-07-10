@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicCharacterFlow.jsonic"
-@"BasicCreatureFlow.jsonic"
-@"BasicDroidFlow.jsonic"
-@"BasicLocationFlow.jsonic"
-@"BasicOrganizationFlow.jsonic"
-@"BasicSpeciesFlow.jsonic"
-@"BasicVehicleFlow.jsonic"

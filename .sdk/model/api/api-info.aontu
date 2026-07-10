@@ -15,9 +15,9 @@ main: {
           url: "https://starwars-databank-server.onrender.com/api/v1"
         }
       ]
+      summary: "The Star Wars Databank API provides access to a comprehensive collection of data related to the Star Wars universe including characters, droids, creatures, locations, organizations, species, and vehicles."
       title: "Star Wars Databank API"
       version: "2.5.0"
+      website: "https://starwars-databank-server.onrender.com"
     }
   }
-}
-

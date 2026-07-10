@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single character — the value is the loaded record.
-    character, err := client.Character(nil).Load(map[string]any{"id": "example"}, nil)
+    character, err := client.Character(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

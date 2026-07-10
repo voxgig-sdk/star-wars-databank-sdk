@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1514,14 +1511,17 @@
           "url": "https://starwars-databank.vercel.app/"
         },
         "description": "The Star Wars Databank API provides access to a comprehensive collection of data related to the Star Wars universe including characters, droids, creatures, locations, organizations, species, and vehicles. It is a RESTful API that presents official information derived directly from the Star Wars Databank, allowing users to explore and interact with the vast lore of the saga.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://starwars-databank-server.onrender.com/api/v1"
           }
         ],
+        "summary": "The Star Wars Databank API provides access to a comprehensive collection of data related to the Star Wars universe including characters, droids, creatures, locations, organizations, species, and vehicles.",
         "title": "Star Wars Databank API",
-        "version": "2.5.0"
+        "version": "2.5.0",
+        "website": "https://starwars-databank-server.onrender.com"
       },
       "option": {},
       "target": {
@@ -1574,6 +1574,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1624,6 +1627,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
