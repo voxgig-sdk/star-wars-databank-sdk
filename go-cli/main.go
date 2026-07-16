@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewStarWarsDatabankSDK(nil)
+	// Configure from the environment: STAR_WARS_DATABANK_APIKEY carries the API key and
+	// STAR_WARS_DATABANK_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("STAR_WARS_DATABANK_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("STAR_WARS_DATABANK_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewStarWarsDatabankSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
