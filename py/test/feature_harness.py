@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import StarWarsDatabankControl
-from core.error import StarWarsDatabankError
-from core.result import StarWarsDatabankResult
-from core.spec import StarWarsDatabankSpec
+from starwarsdatabank_sdk.config import make_config
+from starwarsdatabank_sdk.features import _make_feature
+from starwarsdatabank_sdk.core.control import StarWarsDatabankControl
+from starwarsdatabank_sdk.core.error import StarWarsDatabankError
+from starwarsdatabank_sdk.core.result import StarWarsDatabankResult
+from starwarsdatabank_sdk.core.spec import StarWarsDatabankSpec
 
 
 # True when this SDK was generated with the named feature.

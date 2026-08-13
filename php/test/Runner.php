@@ -43,8 +43,8 @@ class StarWarsDatabankTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('STARWARSDATABANK_TEST_LIVE');
-        $override = self::getenv('STARWARSDATABANK_TEST_OVERRIDE');
+        $live = self::getenv('STAR_WARS_DATABANK_TEST_LIVE');
+        $override = self::getenv('STAR_WARS_DATABANK_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class StarWarsDatabankTestRunner
             }
         }
 
-        $explain = self::getenv('STARWARSDATABANK_TEST_EXPLAIN');
+        $explain = self::getenv('STAR_WARS_DATABANK_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['STARWARSDATABANK_TEST_EXPLAIN'] = $explain;
+            $m['STAR_WARS_DATABANK_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

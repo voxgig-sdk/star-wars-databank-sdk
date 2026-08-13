@@ -72,7 +72,7 @@ class DroidEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STARWARSDATABANK_TEST_DROID_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STAR_WARS_DATABANK_TEST_DROID_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class DroidEntityTest extends TestCase
             "id" => $droid_ref01_data["id"],
         ];
         $droid_ref01_data_dt0_loaded = $droid_ref01_ent->load($droid_ref01_match_dt0, null);
-        $droid_ref01_data_dt0_load_result = Helpers::to_map($droid_ref01_data_dt0_loaded);
+        $droid_ref01_data_dt0_load_result = Helpers::to_map(is_object($droid_ref01_data_dt0_loaded) && method_exists($droid_ref01_data_dt0_loaded, 'data_get') ? $droid_ref01_data_dt0_loaded->data_get() : $droid_ref01_data_dt0_loaded);
         $this->assertNotNull($droid_ref01_data_dt0_load_result);
         $this->assertEquals($droid_ref01_data_dt0_load_result["id"], $droid_ref01_data["id"]);
 
@@ -126,22 +126,22 @@ function droid_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("STARWARSDATABANK_TEST_DROID_ENTID");
+    $entid_env_raw = getenv("STAR_WARS_DATABANK_TEST_DROID_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "STARWARSDATABANK_TEST_DROID_ENTID" => $idmap,
-        "STARWARSDATABANK_TEST_LIVE" => "FALSE",
-        "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
+        "STAR_WARS_DATABANK_TEST_DROID_ENTID" => $idmap,
+        "STAR_WARS_DATABANK_TEST_LIVE" => "FALSE",
+        "STAR_WARS_DATABANK_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["STARWARSDATABANK_TEST_DROID_ENTID"]);
+        $env["STAR_WARS_DATABANK_TEST_DROID_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["STARWARSDATABANK_TEST_LIVE"] === "TRUE") {
+    if ($env["STAR_WARS_DATABANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -150,13 +150,13 @@ function droid_basic_setup($extra)
         $client = new StarWarsDatabankSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["STARWARSDATABANK_TEST_LIVE"] === "TRUE";
+    $live = $env["STAR_WARS_DATABANK_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["STARWARSDATABANK_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["STAR_WARS_DATABANK_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

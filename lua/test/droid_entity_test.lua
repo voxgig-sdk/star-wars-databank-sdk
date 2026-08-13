@@ -70,7 +70,7 @@ describe("DroidEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set STARWARSDATABANK_TEST_DROID_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set STAR_WARS_DATABANK_TEST_DROID_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("DroidEntity", function()
     }
     local droid_ref01_data_dt0_loaded, err = droid_ref01_ent:load(droid_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local droid_ref01_data_dt0_load_result = helpers.to_map(droid_ref01_data_dt0_loaded)
+    local droid_ref01_data_dt0_load_result = helpers.to_map(type(droid_ref01_data_dt0_loaded) == 'table' and droid_ref01_data_dt0_loaded.data_get and droid_ref01_data_dt0_loaded:data_get() or droid_ref01_data_dt0_loaded)
     assert.is_not_nil(droid_ref01_data_dt0_load_result)
     assert.are.equal(droid_ref01_data_dt0_load_result["id"], droid_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function droid_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("STARWARSDATABANK_TEST_DROID_ENTID")
+  local entid_env_raw = os.getenv("STAR_WARS_DATABANK_TEST_DROID_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["STARWARSDATABANK_TEST_DROID_ENTID"] = idmap,
-    ["STARWARSDATABANK_TEST_LIVE"] = "FALSE",
-    ["STARWARSDATABANK_TEST_EXPLAIN"] = "FALSE",
+    ["STAR_WARS_DATABANK_TEST_DROID_ENTID"] = idmap,
+    ["STAR_WARS_DATABANK_TEST_LIVE"] = "FALSE",
+    ["STAR_WARS_DATABANK_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["STARWARSDATABANK_TEST_DROID_ENTID"])
+    env["STAR_WARS_DATABANK_TEST_DROID_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE" then
+  if env["STAR_WARS_DATABANK_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function droid_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
+  local live = env["STAR_WARS_DATABANK_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["STARWARSDATABANK_TEST_EXPLAIN"] == "TRUE",
+    explain = env["STAR_WARS_DATABANK_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

@@ -23,8 +23,8 @@ module StarWarsDatabankTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("STARWARSDATABANK_TEST_LIVE")
-    override = getenv("STARWARSDATABANK_TEST_OVERRIDE")
+    live = getenv("STAR_WARS_DATABANK_TEST_LIVE")
+    override = getenv("STAR_WARS_DATABANK_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module StarWarsDatabankTestRunner
       end
     end
 
-    explain = getenv("STARWARSDATABANK_TEST_EXPLAIN")
-    m["STARWARSDATABANK_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("STAR_WARS_DATABANK_TEST_EXPLAIN")
+    m["STAR_WARS_DATABANK_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -26,8 +26,8 @@ import {
 describe('SpeciesEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARSDATABANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARSDATABANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_DATABANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_DATABANK_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StarWarsDatabankSDK.test()
@@ -63,13 +63,13 @@ describe('SpeciesEntity', async () => {
     const species_ref01_ent = client.Species()
     const species_ref01_match: any = {}
 
-    const species_ref01_list = await species_ref01_ent.list(species_ref01_match)
+    const species_ref01_list = (await species_ref01_ent.list(species_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const species_ref01_match_dt0: any = {}
     species_ref01_match_dt0.id = species_ref01_data.id
-    const species_ref01_data_dt0 = await species_ref01_ent.load(species_ref01_match_dt0)
+    const species_ref01_data_dt0 = (await species_ref01_ent.load(species_ref01_match_dt0)).data()
     assert(species_ref01_data_dt0.id === species_ref01_data.id)
 
 

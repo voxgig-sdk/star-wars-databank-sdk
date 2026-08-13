@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ StarWarsDatabankUtility::setRegistrar(function (StarWarsDatabankUtility $u): voi
     $u->prepare_params = [StarWarsDatabankPrepareParams::class, 'call'];
     $u->prepare_path = [StarWarsDatabankPreparePath::class, 'call'];
     $u->prepare_query = [StarWarsDatabankPrepareQuery::class, 'call'];
+    $u->graphql_body = [StarWarsDatabankGraphql::class, 'body'];
+    $u->graphql_errors = [StarWarsDatabankGraphql::class, 'errors'];
     $u->result_basic = [StarWarsDatabankResultBasic::class, 'call'];
     $u->result_body = [StarWarsDatabankResultBody::class, 'call'];
     $u->result_headers = [StarWarsDatabankResultHeaders::class, 'call'];

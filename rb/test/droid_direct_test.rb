@@ -114,11 +114,11 @@ def droid_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "STARWARSDATABANK_TEST_DROID_ENTID" => {},
-    "STARWARSDATABANK_TEST_LIVE" => "FALSE",
+    "STAR_WARS_DATABANK_TEST_DROID_ENTID" => {},
+    "STAR_WARS_DATABANK_TEST_LIVE" => "FALSE",
   })
 
-  live = env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
+  live = env["STAR_WARS_DATABANK_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

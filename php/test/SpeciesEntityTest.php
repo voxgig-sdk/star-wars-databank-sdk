@@ -72,7 +72,7 @@ class SpeciesEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STARWARSDATABANK_TEST_SPECIES_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STAR_WARS_DATABANK_TEST_SPECIES_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class SpeciesEntityTest extends TestCase
             "id" => $species_ref01_data["id"],
         ];
         $species_ref01_data_dt0_loaded = $species_ref01_ent->load($species_ref01_match_dt0, null);
-        $species_ref01_data_dt0_load_result = Helpers::to_map($species_ref01_data_dt0_loaded);
+        $species_ref01_data_dt0_load_result = Helpers::to_map(is_object($species_ref01_data_dt0_loaded) && method_exists($species_ref01_data_dt0_loaded, 'data_get') ? $species_ref01_data_dt0_loaded->data_get() : $species_ref01_data_dt0_loaded);
         $this->assertNotNull($species_ref01_data_dt0_load_result);
         $this->assertEquals($species_ref01_data_dt0_load_result["id"], $species_ref01_data["id"]);
 
@@ -126,22 +126,22 @@ function species_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("STARWARSDATABANK_TEST_SPECIES_ENTID");
+    $entid_env_raw = getenv("STAR_WARS_DATABANK_TEST_SPECIES_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "STARWARSDATABANK_TEST_SPECIES_ENTID" => $idmap,
-        "STARWARSDATABANK_TEST_LIVE" => "FALSE",
-        "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
+        "STAR_WARS_DATABANK_TEST_SPECIES_ENTID" => $idmap,
+        "STAR_WARS_DATABANK_TEST_LIVE" => "FALSE",
+        "STAR_WARS_DATABANK_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["STARWARSDATABANK_TEST_SPECIES_ENTID"]);
+        $env["STAR_WARS_DATABANK_TEST_SPECIES_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["STARWARSDATABANK_TEST_LIVE"] === "TRUE") {
+    if ($env["STAR_WARS_DATABANK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -150,13 +150,13 @@ function species_basic_setup($extra)
         $client = new StarWarsDatabankSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["STARWARSDATABANK_TEST_LIVE"] === "TRUE";
+    $live = $env["STAR_WARS_DATABANK_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["STARWARSDATABANK_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["STAR_WARS_DATABANK_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

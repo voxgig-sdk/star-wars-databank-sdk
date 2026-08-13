@@ -26,8 +26,8 @@ import {
 describe('DroidEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARSDATABANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARSDATABANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_DATABANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_DATABANK_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StarWarsDatabankSDK.test()
@@ -63,13 +63,13 @@ describe('DroidEntity', async () => {
     const droid_ref01_ent = client.Droid()
     const droid_ref01_match: any = {}
 
-    const droid_ref01_list = await droid_ref01_ent.list(droid_ref01_match)
+    const droid_ref01_list = (await droid_ref01_ent.list(droid_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const droid_ref01_match_dt0: any = {}
     droid_ref01_match_dt0.id = droid_ref01_data.id
-    const droid_ref01_data_dt0 = await droid_ref01_ent.load(droid_ref01_match_dt0)
+    const droid_ref01_data_dt0 = (await droid_ref01_ent.load(droid_ref01_match_dt0)).data()
     assert(droid_ref01_data_dt0.id === droid_ref01_data.id)
 
 

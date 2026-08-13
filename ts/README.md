@@ -35,7 +35,9 @@ const client = new StarWarsDatabankSDK()
 
 ### 2. List character records
 
-`list()` resolves to an array of Character objects — iterate it directly:
+`list()` resolves to an array of Character ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const characters = await client.Character().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const characters = await client.Character().list()
-  console.log(characters)
+  const locations = await client.Location().list()
+  console.log(locations)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StarWarsDatabankSDK.test()
 
-const character = await client.Character().list()
-// character is a bare entity populated with mock response data
-console.log(character)
+const location = await client.Location().list()
+// location is the entity, populated with mock response data
+// — call location.data() for the record itself
+console.log(location)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Character()
+const entity = client.Location()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -759,11 +762,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const character = client.Character()
-await character.list()
+const location = client.Location()
+await location.list()
 
-// character.data() now returns the character data from the last `list`
-// character.match() returns the last match criteria
+// location.data() now returns the location data from the last `list`
+// location.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

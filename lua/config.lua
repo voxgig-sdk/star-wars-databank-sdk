@@ -117,6 +117,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/characters",
                 ["parts"] = {
@@ -156,6 +157,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/characters/{id}",
                 ["parts"] = {
@@ -263,6 +265,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/creatures",
                 ["parts"] = {
@@ -302,6 +305,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/creatures/{id}",
                 ["parts"] = {
@@ -416,6 +420,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/droids",
                 ["parts"] = {
@@ -455,6 +460,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/droids/{id}",
                 ["parts"] = {
@@ -569,6 +575,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations",
                 ["parts"] = {
@@ -608,6 +615,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations/{id}",
                 ["parts"] = {
@@ -722,6 +730,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/organizations",
                 ["parts"] = {
@@ -761,6 +770,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/organizations/{id}",
                 ["parts"] = {
@@ -882,6 +892,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/species",
                 ["parts"] = {
@@ -921,6 +932,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/species/{id}",
                 ["parts"] = {
@@ -1056,6 +1068,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/vehicles",
                 ["parts"] = {
@@ -1095,6 +1108,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/vehicles/{id}",
                 ["parts"] = {

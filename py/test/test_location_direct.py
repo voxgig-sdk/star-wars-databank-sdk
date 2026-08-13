@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from starwarsdatabank_sdk.utility.voxgig_struct import voxgig_struct as vs
 from starwarsdatabank_sdk import StarWarsDatabankSDK
-from core import helpers
+from starwarsdatabank_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _location_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "STARWARSDATABANK_TEST_LOCATION_ENTID": {},
-        "STARWARSDATABANK_TEST_LIVE": "FALSE",
+        "STAR_WARS_DATABANK_TEST_LOCATION_ENTID": {},
+        "STAR_WARS_DATABANK_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("STARWARSDATABANK_TEST_LIVE") == "TRUE"
+    live = env.get("STAR_WARS_DATABANK_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

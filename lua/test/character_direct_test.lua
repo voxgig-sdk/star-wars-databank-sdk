@@ -115,11 +115,11 @@ function character_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["STARWARSDATABANK_TEST_CHARACTER_ENTID"] = {},
-    ["STARWARSDATABANK_TEST_LIVE"] = "FALSE",
+    ["STAR_WARS_DATABANK_TEST_CHARACTER_ENTID"] = {},
+    ["STAR_WARS_DATABANK_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
+  local live = env["STAR_WARS_DATABANK_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

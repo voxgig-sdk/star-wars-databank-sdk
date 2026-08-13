@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ StarWarsDatabankUtility.registrar = ->(u) {
   u.prepare_params = StarWarsDatabankUtilities::PrepareParams
   u.prepare_path = StarWarsDatabankUtilities::PreparePath
   u.prepare_query = StarWarsDatabankUtilities::PrepareQuery
+  u.graphql_body = StarWarsDatabankUtilities::GraphqlBody
+  u.graphql_errors = StarWarsDatabankUtilities::GraphqlErrors
   u.result_basic = StarWarsDatabankUtilities::ResultBasic
   u.result_body = StarWarsDatabankUtilities::ResultBody
   u.result_headers = StarWarsDatabankUtilities::ResultHeaders

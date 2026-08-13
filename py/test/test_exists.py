@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# StarWarsDatabank SDK exists test
 
 import pytest
 from starwarsdatabank_sdk import StarWarsDatabankSDK

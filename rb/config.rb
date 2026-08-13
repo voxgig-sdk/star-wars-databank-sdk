@@ -118,6 +118,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters",
                   "parts" => [
@@ -157,6 +158,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters/{id}",
                   "parts" => [
@@ -264,6 +266,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/creatures",
                   "parts" => [
@@ -303,6 +306,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/creatures/{id}",
                   "parts" => [
@@ -417,6 +421,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/droids",
                   "parts" => [
@@ -456,6 +461,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/droids/{id}",
                   "parts" => [
@@ -570,6 +576,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations",
                   "parts" => [
@@ -609,6 +616,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations/{id}",
                   "parts" => [
@@ -723,6 +731,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/organizations",
                   "parts" => [
@@ -762,6 +771,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/organizations/{id}",
                   "parts" => [
@@ -883,6 +893,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/species",
                   "parts" => [
@@ -922,6 +933,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/species/{id}",
                   "parts" => [
@@ -1057,6 +1069,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vehicles",
                   "parts" => [
@@ -1096,6 +1109,7 @@ module StarWarsDatabankConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vehicles/{id}",
                   "parts" => [

@@ -62,7 +62,7 @@ class VehicleEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set STARWARSDATABANK_TEST_VEHICLE_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set STAR_WARS_DATABANK_TEST_VEHICLE_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class VehicleEntityTest < Minitest::Test
       "id" => vehicle_ref01_data["id"],
     }
     vehicle_ref01_data_dt0_loaded = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, nil)
-    vehicle_ref01_data_dt0_load_result = Helpers.to_map(vehicle_ref01_data_dt0_loaded)
+    vehicle_ref01_data_dt0_load_result = Helpers.to_map(vehicle_ref01_data_dt0_loaded.respond_to?(:data_get) ? vehicle_ref01_data_dt0_loaded.data_get : vehicle_ref01_data_dt0_loaded)
     assert !vehicle_ref01_data_dt0_load_result.nil?
     assert_equal vehicle_ref01_data_dt0_load_result["id"], vehicle_ref01_data["id"]
 
@@ -120,22 +120,22 @@ def vehicle_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["STARWARSDATABANK_TEST_VEHICLE_ENTID"]
+  entid_env_raw = ENV["STAR_WARS_DATABANK_TEST_VEHICLE_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "STARWARSDATABANK_TEST_VEHICLE_ENTID" => idmap,
-    "STARWARSDATABANK_TEST_LIVE" => "FALSE",
-    "STARWARSDATABANK_TEST_EXPLAIN" => "FALSE",
+    "STAR_WARS_DATABANK_TEST_VEHICLE_ENTID" => idmap,
+    "STAR_WARS_DATABANK_TEST_LIVE" => "FALSE",
+    "STAR_WARS_DATABANK_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["STARWARSDATABANK_TEST_VEHICLE_ENTID"])
+    env["STAR_WARS_DATABANK_TEST_VEHICLE_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
+  if env["STAR_WARS_DATABANK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -144,13 +144,13 @@ def vehicle_basic_setup(extra)
     client = StarWarsDatabankSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["STARWARSDATABANK_TEST_LIVE"] == "TRUE"
+  live = env["STAR_WARS_DATABANK_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["STARWARSDATABANK_TEST_EXPLAIN"] == "TRUE",
+    explain: env["STAR_WARS_DATABANK_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

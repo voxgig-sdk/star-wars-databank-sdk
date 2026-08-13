@@ -121,11 +121,11 @@ function character_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "STARWARSDATABANK_TEST_CHARACTER_ENTID" => [],
-        "STARWARSDATABANK_TEST_LIVE" => "FALSE",
+        "STAR_WARS_DATABANK_TEST_CHARACTER_ENTID" => [],
+        "STAR_WARS_DATABANK_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["STARWARSDATABANK_TEST_LIVE"] === "TRUE";
+    $live = $env["STAR_WARS_DATABANK_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

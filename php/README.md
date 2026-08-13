@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Character record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Character record (throws on error).
     $character = $client->Character()->load(["id" => "example_id"]);
     print_r($character);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $characters = $client->Character()->list();
+    $locations = $client->Location()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,12 +137,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = StarWarsDatabankSDK::test([
-    "entity" => ["character" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["location" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$character = $client->Character()->list();
-print_r($character);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$location = $client->Location()->list();
+print_r($location);
 ```
 
 ### Use a custom fetch function
@@ -246,7 +247,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -418,7 +419,7 @@ Create an instance: `$character = $client->Character();`
 #### Example: Load
 
 ```php
-// load() returns the bare Character record (throws on error).
+// load() returns the ENTITY — call data_get() for the Character record (throws on error).
 $character = $client->Character()->load(["id" => "character_id"]);
 ```
 
@@ -456,7 +457,7 @@ Create an instance: `$creature = $client->Creature();`
 #### Example: Load
 
 ```php
-// load() returns the bare Creature record (throws on error).
+// load() returns the ENTITY — call data_get() for the Creature record (throws on error).
 $creature = $client->Creature()->load(["id" => "creature_id"]);
 ```
 
@@ -495,7 +496,7 @@ Create an instance: `$droid = $client->Droid();`
 #### Example: Load
 
 ```php
-// load() returns the bare Droid record (throws on error).
+// load() returns the ENTITY — call data_get() for the Droid record (throws on error).
 $droid = $client->Droid()->load(["id" => "droid_id"]);
 ```
 
@@ -534,7 +535,7 @@ Create an instance: `$location = $client->Location();`
 #### Example: Load
 
 ```php
-// load() returns the bare Location record (throws on error).
+// load() returns the ENTITY — call data_get() for the Location record (throws on error).
 $location = $client->Location()->load(["id" => "location_id"]);
 ```
 
@@ -573,7 +574,7 @@ Create an instance: `$organization = $client->Organization();`
 #### Example: Load
 
 ```php
-// load() returns the bare Organization record (throws on error).
+// load() returns the ENTITY — call data_get() for the Organization record (throws on error).
 $organization = $client->Organization()->load(["id" => "organization_id"]);
 ```
 
@@ -613,7 +614,7 @@ Create an instance: `$species = $client->Species();`
 #### Example: Load
 
 ```php
-// load() returns the bare Species record (throws on error).
+// load() returns the ENTITY — call data_get() for the Species record (throws on error).
 $species = $client->Species()->load(["id" => "species_id"]);
 ```
 
@@ -655,7 +656,7 @@ Create an instance: `$vehicle = $client->Vehicle();`
 #### Example: Load
 
 ```php
-// load() returns the bare Vehicle record (throws on error).
+// load() returns the ENTITY — call data_get() for the Vehicle record (throws on error).
 $vehicle = $client->Vehicle()->load(["id" => "vehicle_id"]);
 ```
 
@@ -743,11 +744,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$character = $client->Character();
-$character->list();
+$location = $client->Location();
+$location->list();
 
-// $character->data_get() now returns the character data from the last list
-// $character->match_get() returns the last match criteria
+// $location->data_get() now returns the location data from the last list
+// $location->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

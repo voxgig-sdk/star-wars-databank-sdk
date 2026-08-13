@@ -152,8 +152,29 @@ class StarWarsDatabankSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('StarWarsDatabankSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -214,52 +235,120 @@ class StarWarsDatabankSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('StarWarsDatabankSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('StarWarsDatabankSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Character().list()` / `client.Character().load({ id })`.
-  Character(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Character(entopts?: Record<string, any>) {
     const self = this
-    return new CharacterEntity(self,data)
+    return new CharacterEntity(self, entopts)
   }
 
 
   // Entity access: `client.Creature().list()` / `client.Creature().load({ id })`.
-  Creature(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Creature(entopts?: Record<string, any>) {
     const self = this
-    return new CreatureEntity(self,data)
+    return new CreatureEntity(self, entopts)
   }
 
 
   // Entity access: `client.Droid().list()` / `client.Droid().load({ id })`.
-  Droid(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Droid(entopts?: Record<string, any>) {
     const self = this
-    return new DroidEntity(self,data)
+    return new DroidEntity(self, entopts)
   }
 
 
   // Entity access: `client.Location().list()` / `client.Location().load({ id })`.
-  Location(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Location(entopts?: Record<string, any>) {
     const self = this
-    return new LocationEntity(self,data)
+    return new LocationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Organization().list()` / `client.Organization().load({ id })`.
-  Organization(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Organization(entopts?: Record<string, any>) {
     const self = this
-    return new OrganizationEntity(self,data)
+    return new OrganizationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Species().list()` / `client.Species().load({ id })`.
-  Species(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Species(entopts?: Record<string, any>) {
     const self = this
-    return new SpeciesEntity(self,data)
+    return new SpeciesEntity(self, entopts)
   }
 
 
   // Entity access: `client.Vehicle().list()` / `client.Vehicle().load({ id })`.
-  Vehicle(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Vehicle(entopts?: Record<string, any>) {
     const self = this
-    return new VehicleEntity(self,data)
+    return new VehicleEntity(self, entopts)
   }
 
 

@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a character
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    characters = client.Character().list()
-    print(characters)
+    locations = client.Location().list()
+    print(locations)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StarWarsDatabankSDK.test()
 
-# Entity ops return the bare record and raise on error.
-character = client.Character().list()
-# character contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+location = client.Location().list()
+# location contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -239,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -721,11 +722,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-character = client.Character()
-character.list()
+location = client.Location()
+location.list()
 
-# character.data_get() now returns the character data from the last list
-# character.match_get() returns the last match criteria
+# location.data_get() now returns the location data from the last list
+# location.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

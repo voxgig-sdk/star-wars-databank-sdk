@@ -26,8 +26,8 @@ import {
 describe('VehicleEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARSDATABANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARSDATABANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_DATABANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_DATABANK_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StarWarsDatabankSDK.test()
@@ -63,13 +63,13 @@ describe('VehicleEntity', async () => {
     const vehicle_ref01_ent = client.Vehicle()
     const vehicle_ref01_match: any = {}
 
-    const vehicle_ref01_list = await vehicle_ref01_ent.list(vehicle_ref01_match)
+    const vehicle_ref01_list = (await vehicle_ref01_ent.list(vehicle_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const vehicle_ref01_match_dt0: any = {}
     vehicle_ref01_match_dt0.id = vehicle_ref01_data.id
-    const vehicle_ref01_data_dt0 = await vehicle_ref01_ent.load(vehicle_ref01_match_dt0)
+    const vehicle_ref01_data_dt0 = (await vehicle_ref01_ent.load(vehicle_ref01_match_dt0)).data()
     assert(vehicle_ref01_data_dt0.id === vehicle_ref01_data.id)
 
 

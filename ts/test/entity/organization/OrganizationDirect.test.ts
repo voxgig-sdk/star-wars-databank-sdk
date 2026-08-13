@@ -19,11 +19,15 @@ import {
 describe('OrganizationDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARSDATABANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARSDATABANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_DATABANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_DATABANK_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new StarWarsDatabankSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,17 +138,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'STARWARSDATABANK_TEST_ORGANIZATION_ENTID': {},
-    'STARWARSDATABANK_TEST_LIVE': 'FALSE',
+    'STAR_WARS_DATABANK_TEST_ORGANIZATION_ENTID': {},
+    'STAR_WARS_DATABANK_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.STARWARSDATABANK_TEST_LIVE
+  const live = 'TRUE' === env.STAR_WARS_DATABANK_TEST_LIVE
 
   if (live) {
     const client = new StarWarsDatabankSDK({
     })
 
-    let idmap: any = env['STARWARSDATABANK_TEST_ORGANIZATION_ENTID']
+    let idmap: any = env['STAR_WARS_DATABANK_TEST_ORGANIZATION_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

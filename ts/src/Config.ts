@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'StarWarsDatabank',
   }
 
 
@@ -159,6 +159,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/characters",
               "parts": [
@@ -198,6 +199,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/characters/{id}",
               "parts": [
@@ -305,6 +307,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/creatures",
               "parts": [
@@ -344,6 +347,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/creatures/{id}",
               "parts": [
@@ -458,6 +462,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/droids",
               "parts": [
@@ -497,6 +502,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/droids/{id}",
               "parts": [
@@ -611,6 +617,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/locations",
               "parts": [
@@ -650,6 +657,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/locations/{id}",
               "parts": [
@@ -764,6 +772,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/organizations",
               "parts": [
@@ -803,6 +812,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/organizations/{id}",
               "parts": [
@@ -924,6 +934,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/species",
               "parts": [
@@ -963,6 +974,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/species/{id}",
               "parts": [
@@ -1098,6 +1110,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/vehicles",
               "parts": [
@@ -1137,6 +1150,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/vehicles/{id}",
               "parts": [

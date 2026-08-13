@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import StarWarsDatabankSDK
-from core.error import StarWarsDatabankError
-from core.result import StarWarsDatabankResult
-from core.response import StarWarsDatabankResponse
-from core.spec import StarWarsDatabankSpec
-from feature.base_feature import StarWarsDatabankBaseFeature
+from projectname_sdk.core.error import StarWarsDatabankError
+from projectname_sdk.core.result import StarWarsDatabankResult
+from projectname_sdk.core.response import StarWarsDatabankResponse
+from projectname_sdk.core.spec import StarWarsDatabankSpec
+from projectname_sdk.feature.base_feature import StarWarsDatabankBaseFeature
 
 
 def _client():

@@ -26,8 +26,8 @@ import {
 describe('CreatureEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARSDATABANK_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARSDATABANK_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_DATABANK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_DATABANK_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StarWarsDatabankSDK.test()
@@ -63,13 +63,13 @@ describe('CreatureEntity', async () => {
     const creature_ref01_ent = client.Creature()
     const creature_ref01_match: any = {}
 
-    const creature_ref01_list = await creature_ref01_ent.list(creature_ref01_match)
+    const creature_ref01_list = (await creature_ref01_ent.list(creature_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const creature_ref01_match_dt0: any = {}
     creature_ref01_match_dt0.id = creature_ref01_data.id
-    const creature_ref01_data_dt0 = await creature_ref01_ent.load(creature_ref01_match_dt0)
+    const creature_ref01_data_dt0 = (await creature_ref01_ent.load(creature_ref01_match_dt0)).data()
     assert(creature_ref01_data_dt0.id === creature_ref01_data.id)
 
 
