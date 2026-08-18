@@ -40,7 +40,7 @@ class StarWarsDatabankSDK
         $utility = new StarWarsDatabankUtility();
         $this->_utility = $utility;
 
-        $config = StarWarsDatabankConfig::make_config();
+        $config = StarWarsDatabankConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

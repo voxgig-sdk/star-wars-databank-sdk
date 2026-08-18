@@ -40,7 +40,7 @@ class SpeciesEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = StarWarsDatabankConfig::make_config();
+        $cfg = StarWarsDatabankConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = StarWarsDatabankSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

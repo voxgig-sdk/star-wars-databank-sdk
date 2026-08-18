@@ -23,8 +23,8 @@ class StarWarsDatabankSDK:
         utility = StarWarsDatabankUtility()
         self._utility = utility
 
-        from starwarsdatabank_sdk.config import make_config
-        config = make_config()
+        from starwarsdatabank_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

@@ -28,7 +28,7 @@ class StarWarsDatabankSDK
     utility = StarWarsDatabankUtility.new
     @_utility = utility
 
-    config = StarWarsDatabankConfig.make_config
+    config = StarWarsDatabankConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

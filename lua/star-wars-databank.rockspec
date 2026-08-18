@@ -23,6 +23,7 @@ build = {
   modules = {
     ["star-wars-databank_sdk"] = "star-wars-databank_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }
