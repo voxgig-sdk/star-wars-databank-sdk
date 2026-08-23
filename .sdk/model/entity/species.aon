@@ -1,0 +1,150 @@
+# Entity: species
+
+main: kit: entity: species: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "classification"
+      req: false
+      short: "Biological classification"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Detailed description of the species"
+      type: "`$STRING`"
+    }
+    {
+      name: "designation"
+      req: false
+      short: "Sentience designation"
+      type: "`$STRING`"
+    }
+    {
+      name: "homeworld"
+      req: false
+      short: "Homeworld of the species"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the species"
+      type: "`$STRING`"
+    }
+    {
+      name: "image"
+      req: false
+      short: "URL to the species' image"
+      type: "`$STRING`"
+    }
+    {
+      name: "language"
+      req: false
+      short: "Language spoken by the species"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the species"
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "URL to the official Star Wars Databank entry"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "species"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/species"
+          parts: [
+            "species"
+          ]
+          select: {
+            exist: [
+              "limit"
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/species/{id}"
+          parts: [
+            "species"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

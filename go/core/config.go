@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "StarWarsDatabank",
+			"slug": "star-wars-databank",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -39,34 +42,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "affiliation",
+						"short": "Character's affiliation or allegiance",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the character",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "homeworld",
+						"short": "Character's home planet",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the character",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the character's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the character",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "species",
+						"short": "Character's species",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -158,30 +169,37 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "classification",
+						"short": "Creature's classification",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the creature",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "habitat",
+						"short": "Creature's natural habitat",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the creature",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the creature's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the creature",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -273,34 +291,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "affiliation",
+						"short": "Droid's affiliation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the droid",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the droid",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the droid's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "manufacturer",
+						"short": "Droid's manufacturer",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name or designation of the droid",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Droid type or class",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -392,34 +418,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the location's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "region",
+						"short": "Galactic region where the location is situated",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "sector",
+						"short": "Sector where the location is situated",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "terrain",
+						"short": "Terrain type of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -511,34 +545,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "allegiance",
+						"short": "Organization's allegiance",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the organization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the organization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the organization's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "leader",
+						"short": "Leader of the organization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the organization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of organization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -630,38 +672,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "classification",
+						"short": "Biological classification",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the species",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "designation",
+						"short": "Sentience designation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "homeworld",
+						"short": "Homeworld of the species",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the species",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the species' image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "language",
+						"short": "Language spoken by the species",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the species",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -753,46 +804,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "affiliation",
+						"short": "Vehicle's affiliation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "armament",
+						"short": "Vehicle armament",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "class",
+						"short": "Vehicle class or type",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "crew",
+						"short": "Crew capacity",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the vehicle",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the vehicle",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the vehicle's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "length",
+						"short": "Length of the vehicle",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "manufacturer",
+						"short": "Vehicle manufacturer",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the vehicle",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
 				},

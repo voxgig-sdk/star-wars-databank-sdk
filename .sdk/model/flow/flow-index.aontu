@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicCharacterFlow.aontu"
-@"BasicCreatureFlow.aontu"
-@"BasicDroidFlow.aontu"
-@"BasicLocationFlow.aontu"
-@"BasicOrganizationFlow.aontu"
-@"BasicSpeciesFlow.aontu"
-@"BasicVehicleFlow.aontu"

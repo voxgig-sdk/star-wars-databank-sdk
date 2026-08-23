@@ -36,48 +36,56 @@
               "active": true,
               "name": "affiliation",
               "req": false,
+              "short": "Character's affiliation or allegiance",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the character",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "homeworld",
               "req": false,
+              "short": "Character's home planet",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the character",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the character's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the character",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "species",
               "req": false,
+              "short": "Character's species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],
@@ -186,42 +194,49 @@
               "active": true,
               "name": "classification",
               "req": false,
+              "short": "Creature's classification",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the creature",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "habitat",
               "req": false,
+              "short": "Creature's natural habitat",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the creature",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the creature's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the creature",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],
@@ -330,48 +345,56 @@
               "active": true,
               "name": "affiliation",
               "req": false,
+              "short": "Droid's affiliation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the droid",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the droid",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the droid's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "manufacturer",
               "req": false,
+              "short": "Droid's manufacturer",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name or designation of the droid",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Droid type or class",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],
@@ -480,48 +503,56 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the location's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "region",
               "req": false,
+              "short": "Galactic region where the location is situated",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "sector",
               "req": false,
+              "short": "Sector where the location is situated",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "terrain",
               "req": false,
+              "short": "Terrain type of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],
@@ -630,48 +661,56 @@
               "active": true,
               "name": "allegiance",
               "req": false,
+              "short": "Organization's allegiance",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the organization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the organization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the organization's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "leader",
               "req": false,
+              "short": "Leader of the organization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the organization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of organization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],
@@ -780,54 +819,63 @@
               "active": true,
               "name": "classification",
               "req": false,
+              "short": "Biological classification",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "designation",
               "req": false,
+              "short": "Sentience designation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "homeworld",
               "req": false,
+              "short": "Homeworld of the species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the species' image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "language",
               "req": false,
+              "short": "Language spoken by the species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],
@@ -936,66 +984,77 @@
               "active": true,
               "name": "affiliation",
               "req": false,
+              "short": "Vehicle's affiliation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "armament",
               "req": false,
+              "short": "Vehicle armament",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "class",
               "req": false,
+              "short": "Vehicle class or type",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "crew",
               "req": false,
+              "short": "Crew capacity",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the vehicle's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "length",
               "req": false,
+              "short": "Length of the vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "manufacturer",
               "req": false,
+              "short": "Vehicle manufacturer",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "URL to the official Star Wars Databank entry",
               "type": "`$STRING`"
             }
           ],

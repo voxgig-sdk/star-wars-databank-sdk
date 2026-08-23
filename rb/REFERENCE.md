@@ -117,14 +117,14 @@ character = client.Character
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | `String` | No |  |
-| `description` | `String` | No |  |
-| `homeworld` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `name` | `String` | No |  |
-| `species` | `String` | No |  |
-| `url` | `String` | No |  |
+| `affiliation` | `String` | No | Character's affiliation or allegiance |
+| `description` | `String` | No | Detailed description of the character |
+| `homeworld` | `String` | No | Character's home planet |
+| `id` | `String` | No | Unique identifier for the character |
+| `image` | `String` | No | URL to the character's image |
+| `name` | `String` | No | Name of the character |
+| `species` | `String` | No | Character's species |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 
@@ -184,13 +184,13 @@ creature = client.Creature
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | `String` | No |  |
-| `description` | `String` | No |  |
-| `habitat` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `name` | `String` | No |  |
-| `url` | `String` | No |  |
+| `classification` | `String` | No | Creature's classification |
+| `description` | `String` | No | Detailed description of the creature |
+| `habitat` | `String` | No | Creature's natural habitat |
+| `id` | `String` | No | Unique identifier for the creature |
+| `image` | `String` | No | URL to the creature's image |
+| `name` | `String` | No | Name of the creature |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 
@@ -250,14 +250,14 @@ droid = client.Droid
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | `String` | No |  |
-| `description` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `manufacturer` | `String` | No |  |
-| `name` | `String` | No |  |
-| `type` | `String` | No |  |
-| `url` | `String` | No |  |
+| `affiliation` | `String` | No | Droid's affiliation |
+| `description` | `String` | No | Detailed description of the droid |
+| `id` | `String` | No | Unique identifier for the droid |
+| `image` | `String` | No | URL to the droid's image |
+| `manufacturer` | `String` | No | Droid's manufacturer |
+| `name` | `String` | No | Name or designation of the droid |
+| `type` | `String` | No | Droid type or class |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 
@@ -317,14 +317,14 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `name` | `String` | No |  |
-| `region` | `String` | No |  |
-| `sector` | `String` | No |  |
-| `terrain` | `String` | No |  |
-| `url` | `String` | No |  |
+| `description` | `String` | No | Detailed description of the location |
+| `id` | `String` | No | Unique identifier for the location |
+| `image` | `String` | No | URL to the location's image |
+| `name` | `String` | No | Name of the location |
+| `region` | `String` | No | Galactic region where the location is situated |
+| `sector` | `String` | No | Sector where the location is situated |
+| `terrain` | `String` | No | Terrain type of the location |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 
@@ -384,14 +384,14 @@ organization = client.Organization
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allegiance` | `String` | No |  |
-| `description` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `leader` | `String` | No |  |
-| `name` | `String` | No |  |
-| `type` | `String` | No |  |
-| `url` | `String` | No |  |
+| `allegiance` | `String` | No | Organization's allegiance |
+| `description` | `String` | No | Detailed description of the organization |
+| `id` | `String` | No | Unique identifier for the organization |
+| `image` | `String` | No | URL to the organization's image |
+| `leader` | `String` | No | Leader of the organization |
+| `name` | `String` | No | Name of the organization |
+| `type` | `String` | No | Type of organization |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 
@@ -451,15 +451,15 @@ species = client.Species
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | `String` | No |  |
-| `description` | `String` | No |  |
-| `designation` | `String` | No |  |
-| `homeworld` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `language` | `String` | No |  |
-| `name` | `String` | No |  |
-| `url` | `String` | No |  |
+| `classification` | `String` | No | Biological classification |
+| `description` | `String` | No | Detailed description of the species |
+| `designation` | `String` | No | Sentience designation |
+| `homeworld` | `String` | No | Homeworld of the species |
+| `id` | `String` | No | Unique identifier for the species |
+| `image` | `String` | No | URL to the species' image |
+| `language` | `String` | No | Language spoken by the species |
+| `name` | `String` | No | Name of the species |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 
@@ -519,17 +519,17 @@ vehicle = client.Vehicle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | `String` | No |  |
-| `armament` | `String` | No |  |
-| `class` | `String` | No |  |
-| `crew` | `String` | No |  |
-| `description` | `String` | No |  |
-| `id` | `String` | No |  |
-| `image` | `String` | No |  |
-| `length` | `String` | No |  |
-| `manufacturer` | `String` | No |  |
-| `name` | `String` | No |  |
-| `url` | `String` | No |  |
+| `affiliation` | `String` | No | Vehicle's affiliation |
+| `armament` | `String` | No | Vehicle armament |
+| `class` | `String` | No | Vehicle class or type |
+| `crew` | `String` | No | Crew capacity |
+| `description` | `String` | No | Detailed description of the vehicle |
+| `id` | `String` | No | Unique identifier for the vehicle |
+| `image` | `String` | No | URL to the vehicle's image |
+| `length` | `String` | No | Length of the vehicle |
+| `manufacturer` | `String` | No | Vehicle manufacturer |
+| `name` | `String` | No | Name of the vehicle |
+| `url` | `String` | No | URL to the official Star Wars Databank entry |
 
 ### Operations
 

@@ -269,14 +269,14 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `affiliation` |  |
-| `description` |  |
-| `homeworld` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `species` |  |
-| `url` |  |
+| `affiliation` | Character's affiliation or allegiance |
+| `description` | Detailed description of the character |
+| `homeworld` | Character's home planet |
+| `id` | Unique identifier for the character |
+| `image` | URL to the character's image |
+| `name` | Name of the character |
+| `species` | Character's species |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -286,13 +286,13 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `classification` |  |
-| `description` |  |
-| `habitat` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `url` |  |
+| `classification` | Creature's classification |
+| `description` | Detailed description of the creature |
+| `habitat` | Creature's natural habitat |
+| `id` | Unique identifier for the creature |
+| `image` | URL to the creature's image |
+| `name` | Name of the creature |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -302,14 +302,14 @@ API path: `/creatures`
 
 | Field | Description |
 | --- | --- |
-| `affiliation` |  |
-| `description` |  |
-| `id` |  |
-| `image` |  |
-| `manufacturer` |  |
-| `name` |  |
-| `type` |  |
-| `url` |  |
+| `affiliation` | Droid's affiliation |
+| `description` | Detailed description of the droid |
+| `id` | Unique identifier for the droid |
+| `image` | URL to the droid's image |
+| `manufacturer` | Droid's manufacturer |
+| `name` | Name or designation of the droid |
+| `type` | Droid type or class |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -319,14 +319,14 @@ API path: `/droids`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `region` |  |
-| `sector` |  |
-| `terrain` |  |
-| `url` |  |
+| `description` | Detailed description of the location |
+| `id` | Unique identifier for the location |
+| `image` | URL to the location's image |
+| `name` | Name of the location |
+| `region` | Galactic region where the location is situated |
+| `sector` | Sector where the location is situated |
+| `terrain` | Terrain type of the location |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -336,14 +336,14 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `allegiance` |  |
-| `description` |  |
-| `id` |  |
-| `image` |  |
-| `leader` |  |
-| `name` |  |
-| `type` |  |
-| `url` |  |
+| `allegiance` | Organization's allegiance |
+| `description` | Detailed description of the organization |
+| `id` | Unique identifier for the organization |
+| `image` | URL to the organization's image |
+| `leader` | Leader of the organization |
+| `name` | Name of the organization |
+| `type` | Type of organization |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -353,15 +353,15 @@ API path: `/organizations`
 
 | Field | Description |
 | --- | --- |
-| `classification` |  |
-| `description` |  |
-| `designation` |  |
-| `homeworld` |  |
-| `id` |  |
-| `image` |  |
-| `language` |  |
-| `name` |  |
-| `url` |  |
+| `classification` | Biological classification |
+| `description` | Detailed description of the species |
+| `designation` | Sentience designation |
+| `homeworld` | Homeworld of the species |
+| `id` | Unique identifier for the species |
+| `image` | URL to the species' image |
+| `language` | Language spoken by the species |
+| `name` | Name of the species |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -371,17 +371,17 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
-| `affiliation` |  |
-| `armament` |  |
-| `class` |  |
-| `crew` |  |
-| `description` |  |
-| `id` |  |
-| `image` |  |
-| `length` |  |
-| `manufacturer` |  |
-| `name` |  |
-| `url` |  |
+| `affiliation` | Vehicle's affiliation |
+| `armament` | Vehicle armament |
+| `class` | Vehicle class or type |
+| `crew` | Crew capacity |
+| `description` | Detailed description of the vehicle |
+| `id` | Unique identifier for the vehicle |
+| `image` | URL to the vehicle's image |
+| `length` | Length of the vehicle |
+| `manufacturer` | Vehicle manufacturer |
+| `name` | Name of the vehicle |
+| `url` | URL to the official Star Wars Databank entry |
 
 Operations: List, Load.
 
@@ -407,14 +407,14 @@ Create an instance: `$character = $client->Character();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | `string` |  |
-| `description` | `string` |  |
-| `homeworld` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `species` | `string` |  |
-| `url` | `string` |  |
+| `affiliation` | `string` | Character's affiliation or allegiance |
+| `description` | `string` | Detailed description of the character |
+| `homeworld` | `string` | Character's home planet |
+| `id` | `string` | Unique identifier for the character |
+| `image` | `string` | URL to the character's image |
+| `name` | `string` | Name of the character |
+| `species` | `string` | Character's species |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 
@@ -446,13 +446,13 @@ Create an instance: `$creature = $client->Creature();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `classification` | `string` |  |
-| `description` | `string` |  |
-| `habitat` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `classification` | `string` | Creature's classification |
+| `description` | `string` | Detailed description of the creature |
+| `habitat` | `string` | Creature's natural habitat |
+| `id` | `string` | Unique identifier for the creature |
+| `image` | `string` | URL to the creature's image |
+| `name` | `string` | Name of the creature |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 
@@ -484,14 +484,14 @@ Create an instance: `$droid = $client->Droid();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | `string` |  |
-| `description` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `manufacturer` | `string` |  |
-| `name` | `string` |  |
-| `type` | `string` |  |
-| `url` | `string` |  |
+| `affiliation` | `string` | Droid's affiliation |
+| `description` | `string` | Detailed description of the droid |
+| `id` | `string` | Unique identifier for the droid |
+| `image` | `string` | URL to the droid's image |
+| `manufacturer` | `string` | Droid's manufacturer |
+| `name` | `string` | Name or designation of the droid |
+| `type` | `string` | Droid type or class |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 
@@ -523,14 +523,14 @@ Create an instance: `$location = $client->Location();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `region` | `string` |  |
-| `sector` | `string` |  |
-| `terrain` | `string` |  |
-| `url` | `string` |  |
+| `description` | `string` | Detailed description of the location |
+| `id` | `string` | Unique identifier for the location |
+| `image` | `string` | URL to the location's image |
+| `name` | `string` | Name of the location |
+| `region` | `string` | Galactic region where the location is situated |
+| `sector` | `string` | Sector where the location is situated |
+| `terrain` | `string` | Terrain type of the location |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 
@@ -562,14 +562,14 @@ Create an instance: `$organization = $client->Organization();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `allegiance` | `string` |  |
-| `description` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `leader` | `string` |  |
-| `name` | `string` |  |
-| `type` | `string` |  |
-| `url` | `string` |  |
+| `allegiance` | `string` | Organization's allegiance |
+| `description` | `string` | Detailed description of the organization |
+| `id` | `string` | Unique identifier for the organization |
+| `image` | `string` | URL to the organization's image |
+| `leader` | `string` | Leader of the organization |
+| `name` | `string` | Name of the organization |
+| `type` | `string` | Type of organization |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 
@@ -601,15 +601,15 @@ Create an instance: `$species = $client->Species();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `classification` | `string` |  |
-| `description` | `string` |  |
-| `designation` | `string` |  |
-| `homeworld` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `language` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `classification` | `string` | Biological classification |
+| `description` | `string` | Detailed description of the species |
+| `designation` | `string` | Sentience designation |
+| `homeworld` | `string` | Homeworld of the species |
+| `id` | `string` | Unique identifier for the species |
+| `image` | `string` | URL to the species' image |
+| `language` | `string` | Language spoken by the species |
+| `name` | `string` | Name of the species |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 
@@ -641,17 +641,17 @@ Create an instance: `$vehicle = $client->Vehicle();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | `string` |  |
-| `armament` | `string` |  |
-| `class` | `string` |  |
-| `crew` | `string` |  |
-| `description` | `string` |  |
-| `id` | `string` |  |
-| `image` | `string` |  |
-| `length` | `string` |  |
-| `manufacturer` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `affiliation` | `string` | Vehicle's affiliation |
+| `armament` | `string` | Vehicle armament |
+| `class` | `string` | Vehicle class or type |
+| `crew` | `string` | Crew capacity |
+| `description` | `string` | Detailed description of the vehicle |
+| `id` | `string` | Unique identifier for the vehicle |
+| `image` | `string` | URL to the vehicle's image |
+| `length` | `string` | Length of the vehicle |
+| `manufacturer` | `string` | Vehicle manufacturer |
+| `name` | `string` | Name of the vehicle |
+| `url` | `string` | URL to the official Star Wars Databank entry |
 
 #### Example: Load
 

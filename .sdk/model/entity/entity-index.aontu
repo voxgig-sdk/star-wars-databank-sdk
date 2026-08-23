@@ -1,9 +1,0 @@
-# Entity Models
-
-@"character.aontu"
-@"creature.aontu"
-@"droid.aontu"
-@"location.aontu"
-@"organization.aontu"
-@"species.aontu"
-@"vehicle.aontu"

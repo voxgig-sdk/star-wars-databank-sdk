@@ -1,0 +1,144 @@
+# Entity: organization
+
+main: kit: entity: organization: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "allegiance"
+      req: false
+      short: "Organization's allegiance"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Detailed description of the organization"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the organization"
+      type: "`$STRING`"
+    }
+    {
+      name: "image"
+      req: false
+      short: "URL to the organization's image"
+      type: "`$STRING`"
+    }
+    {
+      name: "leader"
+      req: false
+      short: "Leader of the organization"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the organization"
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Type of organization"
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "URL to the official Star Wars Databank entry"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "organization"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/organizations"
+          parts: [
+            "organizations"
+          ]
+          select: {
+            exist: [
+              "limit"
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/organizations/{id}"
+          parts: [
+            "organizations"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

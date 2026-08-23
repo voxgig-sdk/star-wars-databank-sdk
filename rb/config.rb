@@ -19,6 +19,9 @@ module StarWarsDatabankConfig
     {
       "main" => {
         "name" => "StarWarsDatabank",
+        "slug" => "star-wars-databank",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -47,34 +50,42 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "affiliation",
+              "short" => "Character's affiliation or allegiance",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Detailed description of the character",
               "type" => "`$STRING`",
             },
             {
               "name" => "homeworld",
+              "short" => "Character's home planet",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the character",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the character's image",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the character",
               "type" => "`$STRING`",
             },
             {
               "name" => "species",
+              "short" => "Character's species",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
@@ -166,30 +177,37 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "classification",
+              "short" => "Creature's classification",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Detailed description of the creature",
               "type" => "`$STRING`",
             },
             {
               "name" => "habitat",
+              "short" => "Creature's natural habitat",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the creature",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the creature's image",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the creature",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
@@ -281,34 +299,42 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "affiliation",
+              "short" => "Droid's affiliation",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Detailed description of the droid",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the droid",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the droid's image",
               "type" => "`$STRING`",
             },
             {
               "name" => "manufacturer",
+              "short" => "Droid's manufacturer",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name or designation of the droid",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Droid type or class",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
@@ -400,34 +426,42 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Detailed description of the location",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the location",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the location's image",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the location",
               "type" => "`$STRING`",
             },
             {
               "name" => "region",
+              "short" => "Galactic region where the location is situated",
               "type" => "`$STRING`",
             },
             {
               "name" => "sector",
+              "short" => "Sector where the location is situated",
               "type" => "`$STRING`",
             },
             {
               "name" => "terrain",
+              "short" => "Terrain type of the location",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
@@ -519,34 +553,42 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "allegiance",
+              "short" => "Organization's allegiance",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Detailed description of the organization",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the organization",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the organization's image",
               "type" => "`$STRING`",
             },
             {
               "name" => "leader",
+              "short" => "Leader of the organization",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the organization",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Type of organization",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
@@ -638,38 +680,47 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "classification",
+              "short" => "Biological classification",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Detailed description of the species",
               "type" => "`$STRING`",
             },
             {
               "name" => "designation",
+              "short" => "Sentience designation",
               "type" => "`$STRING`",
             },
             {
               "name" => "homeworld",
+              "short" => "Homeworld of the species",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the species",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the species' image",
               "type" => "`$STRING`",
             },
             {
               "name" => "language",
+              "short" => "Language spoken by the species",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the species",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
@@ -761,46 +812,57 @@ module StarWarsDatabankConfig
           "fields" => [
             {
               "name" => "affiliation",
+              "short" => "Vehicle's affiliation",
               "type" => "`$STRING`",
             },
             {
               "name" => "armament",
+              "short" => "Vehicle armament",
               "type" => "`$STRING`",
             },
             {
               "name" => "class",
+              "short" => "Vehicle class or type",
               "type" => "`$STRING`",
             },
             {
               "name" => "crew",
+              "short" => "Crew capacity",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Detailed description of the vehicle",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the vehicle",
               "type" => "`$STRING`",
             },
             {
               "name" => "image",
+              "short" => "URL to the vehicle's image",
               "type" => "`$STRING`",
             },
             {
               "name" => "length",
+              "short" => "Length of the vehicle",
               "type" => "`$STRING`",
             },
             {
               "name" => "manufacturer",
+              "short" => "Vehicle manufacturer",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the vehicle",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
