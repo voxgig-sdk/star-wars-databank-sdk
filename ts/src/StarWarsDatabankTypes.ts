@@ -21,14 +21,8 @@ export interface CharacterLoadMatch {
 }
 
 export interface CharacterListMatch {
-  affiliation?: string
-  description?: string
-  homeworld?: string
-  id?: string
-  image?: string
-  name?: string
-  species?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 
 export interface Creature {
@@ -46,13 +40,8 @@ export interface CreatureLoadMatch {
 }
 
 export interface CreatureListMatch {
-  classification?: string
-  description?: string
-  habitat?: string
-  id?: string
-  image?: string
-  name?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 
 export interface Droid {
@@ -71,14 +60,8 @@ export interface DroidLoadMatch {
 }
 
 export interface DroidListMatch {
-  affiliation?: string
-  description?: string
-  id?: string
-  image?: string
-  manufacturer?: string
-  name?: string
-  type?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 
 export interface Location {
@@ -97,14 +80,8 @@ export interface LocationLoadMatch {
 }
 
 export interface LocationListMatch {
-  description?: string
-  id?: string
-  image?: string
-  name?: string
-  region?: string
-  sector?: string
-  terrain?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 
 export interface Organization {
@@ -123,14 +100,8 @@ export interface OrganizationLoadMatch {
 }
 
 export interface OrganizationListMatch {
-  allegiance?: string
-  description?: string
-  id?: string
-  image?: string
-  leader?: string
-  name?: string
-  type?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 
 export interface Species {
@@ -150,15 +121,8 @@ export interface SpeciesLoadMatch {
 }
 
 export interface SpeciesListMatch {
-  classification?: string
-  description?: string
-  designation?: string
-  homeworld?: string
-  id?: string
-  image?: string
-  language?: string
-  name?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 
 export interface Vehicle {
@@ -180,16 +144,7 @@ export interface VehicleLoadMatch {
 }
 
 export interface VehicleListMatch {
-  affiliation?: string
-  armament?: string
-  class?: string
-  crew?: string
-  description?: string
-  id?: string
-  image?: string
-  length?: string
-  manufacturer?: string
-  name?: string
-  url?: string
+  limit?: number
+  page?: number
 }
 

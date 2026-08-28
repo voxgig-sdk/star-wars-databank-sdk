@@ -34,14 +34,8 @@ class CharacterLoadMatch
 /** Request payload for Character#list. */
 class CharacterListMatch
 {
-    public ?string $affiliation = null;
-    public ?string $description = null;
-    public ?string $homeworld = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $name = null;
-    public ?string $species = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Creature entity data model. */
@@ -65,13 +59,8 @@ class CreatureLoadMatch
 /** Request payload for Creature#list. */
 class CreatureListMatch
 {
-    public ?string $classification = null;
-    public ?string $description = null;
-    public ?string $habitat = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $name = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Droid entity data model. */
@@ -96,14 +85,8 @@ class DroidLoadMatch
 /** Request payload for Droid#list. */
 class DroidListMatch
 {
-    public ?string $affiliation = null;
-    public ?string $description = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $manufacturer = null;
-    public ?string $name = null;
-    public ?string $type = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Location entity data model. */
@@ -128,14 +111,8 @@ class LocationLoadMatch
 /** Request payload for Location#list. */
 class LocationListMatch
 {
-    public ?string $description = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $name = null;
-    public ?string $region = null;
-    public ?string $sector = null;
-    public ?string $terrain = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Organization entity data model. */
@@ -160,14 +137,8 @@ class OrganizationLoadMatch
 /** Request payload for Organization#list. */
 class OrganizationListMatch
 {
-    public ?string $allegiance = null;
-    public ?string $description = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $leader = null;
-    public ?string $name = null;
-    public ?string $type = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Species entity data model. */
@@ -193,15 +164,8 @@ class SpeciesLoadMatch
 /** Request payload for Species#list. */
 class SpeciesListMatch
 {
-    public ?string $classification = null;
-    public ?string $description = null;
-    public ?string $designation = null;
-    public ?string $homeworld = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $language = null;
-    public ?string $name = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Vehicle entity data model. */
@@ -229,16 +193,7 @@ class VehicleLoadMatch
 /** Request payload for Vehicle#list. */
 class VehicleListMatch
 {
-    public ?string $affiliation = null;
-    public ?string $armament = null;
-    public ?string $class = null;
-    public ?string $crew = null;
-    public ?string $description = null;
-    public ?string $id = null;
-    public ?string $image = null;
-    public ?string $length = null;
-    public ?string $manufacturer = null;
-    public ?string $name = null;
-    public ?string $url = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 

@@ -31,14 +31,8 @@ type CharacterLoadMatch struct {
 
 // CharacterListMatch is the typed request payload for Character.ListTyped.
 type CharacterListMatch struct {
-	Affiliation *string `json:"affiliation,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Homeworld *string `json:"homeworld,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Species *string `json:"species,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Creature is the typed data model for the creature entity.
@@ -59,13 +53,8 @@ type CreatureLoadMatch struct {
 
 // CreatureListMatch is the typed request payload for Creature.ListTyped.
 type CreatureListMatch struct {
-	Classification *string `json:"classification,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Habitat *string `json:"habitat,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Droid is the typed data model for the droid entity.
@@ -87,14 +76,8 @@ type DroidLoadMatch struct {
 
 // DroidListMatch is the typed request payload for Droid.ListTyped.
 type DroidListMatch struct {
-	Affiliation *string `json:"affiliation,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Location is the typed data model for the location entity.
@@ -116,14 +99,8 @@ type LocationLoadMatch struct {
 
 // LocationListMatch is the typed request payload for Location.ListTyped.
 type LocationListMatch struct {
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Region *string `json:"region,omitempty"`
-	Sector *string `json:"sector,omitempty"`
-	Terrain *string `json:"terrain,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Organization is the typed data model for the organization entity.
@@ -145,14 +122,8 @@ type OrganizationLoadMatch struct {
 
 // OrganizationListMatch is the typed request payload for Organization.ListTyped.
 type OrganizationListMatch struct {
-	Allegiance *string `json:"allegiance,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Leader *string `json:"leader,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Species is the typed data model for the species entity.
@@ -175,15 +146,8 @@ type SpeciesLoadMatch struct {
 
 // SpeciesListMatch is the typed request payload for Species.ListTyped.
 type SpeciesListMatch struct {
-	Classification *string `json:"classification,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Designation *string `json:"designation,omitempty"`
-	Homeworld *string `json:"homeworld,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Language *string `json:"language,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Vehicle is the typed data model for the vehicle entity.
@@ -208,17 +172,8 @@ type VehicleLoadMatch struct {
 
 // VehicleListMatch is the typed request payload for Vehicle.ListTyped.
 type VehicleListMatch struct {
-	Affiliation *string `json:"affiliation,omitempty"`
-	Armament *string `json:"armament,omitempty"`
-	Class *string `json:"class,omitempty"`
-	Crew *string `json:"crew,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Length *string `json:"length,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

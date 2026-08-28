@@ -56,38 +56,14 @@ CharacterLoadMatch = Struct.new(
 
 # Request payload for Character#list.
 #
-# @!attribute [rw] affiliation
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] homeworld
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] species
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 CharacterListMatch = Struct.new(
-  :affiliation,
-  :description,
-  :homeworld,
-  :id,
-  :image,
-  :name,
-  :species,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -135,34 +111,14 @@ CreatureLoadMatch = Struct.new(
 
 # Request payload for Creature#list.
 #
-# @!attribute [rw] classification
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] habitat
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 CreatureListMatch = Struct.new(
-  :classification,
-  :description,
-  :habitat,
-  :id,
-  :image,
-  :name,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -214,38 +170,14 @@ DroidLoadMatch = Struct.new(
 
 # Request payload for Droid#list.
 #
-# @!attribute [rw] affiliation
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] manufacturer
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] type
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 DroidListMatch = Struct.new(
-  :affiliation,
-  :description,
-  :id,
-  :image,
-  :manufacturer,
-  :name,
-  :type,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -297,38 +229,14 @@ LocationLoadMatch = Struct.new(
 
 # Request payload for Location#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] region
-#   @return [String, nil]
-#
-# @!attribute [rw] sector
-#   @return [String, nil]
-#
-# @!attribute [rw] terrain
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 LocationListMatch = Struct.new(
-  :description,
-  :id,
-  :image,
-  :name,
-  :region,
-  :sector,
-  :terrain,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -380,38 +288,14 @@ OrganizationLoadMatch = Struct.new(
 
 # Request payload for Organization#list.
 #
-# @!attribute [rw] allegiance
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] leader
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] type
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 OrganizationListMatch = Struct.new(
-  :allegiance,
-  :description,
-  :id,
-  :image,
-  :leader,
-  :name,
-  :type,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -467,42 +351,14 @@ SpeciesLoadMatch = Struct.new(
 
 # Request payload for Species#list.
 #
-# @!attribute [rw] classification
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] designation
-#   @return [String, nil]
-#
-# @!attribute [rw] homeworld
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] language
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 SpeciesListMatch = Struct.new(
-  :classification,
-  :description,
-  :designation,
-  :homeworld,
-  :id,
-  :image,
-  :language,
-  :name,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -566,50 +422,14 @@ VehicleLoadMatch = Struct.new(
 
 # Request payload for Vehicle#list.
 #
-# @!attribute [rw] affiliation
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] armament
-#   @return [String, nil]
-#
-# @!attribute [rw] class
-#   @return [String, nil]
-#
-# @!attribute [rw] crew
-#   @return [String, nil]
-#
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] length
-#   @return [String, nil]
-#
-# @!attribute [rw] manufacturer
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 VehicleListMatch = Struct.new(
-  :affiliation,
-  :armament,
-  :class,
-  :crew,
-  :description,
-  :id,
-  :image,
-  :length,
-  :manufacturer,
-  :name,
-  :url,
+  :limit,
+  :page,
   keyword_init: true
 )
 

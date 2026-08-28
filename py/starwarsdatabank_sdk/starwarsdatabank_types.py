@@ -32,14 +32,8 @@ class CharacterLoadMatch(TypedDict):
 
 
 class CharacterListMatch(TypedDict, total=False):
-    affiliation: str
-    description: str
-    homeworld: str
-    id: str
-    image: str
-    name: str
-    species: str
-    url: str
+    limit: int
+    page: int
 
 
 class Creature(TypedDict, total=False):
@@ -57,13 +51,8 @@ class CreatureLoadMatch(TypedDict):
 
 
 class CreatureListMatch(TypedDict, total=False):
-    classification: str
-    description: str
-    habitat: str
-    id: str
-    image: str
-    name: str
-    url: str
+    limit: int
+    page: int
 
 
 class Droid(TypedDict, total=False):
@@ -82,14 +71,8 @@ class DroidLoadMatch(TypedDict):
 
 
 class DroidListMatch(TypedDict, total=False):
-    affiliation: str
-    description: str
-    id: str
-    image: str
-    manufacturer: str
-    name: str
-    type: str
-    url: str
+    limit: int
+    page: int
 
 
 class Location(TypedDict, total=False):
@@ -108,14 +91,8 @@ class LocationLoadMatch(TypedDict):
 
 
 class LocationListMatch(TypedDict, total=False):
-    description: str
-    id: str
-    image: str
-    name: str
-    region: str
-    sector: str
-    terrain: str
-    url: str
+    limit: int
+    page: int
 
 
 class Organization(TypedDict, total=False):
@@ -134,14 +111,8 @@ class OrganizationLoadMatch(TypedDict):
 
 
 class OrganizationListMatch(TypedDict, total=False):
-    allegiance: str
-    description: str
-    id: str
-    image: str
-    leader: str
-    name: str
-    type: str
-    url: str
+    limit: int
+    page: int
 
 
 class Species(TypedDict, total=False):
@@ -161,15 +132,8 @@ class SpeciesLoadMatch(TypedDict):
 
 
 class SpeciesListMatch(TypedDict, total=False):
-    classification: str
-    description: str
-    designation: str
-    homeworld: str
-    id: str
-    image: str
-    language: str
-    name: str
-    url: str
+    limit: int
+    page: int
 
 
 class Vehicle(TypedDict, total=False):
@@ -190,13 +154,5 @@ class VehicleLoadMatch(TypedDict):
 
 
 class VehicleListMatch(TypedDict, total=False):
-    affiliation: str
-    armament: str
-    crew: str
-    description: str
-    id: str
-    image: str
-    length: str
-    manufacturer: str
-    name: str
-    url: str
+    limit: int
+    page: int
