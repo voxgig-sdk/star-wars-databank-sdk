@@ -70,6 +70,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the character's image",
               "type" => "`$STRING`",
@@ -85,11 +86,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "character",
           "op" => {
             "list" => {
@@ -118,8 +124,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters",
-                  "parts" => [
-                    "characters",
+                  "segments" => [
+                    {
+                      "lit" => "characters",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -131,6 +139,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "characters",
+                  ],
                 },
               ],
             },
@@ -153,9 +164,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters/{id}",
-                  "parts" => [
-                    "characters",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "characters",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -166,6 +181,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "characters",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -197,6 +216,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the creature's image",
               "type" => "`$STRING`",
@@ -207,11 +227,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "creature",
           "op" => {
             "list" => {
@@ -240,8 +265,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/creatures",
-                  "parts" => [
-                    "creatures",
+                  "segments" => [
+                    {
+                      "lit" => "creatures",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -253,6 +280,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "creatures",
+                  ],
                 },
               ],
             },
@@ -275,9 +305,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/creatures/{id}",
-                  "parts" => [
-                    "creatures",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "creatures",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -288,6 +322,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "creatures",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -314,6 +352,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the droid's image",
               "type" => "`$STRING`",
@@ -334,11 +373,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "droid",
           "op" => {
             "list" => {
@@ -367,8 +411,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/droids",
-                  "parts" => [
-                    "droids",
+                  "segments" => [
+                    {
+                      "lit" => "droids",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -380,6 +426,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "droids",
+                  ],
                 },
               ],
             },
@@ -402,9 +451,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/droids/{id}",
-                  "parts" => [
-                    "droids",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "droids",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -415,6 +468,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "droids",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -436,6 +493,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the location's image",
               "type" => "`$STRING`",
@@ -461,11 +519,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "location",
           "op" => {
             "list" => {
@@ -494,8 +557,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations",
-                  "parts" => [
-                    "locations",
+                  "segments" => [
+                    {
+                      "lit" => "locations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -507,6 +572,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "locations",
+                  ],
                 },
               ],
             },
@@ -529,9 +597,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations/{id}",
-                  "parts" => [
-                    "locations",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "locations",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -542,6 +614,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "locations",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -568,6 +644,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the organization's image",
               "type" => "`$STRING`",
@@ -588,11 +665,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "organization",
           "op" => {
             "list" => {
@@ -621,8 +703,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/organizations",
-                  "parts" => [
-                    "organizations",
+                  "segments" => [
+                    {
+                      "lit" => "organizations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -634,6 +718,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "organizations",
+                  ],
                 },
               ],
             },
@@ -656,9 +743,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/organizations/{id}",
-                  "parts" => [
-                    "organizations",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "organizations",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -669,6 +760,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "organizations",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -705,6 +800,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the species' image",
               "type" => "`$STRING`",
@@ -720,11 +816,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "species",
           "op" => {
             "list" => {
@@ -753,8 +854,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/species",
-                  "parts" => [
-                    "species",
+                  "segments" => [
+                    {
+                      "lit" => "species",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -766,6 +869,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "species",
+                  ],
                 },
               ],
             },
@@ -788,9 +894,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/species/{id}",
-                  "parts" => [
-                    "species",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "species",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -801,6 +911,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "species",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -842,6 +956,7 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the vehicle's image",
               "type" => "`$STRING`",
@@ -862,11 +977,16 @@ module StarWarsDatabankConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "URL to the official Star Wars Databank entry",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "vehicle",
           "op" => {
             "list" => {
@@ -895,8 +1015,10 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vehicles",
-                  "parts" => [
-                    "vehicles",
+                  "segments" => [
+                    {
+                      "lit" => "vehicles",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -908,6 +1030,9 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "vehicles",
+                  ],
                 },
               ],
             },
@@ -930,9 +1055,13 @@ module StarWarsDatabankConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vehicles/{id}",
-                  "parts" => [
-                    "vehicles",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "vehicles",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -943,6 +1072,10 @@ module StarWarsDatabankConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "vehicles",
+                    "{id}",
+                  ],
                 },
               ],
             },

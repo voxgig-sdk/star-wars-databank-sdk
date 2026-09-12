@@ -30,6 +30,7 @@ main: kit: entity: character: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the character's image"
@@ -48,6 +49,7 @@ main: kit: entity: character: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "URL to the official Star Wars Databank entry"
@@ -88,8 +90,10 @@ main: kit: entity: character: {
           }
           method: "GET"
           orig: "/characters"
-          parts: [
-            "characters"
+          segments: [
+            {
+              lit: "characters"
+            }
           ]
           select: {
             exist: [
@@ -121,9 +125,13 @@ main: kit: entity: character: {
           }
           method: "GET"
           orig: "/characters/{id}"
-          parts: [
-            "characters"
-            "{id}"
+          segments: [
+            {
+              lit: "characters"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

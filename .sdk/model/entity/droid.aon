@@ -24,6 +24,7 @@ main: kit: entity: droid: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the droid's image"
@@ -48,6 +49,7 @@ main: kit: entity: droid: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "URL to the official Star Wars Databank entry"
@@ -88,8 +90,10 @@ main: kit: entity: droid: {
           }
           method: "GET"
           orig: "/droids"
-          parts: [
-            "droids"
+          segments: [
+            {
+              lit: "droids"
+            }
           ]
           select: {
             exist: [
@@ -121,9 +125,13 @@ main: kit: entity: droid: {
           }
           method: "GET"
           orig: "/droids/{id}"
-          parts: [
-            "droids"
-            "{id}"
+          segments: [
+            {
+              lit: "droids"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

@@ -24,6 +24,7 @@ main: kit: entity: organization: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the organization's image"
@@ -48,6 +49,7 @@ main: kit: entity: organization: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "URL to the official Star Wars Databank entry"
@@ -88,8 +90,10 @@ main: kit: entity: organization: {
           }
           method: "GET"
           orig: "/organizations"
-          parts: [
-            "organizations"
+          segments: [
+            {
+              lit: "organizations"
+            }
           ]
           select: {
             exist: [
@@ -121,9 +125,13 @@ main: kit: entity: organization: {
           }
           method: "GET"
           orig: "/organizations/{id}"
-          parts: [
-            "organizations"
-            "{id}"
+          segments: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

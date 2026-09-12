@@ -18,6 +18,7 @@ main: kit: entity: location: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the location's image"
@@ -48,6 +49,7 @@ main: kit: entity: location: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "URL to the official Star Wars Databank entry"
@@ -88,8 +90,10 @@ main: kit: entity: location: {
           }
           method: "GET"
           orig: "/locations"
-          parts: [
-            "locations"
+          segments: [
+            {
+              lit: "locations"
+            }
           ]
           select: {
             exist: [
@@ -121,9 +125,13 @@ main: kit: entity: location: {
           }
           method: "GET"
           orig: "/locations/{id}"
-          parts: [
-            "locations"
-            "{id}"
+          segments: [
+            {
+              lit: "locations"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

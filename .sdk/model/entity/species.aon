@@ -36,6 +36,7 @@ main: kit: entity: species: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the species' image"
@@ -54,6 +55,7 @@ main: kit: entity: species: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "URL to the official Star Wars Databank entry"
@@ -94,8 +96,10 @@ main: kit: entity: species: {
           }
           method: "GET"
           orig: "/species"
-          parts: [
-            "species"
+          segments: [
+            {
+              lit: "species"
+            }
           ]
           select: {
             exist: [
@@ -127,9 +131,13 @@ main: kit: entity: species: {
           }
           method: "GET"
           orig: "/species/{id}"
-          parts: [
-            "species"
-            "{id}"
+          segments: [
+            {
+              lit: "species"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

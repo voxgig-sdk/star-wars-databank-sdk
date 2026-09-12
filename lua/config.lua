@@ -58,6 +58,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the character's image",
             ["type"] = "`$STRING`",
@@ -73,10 +74,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "character",
         ["op"] = {
@@ -106,8 +112,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/characters",
-                ["parts"] = {
-                  "characters",
+                ["segments"] = {
+                  {
+                    ["lit"] = "characters",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -118,6 +126,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "characters",
                 },
               },
             },
@@ -141,9 +152,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/characters/{id}",
-                ["parts"] = {
-                  "characters",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "characters",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -153,6 +168,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "characters",
+                  "{id}",
                 },
               },
             },
@@ -185,6 +204,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the creature's image",
             ["type"] = "`$STRING`",
@@ -195,10 +215,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "creature",
         ["op"] = {
@@ -228,8 +253,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/creatures",
-                ["parts"] = {
-                  "creatures",
+                ["segments"] = {
+                  {
+                    ["lit"] = "creatures",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -240,6 +267,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "creatures",
                 },
               },
             },
@@ -263,9 +293,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/creatures/{id}",
-                ["parts"] = {
-                  "creatures",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "creatures",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -275,6 +309,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "creatures",
+                  "{id}",
                 },
               },
             },
@@ -302,6 +340,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the droid's image",
             ["type"] = "`$STRING`",
@@ -322,10 +361,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "droid",
         ["op"] = {
@@ -355,8 +399,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/droids",
-                ["parts"] = {
-                  "droids",
+                ["segments"] = {
+                  {
+                    ["lit"] = "droids",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -367,6 +413,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "droids",
                 },
               },
             },
@@ -390,9 +439,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/droids/{id}",
-                ["parts"] = {
-                  "droids",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "droids",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -402,6 +455,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "droids",
+                  "{id}",
                 },
               },
             },
@@ -424,6 +481,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the location's image",
             ["type"] = "`$STRING`",
@@ -449,10 +507,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "location",
         ["op"] = {
@@ -482,8 +545,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations",
-                ["parts"] = {
-                  "locations",
+                ["segments"] = {
+                  {
+                    ["lit"] = "locations",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -494,6 +559,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "locations",
                 },
               },
             },
@@ -517,9 +585,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations/{id}",
-                ["parts"] = {
-                  "locations",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "locations",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -529,6 +601,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "locations",
+                  "{id}",
                 },
               },
             },
@@ -556,6 +632,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the organization's image",
             ["type"] = "`$STRING`",
@@ -576,10 +653,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "organization",
         ["op"] = {
@@ -609,8 +691,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/organizations",
-                ["parts"] = {
-                  "organizations",
+                ["segments"] = {
+                  {
+                    ["lit"] = "organizations",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -621,6 +705,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "organizations",
                 },
               },
             },
@@ -644,9 +731,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/organizations/{id}",
-                ["parts"] = {
-                  "organizations",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "organizations",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -656,6 +747,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "organizations",
+                  "{id}",
                 },
               },
             },
@@ -693,6 +788,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the species' image",
             ["type"] = "`$STRING`",
@@ -708,10 +804,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "species",
         ["op"] = {
@@ -741,8 +842,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/species",
-                ["parts"] = {
-                  "species",
+                ["segments"] = {
+                  {
+                    ["lit"] = "species",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -753,6 +856,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "species",
                 },
               },
             },
@@ -776,9 +882,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/species/{id}",
-                ["parts"] = {
-                  "species",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "species",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -788,6 +898,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "species",
+                  "{id}",
                 },
               },
             },
@@ -830,6 +944,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the vehicle's image",
             ["type"] = "`$STRING`",
@@ -850,10 +965,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "URL to the official Star Wars Databank entry",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "vehicle",
         ["op"] = {
@@ -883,8 +1003,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/vehicles",
-                ["parts"] = {
-                  "vehicles",
+                ["segments"] = {
+                  {
+                    ["lit"] = "vehicles",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -895,6 +1017,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "vehicles",
                 },
               },
             },
@@ -918,9 +1043,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/vehicles/{id}",
-                ["parts"] = {
-                  "vehicles",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "vehicles",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -930,6 +1059,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "vehicles",
+                  "{id}",
                 },
               },
             },

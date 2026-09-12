@@ -1,6 +1,14 @@
 # StarWarsDatabank SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -79,6 +87,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the character's image",
             "type": "`$STRING`",
@@ -94,11 +103,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "character",
         "op": {
           "list": {
@@ -127,8 +141,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/characters",
-                "parts": [
-                  "characters",
+                "segments": [
+                  {
+                    "lit": "characters",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -140,6 +156,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "characters",
+                ],
               },
             ],
           },
@@ -162,9 +181,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/characters/{id}",
-                "parts": [
-                  "characters",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "characters",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -175,6 +198,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "characters",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -206,6 +233,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the creature's image",
             "type": "`$STRING`",
@@ -216,11 +244,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "creature",
         "op": {
           "list": {
@@ -249,8 +282,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/creatures",
-                "parts": [
-                  "creatures",
+                "segments": [
+                  {
+                    "lit": "creatures",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -262,6 +297,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "creatures",
+                ],
               },
             ],
           },
@@ -284,9 +322,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/creatures/{id}",
-                "parts": [
-                  "creatures",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "creatures",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -297,6 +339,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "creatures",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -323,6 +369,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the droid's image",
             "type": "`$STRING`",
@@ -343,11 +390,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "droid",
         "op": {
           "list": {
@@ -376,8 +428,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/droids",
-                "parts": [
-                  "droids",
+                "segments": [
+                  {
+                    "lit": "droids",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -389,6 +443,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "droids",
+                ],
               },
             ],
           },
@@ -411,9 +468,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/droids/{id}",
-                "parts": [
-                  "droids",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "droids",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -424,6 +485,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "droids",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -445,6 +510,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the location's image",
             "type": "`$STRING`",
@@ -470,11 +536,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "location",
         "op": {
           "list": {
@@ -503,8 +574,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/locations",
-                "parts": [
-                  "locations",
+                "segments": [
+                  {
+                    "lit": "locations",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -516,6 +589,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "locations",
+                ],
               },
             ],
           },
@@ -538,9 +614,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/locations/{id}",
-                "parts": [
-                  "locations",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "locations",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -551,6 +631,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "locations",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -577,6 +661,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the organization's image",
             "type": "`$STRING`",
@@ -597,11 +682,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "organization",
         "op": {
           "list": {
@@ -630,8 +720,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/organizations",
-                "parts": [
-                  "organizations",
+                "segments": [
+                  {
+                    "lit": "organizations",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -643,6 +735,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "organizations",
+                ],
               },
             ],
           },
@@ -665,9 +760,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/organizations/{id}",
-                "parts": [
-                  "organizations",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "organizations",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -678,6 +777,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "organizations",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -714,6 +817,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the species' image",
             "type": "`$STRING`",
@@ -729,11 +833,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "species",
         "op": {
           "list": {
@@ -762,8 +871,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/species",
-                "parts": [
-                  "species",
+                "segments": [
+                  {
+                    "lit": "species",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -775,6 +886,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "species",
+                ],
               },
             ],
           },
@@ -797,9 +911,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/species/{id}",
-                "parts": [
-                  "species",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "species",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -810,6 +928,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "species",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -851,6 +973,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the vehicle's image",
             "type": "`$STRING`",
@@ -871,11 +994,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "URL to the official Star Wars Databank entry",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "vehicle",
         "op": {
           "list": {
@@ -904,8 +1032,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vehicles",
-                "parts": [
-                  "vehicles",
+                "segments": [
+                  {
+                    "lit": "vehicles",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -917,6 +1047,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "vehicles",
+                ],
               },
             ],
           },
@@ -939,9 +1072,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vehicles/{id}",
-                "parts": [
-                  "vehicles",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "vehicles",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -952,6 +1089,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "vehicles",
+                  "{id}",
+                ],
               },
             ],
           },

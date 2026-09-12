@@ -62,6 +62,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the character's image",
 						"type": "`$STRING`",
@@ -77,10 +78,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "character",
 				"op": map[string]any{
@@ -110,8 +116,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/characters",
-								"parts": []any{
-									"characters",
+								"segments": []any{
+									map[string]any{
+										"lit": "characters",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -122,6 +130,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"characters",
 								},
 							},
 						},
@@ -145,9 +156,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/characters/{id}",
-								"parts": []any{
-									"characters",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "characters",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -157,6 +172,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"characters",
+									"{id}",
 								},
 							},
 						},
@@ -189,6 +208,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the creature's image",
 						"type": "`$STRING`",
@@ -199,10 +219,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "creature",
 				"op": map[string]any{
@@ -232,8 +257,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/creatures",
-								"parts": []any{
-									"creatures",
+								"segments": []any{
+									map[string]any{
+										"lit": "creatures",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -244,6 +271,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"creatures",
 								},
 							},
 						},
@@ -267,9 +297,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/creatures/{id}",
-								"parts": []any{
-									"creatures",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "creatures",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -279,6 +313,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"creatures",
+									"{id}",
 								},
 							},
 						},
@@ -306,6 +344,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the droid's image",
 						"type": "`$STRING`",
@@ -326,10 +365,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "droid",
 				"op": map[string]any{
@@ -359,8 +403,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/droids",
-								"parts": []any{
-									"droids",
+								"segments": []any{
+									map[string]any{
+										"lit": "droids",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -371,6 +417,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"droids",
 								},
 							},
 						},
@@ -394,9 +443,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/droids/{id}",
-								"parts": []any{
-									"droids",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "droids",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -406,6 +459,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"droids",
+									"{id}",
 								},
 							},
 						},
@@ -428,6 +485,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the location's image",
 						"type": "`$STRING`",
@@ -453,10 +511,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "location",
 				"op": map[string]any{
@@ -486,8 +549,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/locations",
-								"parts": []any{
-									"locations",
+								"segments": []any{
+									map[string]any{
+										"lit": "locations",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -498,6 +563,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"locations",
 								},
 							},
 						},
@@ -521,9 +589,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/locations/{id}",
-								"parts": []any{
-									"locations",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "locations",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -533,6 +605,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"locations",
+									"{id}",
 								},
 							},
 						},
@@ -560,6 +636,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the organization's image",
 						"type": "`$STRING`",
@@ -580,10 +657,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "organization",
 				"op": map[string]any{
@@ -613,8 +695,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/organizations",
-								"parts": []any{
-									"organizations",
+								"segments": []any{
+									map[string]any{
+										"lit": "organizations",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -625,6 +709,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"organizations",
 								},
 							},
 						},
@@ -648,9 +735,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/organizations/{id}",
-								"parts": []any{
-									"organizations",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "organizations",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -660,6 +751,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"organizations",
+									"{id}",
 								},
 							},
 						},
@@ -697,6 +792,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the species' image",
 						"type": "`$STRING`",
@@ -712,10 +808,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "species",
 				"op": map[string]any{
@@ -745,8 +846,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/species",
-								"parts": []any{
-									"species",
+								"segments": []any{
+									map[string]any{
+										"lit": "species",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -757,6 +860,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"species",
 								},
 							},
 						},
@@ -780,9 +886,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/species/{id}",
-								"parts": []any{
-									"species",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "species",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -792,6 +902,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"species",
+									"{id}",
 								},
 							},
 						},
@@ -834,6 +948,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the vehicle's image",
 						"type": "`$STRING`",
@@ -854,10 +969,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "URL to the official Star Wars Databank entry",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "vehicle",
 				"op": map[string]any{
@@ -887,8 +1007,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/vehicles",
-								"parts": []any{
-									"vehicles",
+								"segments": []any{
+									map[string]any{
+										"lit": "vehicles",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -899,6 +1021,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"vehicles",
 								},
 							},
 						},
@@ -922,9 +1047,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/vehicles/{id}",
-								"parts": []any{
-									"vehicles",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "vehicles",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -934,6 +1063,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"vehicles",
+									"{id}",
 								},
 							},
 						},
@@ -945,6 +1078,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (
