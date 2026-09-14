@@ -105,7 +105,7 @@ local results, err = client:Location():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
+| TypeScript | `@voxgig-sdk/star-wars-databank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
 | Python | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
 | PHP | `voxgig-sdk/star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/star-wars-databank-sdk/go` | `go get github.com/voxgig-sdk/star-wars-databank-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Location():list()
 ### TypeScript
 
 ```ts
-import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank'
+import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank-sdk'
 
 const client = new StarWarsDatabankSDK()
 

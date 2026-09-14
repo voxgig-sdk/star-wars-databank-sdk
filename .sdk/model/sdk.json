@@ -2227,7 +2227,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@voxgig-sdk/star-wars-databank-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {

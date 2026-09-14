@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank'
+import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank-sdk'
 
 const client = new StarWarsDatabankSDK()
 ```
@@ -775,7 +775,7 @@ star-wars-databank/
 Import the SDK from the package root:
 
 ```ts
-import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank'
+import { StarWarsDatabankSDK } from '@voxgig-sdk/star-wars-databank-sdk'
 ```
 
 ### Entity state
