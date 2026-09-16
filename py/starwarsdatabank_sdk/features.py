@@ -1,12 +1,18 @@
 # StarWarsDatabank SDK feature factory
 
 from starwarsdatabank_sdk.feature.base_feature import StarWarsDatabankBaseFeature
+from starwarsdatabank_sdk.feature.ratelimit_feature import StarWarsDatabankRatelimitFeature
+from starwarsdatabank_sdk.feature.retry_feature import StarWarsDatabankRetryFeature
 from starwarsdatabank_sdk.feature.test_feature import StarWarsDatabankTestFeature
+from starwarsdatabank_sdk.feature.timeout_feature import StarWarsDatabankTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: StarWarsDatabankBaseFeature(),
+    "ratelimit": lambda: StarWarsDatabankRatelimitFeature(),
+    "retry": lambda: StarWarsDatabankRetryFeature(),
     "test": lambda: StarWarsDatabankTestFeature(),
+    "timeout": lambda: StarWarsDatabankTimeoutFeature(),
 }
 
 

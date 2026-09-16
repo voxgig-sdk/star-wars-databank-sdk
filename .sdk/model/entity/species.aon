@@ -94,6 +94,12 @@ main: kit: entity: species: {
               }
             ]
           }
+          contract: {
+            id: "GET /species"
+            json: "{\"operationId\":\"getAllSpecies\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"properties\":{\"_id\":{\"description\":\"Unique identifier for the species\",\"type\":\"string\"},\"classification\":{\"description\":\"Biological classification\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the species\",\"type\":\"string\"},\"designation\":{\"description\":\"Sentience designation\",\"type\":\"string\"},\"homeworld\":{\"description\":\"Homeworld of the species\",\"type\":\"string\"},\"image\":{\"description\":\"URL to the species' image\",\"format\":\"uri\",\"type\":\"string\"},\"language\":{\"description\":\"Language spoken by the species\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the species\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the official Star Wars Databank entry\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"info\":{\"properties\":{\"count\":{\"description\":\"Total number of items available\",\"type\":\"integer\"},\"next\":{\"description\":\"URL to the next page of results\",\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"pages\":{\"description\":\"Total number of pages\",\"type\":\"integer\"},\"prev\":{\"description\":\"URL to the previous page of results\",\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of species\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/species"
           segments: [
@@ -128,6 +134,12 @@ main: kit: entity: species: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /species/{id}"
+            json: "{\"operationId\":\"getSpeciesById\",\"parameters\":[{\"description\":\"Species ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"_id\":{\"description\":\"Unique identifier for the species\",\"type\":\"string\"},\"classification\":{\"description\":\"Biological classification\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the species\",\"type\":\"string\"},\"designation\":{\"description\":\"Sentience designation\",\"type\":\"string\"},\"homeworld\":{\"description\":\"Homeworld of the species\",\"type\":\"string\"},\"image\":{\"description\":\"URL to the species' image\",\"format\":\"uri\",\"type\":\"string\"},\"language\":{\"description\":\"Language spoken by the species\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the species\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the official Star Wars Databank entry\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with species details\"},\"404\":{\"description\":\"Species not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/species/{id}"

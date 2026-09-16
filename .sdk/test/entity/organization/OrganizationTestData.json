@@ -45,5 +45,191 @@
         "url": "s147"
       }
     }
+  },
+  "requests": {
+    "GET /organizations": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllOrganizations",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items per page",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "_id": {
+                            "description": "Unique identifier for the organization",
+                            "type": "string"
+                          },
+                          "allegiance": {
+                            "description": "Organization's allegiance",
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "Detailed description of the organization",
+                            "type": "string"
+                          },
+                          "image": {
+                            "description": "URL to the organization's image",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "leader": {
+                            "description": "Leader of the organization",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the organization",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "Type of organization",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "URL to the official Star Wars Databank entry",
+                            "format": "uri",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "info": {
+                      "properties": {
+                        "count": {
+                          "description": "Total number of items available",
+                          "type": "integer"
+                        },
+                        "next": {
+                          "description": "URL to the next page of results",
+                          "format": "uri",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "pages": {
+                          "description": "Total number of pages",
+                          "type": "integer"
+                        },
+                        "prev": {
+                          "description": "URL to the previous page of results",
+                          "format": "uri",
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with list of organizations"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /organizations/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOrganizationById",
+        "parameters": [
+          {
+            "description": "Organization ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "_id": {
+                      "description": "Unique identifier for the organization",
+                      "type": "string"
+                    },
+                    "allegiance": {
+                      "description": "Organization's allegiance",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Detailed description of the organization",
+                      "type": "string"
+                    },
+                    "image": {
+                      "description": "URL to the organization's image",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "leader": {
+                      "description": "Leader of the organization",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the organization",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Type of organization",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "URL to the official Star Wars Databank entry",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with organization details"
+          },
+          "404": {
+            "description": "Organization not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

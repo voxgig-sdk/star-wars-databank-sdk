@@ -41,5 +41,183 @@
         "url": "s11e"
       }
     }
+  },
+  "requests": {
+    "GET /creatures": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllCreatures",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items per page",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "_id": {
+                            "description": "Unique identifier for the creature",
+                            "type": "string"
+                          },
+                          "classification": {
+                            "description": "Creature's classification",
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "Detailed description of the creature",
+                            "type": "string"
+                          },
+                          "habitat": {
+                            "description": "Creature's natural habitat",
+                            "type": "string"
+                          },
+                          "image": {
+                            "description": "URL to the creature's image",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the creature",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "URL to the official Star Wars Databank entry",
+                            "format": "uri",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "info": {
+                      "properties": {
+                        "count": {
+                          "description": "Total number of items available",
+                          "type": "integer"
+                        },
+                        "next": {
+                          "description": "URL to the next page of results",
+                          "format": "uri",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "pages": {
+                          "description": "Total number of pages",
+                          "type": "integer"
+                        },
+                        "prev": {
+                          "description": "URL to the previous page of results",
+                          "format": "uri",
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with list of creatures"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /creatures/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCreatureById",
+        "parameters": [
+          {
+            "description": "Creature ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "_id": {
+                      "description": "Unique identifier for the creature",
+                      "type": "string"
+                    },
+                    "classification": {
+                      "description": "Creature's classification",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Detailed description of the creature",
+                      "type": "string"
+                    },
+                    "habitat": {
+                      "description": "Creature's natural habitat",
+                      "type": "string"
+                    },
+                    "image": {
+                      "description": "URL to the creature's image",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the creature",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "URL to the official Star Wars Databank entry",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with creature details"
+          },
+          "404": {
+            "description": "Creature not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
