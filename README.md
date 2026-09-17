@@ -105,12 +105,12 @@ local results, err = client:Location():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/star-wars-databank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
-| Python | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
-| PHP | `voxgig-sdk/star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
+| TypeScript | `@voxgig-sdk/star-wars-databank-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/tags) |
+| Python | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/tags) |
+| PHP | `voxgig-sdk/star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/star-wars-databank-sdk/go` | `go get github.com/voxgig-sdk/star-wars-databank-sdk/go@latest` |
-| Ruby | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
-| Lua | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/releases) |
+| Ruby | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/tags) |
+| Lua | `voxgig-sdk-star-wars-databank` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-databank-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/star-wars-databank-sdk/go-cli` | `go install github.com/voxgig-sdk/star-wars-databank-sdk/go-cli/cmd/star-wars-databank@latest` |
 | Go MCP server | `github.com/voxgig-sdk/star-wars-databank-sdk/go-mcp` | `go get github.com/voxgig-sdk/star-wars-databank-sdk/go-mcp@latest` |
 

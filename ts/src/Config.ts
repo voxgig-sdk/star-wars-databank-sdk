@@ -127,27 +127,27 @@ class Config {
 
     entity: {
       
-      character: {
-      },
-
-      creature: {
-      },
-
-      droid: {
-      },
-
-      location: {
-      },
-
-      organization: {
-      },
-
-      species: {
-      },
-
-      vehicle: {
-      },
-
+        character: {
+        },
+  
+        creature: {
+        },
+  
+        droid: {
+        },
+  
+        location: {
+        },
+  
+        organization: {
+        },
+  
+        species: {
+        },
+  
+        vehicle: {
+        },
+  
     }
   }
 
