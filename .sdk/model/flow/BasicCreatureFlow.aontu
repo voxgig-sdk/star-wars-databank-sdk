@@ -1,0 +1,44 @@
+# BasicCreatureFlow
+
+main: kit: flow: BasicCreatureFlow:
+{
+  entity: "creature",
+  kind: "basic",
+  name: "BasicCreatureFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "creature_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "creature_ref01",
+        srcdatavar: "creature_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "creature01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-creature_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCreatureFlow"
+}

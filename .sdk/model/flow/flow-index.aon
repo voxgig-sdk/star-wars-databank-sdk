@@ -1,9 +1,0 @@
-# Flows
-
-@"./BasicCharacterFlow.aon"
-@"./BasicCreatureFlow.aon"
-@"./BasicDroidFlow.aon"
-@"./BasicLocationFlow.aon"
-@"./BasicOrganizationFlow.aon"
-@"./BasicSpeciesFlow.aon"
-@"./BasicVehicleFlow.aon"

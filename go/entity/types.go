@@ -1,7 +1,7 @@
 // Typed models for the StarWarsDatabank SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,14 +14,6 @@ import (
 
 // Character is the typed data model for the character entity.
 type Character struct {
-	Affiliation *string `json:"affiliation,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Homeworld *string `json:"homeworld,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Species *string `json:"species,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // CharacterLoadMatch is the typed request payload for Character.LoadTyped.
@@ -37,13 +29,6 @@ type CharacterListMatch struct {
 
 // Creature is the typed data model for the creature entity.
 type Creature struct {
-	Classification *string `json:"classification,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Habitat *string `json:"habitat,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // CreatureLoadMatch is the typed request payload for Creature.LoadTyped.
@@ -59,14 +44,6 @@ type CreatureListMatch struct {
 
 // Droid is the typed data model for the droid entity.
 type Droid struct {
-	Affiliation *string `json:"affiliation,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // DroidLoadMatch is the typed request payload for Droid.LoadTyped.
@@ -82,14 +59,6 @@ type DroidListMatch struct {
 
 // Location is the typed data model for the location entity.
 type Location struct {
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Region *string `json:"region,omitempty"`
-	Sector *string `json:"sector,omitempty"`
-	Terrain *string `json:"terrain,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // LocationLoadMatch is the typed request payload for Location.LoadTyped.
@@ -105,14 +74,6 @@ type LocationListMatch struct {
 
 // Organization is the typed data model for the organization entity.
 type Organization struct {
-	Allegiance *string `json:"allegiance,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Leader *string `json:"leader,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // OrganizationLoadMatch is the typed request payload for Organization.LoadTyped.
@@ -128,15 +89,6 @@ type OrganizationListMatch struct {
 
 // Species is the typed data model for the species entity.
 type Species struct {
-	Classification *string `json:"classification,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Designation *string `json:"designation,omitempty"`
-	Homeworld *string `json:"homeworld,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Language *string `json:"language,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // SpeciesLoadMatch is the typed request payload for Species.LoadTyped.
@@ -152,17 +104,6 @@ type SpeciesListMatch struct {
 
 // Vehicle is the typed data model for the vehicle entity.
 type Vehicle struct {
-	Affiliation *string `json:"affiliation,omitempty"`
-	Armament *string `json:"armament,omitempty"`
-	Class *string `json:"class,omitempty"`
-	Crew *string `json:"crew,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Length *string `json:"length,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // VehicleLoadMatch is the typed request payload for Vehicle.LoadTyped.

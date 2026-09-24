@@ -97,45 +97,53 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "affiliation",
-						"short": "Character's affiliation or allegiance",
+						"title": "Affiliation",
 						"type": "`$STRING`",
+						"short": "Character's affiliation or allegiance",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the character",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the character",
 					},
 					map[string]any{
 						"name": "homeworld",
-						"short": "Character's home planet",
+						"title": "Homeworld",
 						"type": "`$STRING`",
+						"short": "Character's home planet",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the character",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the character",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the character's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the character's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the character",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the character",
 					},
 					map[string]any{
 						"name": "species",
-						"short": "Character's species",
+						"title": "Species",
 						"type": "`$STRING`",
+						"short": "Character's species",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -149,24 +157,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/characters",
@@ -175,18 +165,37 @@ func MakeConfig() map[string]any {
 										"lit": "characters",
 									},
 								},
+								"parts": []any{
+									"characters",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"characters",
 								},
 							},
 						},
@@ -196,17 +205,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/characters/{id}",
@@ -218,18 +216,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"characters",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"characters",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -243,40 +253,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "classification",
-						"short": "Creature's classification",
+						"title": "Classification",
 						"type": "`$STRING`",
+						"short": "Creature's classification",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the creature",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the creature",
 					},
 					map[string]any{
 						"name": "habitat",
-						"short": "Creature's natural habitat",
+						"title": "Habitat",
 						"type": "`$STRING`",
+						"short": "Creature's natural habitat",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the creature",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the creature",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the creature's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the creature's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the creature",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the creature",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -290,24 +307,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/creatures",
@@ -316,18 +315,37 @@ func MakeConfig() map[string]any {
 										"lit": "creatures",
 									},
 								},
+								"parts": []any{
+									"creatures",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"creatures",
 								},
 							},
 						},
@@ -337,17 +355,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/creatures/{id}",
@@ -359,18 +366,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"creatures",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"creatures",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -384,45 +403,53 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "affiliation",
-						"short": "Droid's affiliation",
+						"title": "Affiliation",
 						"type": "`$STRING`",
+						"short": "Droid's affiliation",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the droid",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the droid",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the droid",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the droid",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the droid's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the droid's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "manufacturer",
-						"short": "Droid's manufacturer",
+						"title": "Manufacturer",
 						"type": "`$STRING`",
+						"short": "Droid's manufacturer",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name or designation of the droid",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name or designation of the droid",
 					},
 					map[string]any{
 						"name": "type",
-						"short": "Droid type or class",
+						"title": "Type",
 						"type": "`$STRING`",
+						"short": "Droid type or class",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -436,24 +463,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/droids",
@@ -462,18 +471,37 @@ func MakeConfig() map[string]any {
 										"lit": "droids",
 									},
 								},
+								"parts": []any{
+									"droids",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"droids",
 								},
 							},
 						},
@@ -483,17 +511,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/droids/{id}",
@@ -505,18 +522,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"droids",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"droids",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -530,45 +559,53 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the location",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the location",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the location",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the location",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the location's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the location's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the location",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the location",
 					},
 					map[string]any{
 						"name": "region",
-						"short": "Galactic region where the location is situated",
+						"title": "Region",
 						"type": "`$STRING`",
+						"short": "Galactic region where the location is situated",
 					},
 					map[string]any{
 						"name": "sector",
-						"short": "Sector where the location is situated",
+						"title": "Sector",
 						"type": "`$STRING`",
+						"short": "Sector where the location is situated",
 					},
 					map[string]any{
 						"name": "terrain",
-						"short": "Terrain type of the location",
+						"title": "Terrain",
 						"type": "`$STRING`",
+						"short": "Terrain type of the location",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -582,24 +619,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/locations",
@@ -608,18 +627,37 @@ func MakeConfig() map[string]any {
 										"lit": "locations",
 									},
 								},
+								"parts": []any{
+									"locations",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"locations",
 								},
 							},
 						},
@@ -629,17 +667,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/locations/{id}",
@@ -651,18 +678,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"locations",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"locations",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -676,45 +715,53 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "allegiance",
-						"short": "Organization's allegiance",
+						"title": "Allegiance",
 						"type": "`$STRING`",
+						"short": "Organization's allegiance",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the organization",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the organization",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the organization",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the organization",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the organization's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the organization's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "leader",
-						"short": "Leader of the organization",
+						"title": "Leader",
 						"type": "`$STRING`",
+						"short": "Leader of the organization",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the organization",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the organization",
 					},
 					map[string]any{
 						"name": "type",
-						"short": "Type of organization",
+						"title": "Type",
 						"type": "`$STRING`",
+						"short": "Type of organization",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -728,24 +775,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/organizations",
@@ -754,18 +783,37 @@ func MakeConfig() map[string]any {
 										"lit": "organizations",
 									},
 								},
+								"parts": []any{
+									"organizations",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"organizations",
 								},
 							},
 						},
@@ -775,17 +823,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/organizations/{id}",
@@ -797,18 +834,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"organizations",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"organizations",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -822,50 +871,59 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "classification",
-						"short": "Biological classification",
+						"title": "Classification",
 						"type": "`$STRING`",
+						"short": "Biological classification",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the species",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the species",
 					},
 					map[string]any{
 						"name": "designation",
-						"short": "Sentience designation",
+						"title": "Designation",
 						"type": "`$STRING`",
+						"short": "Sentience designation",
 					},
 					map[string]any{
 						"name": "homeworld",
-						"short": "Homeworld of the species",
+						"title": "Homeworld",
 						"type": "`$STRING`",
+						"short": "Homeworld of the species",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the species",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the species",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the species' image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the species' image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "language",
-						"short": "Language spoken by the species",
+						"title": "Language",
 						"type": "`$STRING`",
+						"short": "Language spoken by the species",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the species",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the species",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -879,24 +937,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/species",
@@ -905,18 +945,37 @@ func MakeConfig() map[string]any {
 										"lit": "species",
 									},
 								},
+								"parts": []any{
+									"species",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"species",
 								},
 							},
 						},
@@ -926,17 +985,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/species/{id}",
@@ -948,18 +996,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"species",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"species",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -973,60 +1033,71 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "affiliation",
-						"short": "Vehicle's affiliation",
+						"title": "Affiliation",
 						"type": "`$STRING`",
+						"short": "Vehicle's affiliation",
 					},
 					map[string]any{
 						"name": "armament",
-						"short": "Vehicle armament",
+						"title": "Armament",
 						"type": "`$STRING`",
+						"short": "Vehicle armament",
 					},
 					map[string]any{
 						"name": "class",
-						"short": "Vehicle class or type",
+						"title": "Class",
 						"type": "`$STRING`",
+						"short": "Vehicle class or type",
 					},
 					map[string]any{
 						"name": "crew",
-						"short": "Crew capacity",
+						"title": "Crew",
 						"type": "`$STRING`",
+						"short": "Crew capacity",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the vehicle",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the vehicle",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the vehicle",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the vehicle",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the vehicle's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the vehicle's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "length",
-						"short": "Length of the vehicle",
+						"title": "Length",
 						"type": "`$STRING`",
+						"short": "Length of the vehicle",
 					},
 					map[string]any{
 						"name": "manufacturer",
-						"short": "Vehicle manufacturer",
+						"title": "Manufacturer",
 						"type": "`$STRING`",
+						"short": "Vehicle manufacturer",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the vehicle",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the vehicle",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "URL to the official Star Wars Databank entry",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "URL to the official Star Wars Databank entry",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -1040,24 +1111,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/vehicles",
@@ -1066,18 +1119,37 @@ func MakeConfig() map[string]any {
 										"lit": "vehicles",
 									},
 								},
+								"parts": []any{
+									"vehicles",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"vehicles",
 								},
 							},
 						},
@@ -1087,17 +1159,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/vehicles/{id}",
@@ -1109,18 +1170,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"vehicles",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"vehicles",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

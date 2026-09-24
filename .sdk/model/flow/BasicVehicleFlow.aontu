@@ -1,0 +1,44 @@
+# BasicVehicleFlow
+
+main: kit: flow: BasicVehicleFlow:
+{
+  entity: "vehicle",
+  kind: "basic",
+  name: "BasicVehicleFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vehicle_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vehicle_ref01",
+        srcdatavar: "vehicle_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vehicle01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vehicle_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVehicleFlow"
+}

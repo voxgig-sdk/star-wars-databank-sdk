@@ -122,45 +122,53 @@ def make_config():
         "fields": [
           {
             "name": "affiliation",
-            "short": "Character's affiliation or allegiance",
+            "title": "Affiliation",
             "type": "`$STRING`",
+            "short": "Character's affiliation or allegiance",
           },
           {
             "name": "description",
-            "short": "Detailed description of the character",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the character",
           },
           {
             "name": "homeworld",
-            "short": "Character's home planet",
+            "title": "Homeworld",
             "type": "`$STRING`",
+            "short": "Character's home planet",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the character",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the character",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the character's image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the character's image",
+            "format": "uri",
           },
           {
             "name": "name",
-            "short": "Name of the character",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the character",
           },
           {
             "name": "species",
-            "short": "Character's species",
+            "title": "Species",
             "type": "`$STRING`",
+            "short": "Character's species",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -174,24 +182,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/characters",
@@ -200,19 +190,38 @@ def make_config():
                     "lit": "characters",
                   },
                 ],
+                "parts": [
+                  "characters",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "characters",
-                ],
               },
             ],
           },
@@ -221,17 +230,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/characters/{id}",
@@ -243,19 +241,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "characters",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "characters",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -268,40 +278,47 @@ def make_config():
         "fields": [
           {
             "name": "classification",
-            "short": "Creature's classification",
+            "title": "Classification",
             "type": "`$STRING`",
+            "short": "Creature's classification",
           },
           {
             "name": "description",
-            "short": "Detailed description of the creature",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the creature",
           },
           {
             "name": "habitat",
-            "short": "Creature's natural habitat",
+            "title": "Habitat",
             "type": "`$STRING`",
+            "short": "Creature's natural habitat",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the creature",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the creature",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the creature's image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the creature's image",
+            "format": "uri",
           },
           {
             "name": "name",
-            "short": "Name of the creature",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the creature",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -315,24 +332,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/creatures",
@@ -341,19 +340,38 @@ def make_config():
                     "lit": "creatures",
                   },
                 ],
+                "parts": [
+                  "creatures",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "creatures",
-                ],
               },
             ],
           },
@@ -362,17 +380,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/creatures/{id}",
@@ -384,19 +391,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "creatures",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "creatures",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -409,45 +428,53 @@ def make_config():
         "fields": [
           {
             "name": "affiliation",
-            "short": "Droid's affiliation",
+            "title": "Affiliation",
             "type": "`$STRING`",
+            "short": "Droid's affiliation",
           },
           {
             "name": "description",
-            "short": "Detailed description of the droid",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the droid",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the droid",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the droid",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the droid's image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the droid's image",
+            "format": "uri",
           },
           {
             "name": "manufacturer",
-            "short": "Droid's manufacturer",
+            "title": "Manufacturer",
             "type": "`$STRING`",
+            "short": "Droid's manufacturer",
           },
           {
             "name": "name",
-            "short": "Name or designation of the droid",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name or designation of the droid",
           },
           {
             "name": "type",
-            "short": "Droid type or class",
+            "title": "Type",
             "type": "`$STRING`",
+            "short": "Droid type or class",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -461,24 +488,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/droids",
@@ -487,19 +496,38 @@ def make_config():
                     "lit": "droids",
                   },
                 ],
+                "parts": [
+                  "droids",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "droids",
-                ],
               },
             ],
           },
@@ -508,17 +536,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/droids/{id}",
@@ -530,19 +547,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "droids",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "droids",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -555,45 +584,53 @@ def make_config():
         "fields": [
           {
             "name": "description",
-            "short": "Detailed description of the location",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the location",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the location",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the location",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the location's image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the location's image",
+            "format": "uri",
           },
           {
             "name": "name",
-            "short": "Name of the location",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the location",
           },
           {
             "name": "region",
-            "short": "Galactic region where the location is situated",
+            "title": "Region",
             "type": "`$STRING`",
+            "short": "Galactic region where the location is situated",
           },
           {
             "name": "sector",
-            "short": "Sector where the location is situated",
+            "title": "Sector",
             "type": "`$STRING`",
+            "short": "Sector where the location is situated",
           },
           {
             "name": "terrain",
-            "short": "Terrain type of the location",
+            "title": "Terrain",
             "type": "`$STRING`",
+            "short": "Terrain type of the location",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -607,24 +644,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/locations",
@@ -633,19 +652,38 @@ def make_config():
                     "lit": "locations",
                   },
                 ],
+                "parts": [
+                  "locations",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "locations",
-                ],
               },
             ],
           },
@@ -654,17 +692,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/locations/{id}",
@@ -676,19 +703,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "locations",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "locations",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -701,45 +740,53 @@ def make_config():
         "fields": [
           {
             "name": "allegiance",
-            "short": "Organization's allegiance",
+            "title": "Allegiance",
             "type": "`$STRING`",
+            "short": "Organization's allegiance",
           },
           {
             "name": "description",
-            "short": "Detailed description of the organization",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the organization",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the organization",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the organization",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the organization's image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the organization's image",
+            "format": "uri",
           },
           {
             "name": "leader",
-            "short": "Leader of the organization",
+            "title": "Leader",
             "type": "`$STRING`",
+            "short": "Leader of the organization",
           },
           {
             "name": "name",
-            "short": "Name of the organization",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the organization",
           },
           {
             "name": "type",
-            "short": "Type of organization",
+            "title": "Type",
             "type": "`$STRING`",
+            "short": "Type of organization",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -753,24 +800,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/organizations",
@@ -779,19 +808,38 @@ def make_config():
                     "lit": "organizations",
                   },
                 ],
+                "parts": [
+                  "organizations",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "organizations",
-                ],
               },
             ],
           },
@@ -800,17 +848,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/organizations/{id}",
@@ -822,19 +859,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "organizations",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "organizations",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -847,50 +896,59 @@ def make_config():
         "fields": [
           {
             "name": "classification",
-            "short": "Biological classification",
+            "title": "Classification",
             "type": "`$STRING`",
+            "short": "Biological classification",
           },
           {
             "name": "description",
-            "short": "Detailed description of the species",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the species",
           },
           {
             "name": "designation",
-            "short": "Sentience designation",
+            "title": "Designation",
             "type": "`$STRING`",
+            "short": "Sentience designation",
           },
           {
             "name": "homeworld",
-            "short": "Homeworld of the species",
+            "title": "Homeworld",
             "type": "`$STRING`",
+            "short": "Homeworld of the species",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the species",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the species",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the species' image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the species' image",
+            "format": "uri",
           },
           {
             "name": "language",
-            "short": "Language spoken by the species",
+            "title": "Language",
             "type": "`$STRING`",
+            "short": "Language spoken by the species",
           },
           {
             "name": "name",
-            "short": "Name of the species",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the species",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -904,24 +962,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/species",
@@ -930,19 +970,38 @@ def make_config():
                     "lit": "species",
                   },
                 ],
+                "parts": [
+                  "species",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "species",
-                ],
               },
             ],
           },
@@ -951,17 +1010,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/species/{id}",
@@ -973,19 +1021,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "species",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "species",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -998,60 +1058,71 @@ def make_config():
         "fields": [
           {
             "name": "affiliation",
-            "short": "Vehicle's affiliation",
+            "title": "Affiliation",
             "type": "`$STRING`",
+            "short": "Vehicle's affiliation",
           },
           {
             "name": "armament",
-            "short": "Vehicle armament",
+            "title": "Armament",
             "type": "`$STRING`",
+            "short": "Vehicle armament",
           },
           {
             "name": "class",
-            "short": "Vehicle class or type",
+            "title": "Class",
             "type": "`$STRING`",
+            "short": "Vehicle class or type",
           },
           {
             "name": "crew",
-            "short": "Crew capacity",
+            "title": "Crew",
             "type": "`$STRING`",
+            "short": "Crew capacity",
           },
           {
             "name": "description",
-            "short": "Detailed description of the vehicle",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the vehicle",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the vehicle",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the vehicle",
           },
           {
-            "format": "uri",
             "name": "image",
-            "short": "URL to the vehicle's image",
+            "title": "Image",
             "type": "`$STRING`",
+            "short": "URL to the vehicle's image",
+            "format": "uri",
           },
           {
             "name": "length",
-            "short": "Length of the vehicle",
+            "title": "Length",
             "type": "`$STRING`",
+            "short": "Length of the vehicle",
           },
           {
             "name": "manufacturer",
-            "short": "Vehicle manufacturer",
+            "title": "Manufacturer",
             "type": "`$STRING`",
+            "short": "Vehicle manufacturer",
           },
           {
             "name": "name",
-            "short": "Name of the vehicle",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the vehicle",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "URL to the official Star Wars Databank entry",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the official Star Wars Databank entry",
+            "format": "uri",
           },
         ],
         "id": {
@@ -1065,24 +1136,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vehicles",
@@ -1091,19 +1144,38 @@ def make_config():
                     "lit": "vehicles",
                   },
                 ],
+                "parts": [
+                  "vehicles",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "vehicles",
-                ],
               },
             ],
           },
@@ -1112,17 +1184,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vehicles/{id}",
@@ -1134,19 +1195,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "vehicles",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "vehicles",
-                  "{id}",
-                ],
               },
             ],
           },

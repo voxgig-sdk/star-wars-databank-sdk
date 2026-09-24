@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -157,45 +150,53 @@ class Config {
       "fields": [
         {
           "name": "affiliation",
-          "short": "Character's affiliation or allegiance",
-          "type": "`$STRING`"
+          "title": "Affiliation",
+          "type": "`$STRING`",
+          "short": "Character's affiliation or allegiance"
         },
         {
           "name": "description",
-          "short": "Detailed description of the character",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the character"
         },
         {
           "name": "homeworld",
-          "short": "Character's home planet",
-          "type": "`$STRING`"
+          "title": "Homeworld",
+          "type": "`$STRING`",
+          "short": "Character's home planet"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the character",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the character"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the character's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "name",
-          "short": "Name of the character",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the character"
         },
         {
           "name": "species",
-          "short": "Character's species",
-          "type": "`$STRING`"
+          "title": "Species",
+          "type": "`$STRING`",
+          "short": "Character's species"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -209,24 +210,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/characters",
@@ -235,19 +218,38 @@ class Config {
                   "lit": "characters"
                 }
               ],
+              "parts": [
+                "characters"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "characters"
-              ]
+              }
             }
           ]
         },
@@ -256,17 +258,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/characters/{id}",
@@ -278,19 +269,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "characters",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "characters",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -303,40 +306,47 @@ class Config {
       "fields": [
         {
           "name": "classification",
-          "short": "Creature's classification",
-          "type": "`$STRING`"
+          "title": "Classification",
+          "type": "`$STRING`",
+          "short": "Creature's classification"
         },
         {
           "name": "description",
-          "short": "Detailed description of the creature",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the creature"
         },
         {
           "name": "habitat",
-          "short": "Creature's natural habitat",
-          "type": "`$STRING`"
+          "title": "Habitat",
+          "type": "`$STRING`",
+          "short": "Creature's natural habitat"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the creature",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the creature"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the creature's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "name",
-          "short": "Name of the creature",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the creature"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -350,24 +360,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/creatures",
@@ -376,19 +368,38 @@ class Config {
                   "lit": "creatures"
                 }
               ],
+              "parts": [
+                "creatures"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "creatures"
-              ]
+              }
             }
           ]
         },
@@ -397,17 +408,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/creatures/{id}",
@@ -419,19 +419,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "creatures",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "creatures",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -444,45 +456,53 @@ class Config {
       "fields": [
         {
           "name": "affiliation",
-          "short": "Droid's affiliation",
-          "type": "`$STRING`"
+          "title": "Affiliation",
+          "type": "`$STRING`",
+          "short": "Droid's affiliation"
         },
         {
           "name": "description",
-          "short": "Detailed description of the droid",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the droid"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the droid",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the droid"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the droid's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "manufacturer",
-          "short": "Droid's manufacturer",
-          "type": "`$STRING`"
+          "title": "Manufacturer",
+          "type": "`$STRING`",
+          "short": "Droid's manufacturer"
         },
         {
           "name": "name",
-          "short": "Name or designation of the droid",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name or designation of the droid"
         },
         {
           "name": "type",
-          "short": "Droid type or class",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Droid type or class"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -496,24 +516,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/droids",
@@ -522,19 +524,38 @@ class Config {
                   "lit": "droids"
                 }
               ],
+              "parts": [
+                "droids"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "droids"
-              ]
+              }
             }
           ]
         },
@@ -543,17 +564,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/droids/{id}",
@@ -565,19 +575,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "droids",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "droids",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -590,45 +612,53 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Detailed description of the location",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the location"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the location",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the location"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the location's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "name",
-          "short": "Name of the location",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the location"
         },
         {
           "name": "region",
-          "short": "Galactic region where the location is situated",
-          "type": "`$STRING`"
+          "title": "Region",
+          "type": "`$STRING`",
+          "short": "Galactic region where the location is situated"
         },
         {
           "name": "sector",
-          "short": "Sector where the location is situated",
-          "type": "`$STRING`"
+          "title": "Sector",
+          "type": "`$STRING`",
+          "short": "Sector where the location is situated"
         },
         {
           "name": "terrain",
-          "short": "Terrain type of the location",
-          "type": "`$STRING`"
+          "title": "Terrain",
+          "type": "`$STRING`",
+          "short": "Terrain type of the location"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -642,24 +672,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/locations",
@@ -668,19 +680,38 @@ class Config {
                   "lit": "locations"
                 }
               ],
+              "parts": [
+                "locations"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "locations"
-              ]
+              }
             }
           ]
         },
@@ -689,17 +720,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/locations/{id}",
@@ -711,19 +731,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "locations",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "locations",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -736,45 +768,53 @@ class Config {
       "fields": [
         {
           "name": "allegiance",
-          "short": "Organization's allegiance",
-          "type": "`$STRING`"
+          "title": "Allegiance",
+          "type": "`$STRING`",
+          "short": "Organization's allegiance"
         },
         {
           "name": "description",
-          "short": "Detailed description of the organization",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the organization"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the organization",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the organization"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the organization's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "leader",
-          "short": "Leader of the organization",
-          "type": "`$STRING`"
+          "title": "Leader",
+          "type": "`$STRING`",
+          "short": "Leader of the organization"
         },
         {
           "name": "name",
-          "short": "Name of the organization",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the organization"
         },
         {
           "name": "type",
-          "short": "Type of organization",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of organization"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -788,24 +828,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/organizations",
@@ -814,19 +836,38 @@ class Config {
                   "lit": "organizations"
                 }
               ],
+              "parts": [
+                "organizations"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "organizations"
-              ]
+              }
             }
           ]
         },
@@ -835,17 +876,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/organizations/{id}",
@@ -857,19 +887,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "organizations",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "organizations",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -882,50 +924,59 @@ class Config {
       "fields": [
         {
           "name": "classification",
-          "short": "Biological classification",
-          "type": "`$STRING`"
+          "title": "Classification",
+          "type": "`$STRING`",
+          "short": "Biological classification"
         },
         {
           "name": "description",
-          "short": "Detailed description of the species",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the species"
         },
         {
           "name": "designation",
-          "short": "Sentience designation",
-          "type": "`$STRING`"
+          "title": "Designation",
+          "type": "`$STRING`",
+          "short": "Sentience designation"
         },
         {
           "name": "homeworld",
-          "short": "Homeworld of the species",
-          "type": "`$STRING`"
+          "title": "Homeworld",
+          "type": "`$STRING`",
+          "short": "Homeworld of the species"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the species",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the species"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the species' image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "language",
-          "short": "Language spoken by the species",
-          "type": "`$STRING`"
+          "title": "Language",
+          "type": "`$STRING`",
+          "short": "Language spoken by the species"
         },
         {
           "name": "name",
-          "short": "Name of the species",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the species"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -939,24 +990,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/species",
@@ -965,19 +998,38 @@ class Config {
                   "lit": "species"
                 }
               ],
+              "parts": [
+                "species"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "species"
-              ]
+              }
             }
           ]
         },
@@ -986,17 +1038,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/species/{id}",
@@ -1008,19 +1049,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "species",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "species",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1033,60 +1086,71 @@ class Config {
       "fields": [
         {
           "name": "affiliation",
-          "short": "Vehicle's affiliation",
-          "type": "`$STRING`"
+          "title": "Affiliation",
+          "type": "`$STRING`",
+          "short": "Vehicle's affiliation"
         },
         {
           "name": "armament",
-          "short": "Vehicle armament",
-          "type": "`$STRING`"
+          "title": "Armament",
+          "type": "`$STRING`",
+          "short": "Vehicle armament"
         },
         {
           "name": "class",
-          "short": "Vehicle class or type",
-          "type": "`$STRING`"
+          "title": "Class",
+          "type": "`$STRING`",
+          "short": "Vehicle class or type"
         },
         {
           "name": "crew",
-          "short": "Crew capacity",
-          "type": "`$STRING`"
+          "title": "Crew",
+          "type": "`$STRING`",
+          "short": "Crew capacity"
         },
         {
           "name": "description",
-          "short": "Detailed description of the vehicle",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the vehicle"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the vehicle",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the vehicle"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the vehicle's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "length",
-          "short": "Length of the vehicle",
-          "type": "`$STRING`"
+          "title": "Length",
+          "type": "`$STRING`",
+          "short": "Length of the vehicle"
         },
         {
           "name": "manufacturer",
-          "short": "Vehicle manufacturer",
-          "type": "`$STRING`"
+          "title": "Manufacturer",
+          "type": "`$STRING`",
+          "short": "Vehicle manufacturer"
         },
         {
           "name": "name",
-          "short": "Name of the vehicle",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the vehicle"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "URL to the official Star Wars Databank entry",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -1100,24 +1164,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/vehicles",
@@ -1126,19 +1172,38 @@ class Config {
                   "lit": "vehicles"
                 }
               ],
+              "parts": [
+                "vehicles"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "vehicles"
-              ]
+              }
             }
           ]
         },
@@ -1147,17 +1212,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/vehicles/{id}",
@@ -1169,19 +1223,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "vehicles",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "vehicles",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }

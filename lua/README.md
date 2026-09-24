@@ -43,7 +43,7 @@ local characters, err = client:Character():list()
 if err then error(err) end
 
 for _, item in ipairs(characters) do
-  print(item["id"], item["affiliation"])
+  print(item["id"])
 end
 ```
 
